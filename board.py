@@ -40,15 +40,16 @@ def make_board(rows, columns) -> dict:
         }
     }
 
-    # a list of descriptions that will print when user steps on that tile location
-    descriptions = ["desc1", "desc2", "desc3"]
-    # a list of functions that each have a challenge associated with them
-    challenges = [some_func]
+    # a list of tuples where tuple[0] = description of tile, tuple[1] = challenge for that tile as a function
+    tile_details = [("desc1", some_func), ("desc2", some_func), ("desc3", some_func)]
 
     for x in range(1, columns + 1):
         for y in range(1, rows + 1):
+            desc, challenge = random.choice(tile_details)
+
             board[(x, y)] = {
-                "description": random.choice(descriptions),
+                "description": desc,
+                "challenge": challenge,
                 "solved": False,
                 "north": (x, y+1),
                 "east": (x+1, y),
@@ -73,7 +74,9 @@ def main():
     columns = 10
 
     board = make_board(rows, columns)
-    print(board[(0, 1)]["challenge"]())
+    print(board[(5, 5)])
+    print(board[(5, 5)]["description"])
+    board[(5, 5)]["challenge"]()
 
 
 if __name__ == '__main__':
