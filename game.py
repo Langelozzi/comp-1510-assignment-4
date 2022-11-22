@@ -16,6 +16,8 @@ def game() -> None:
 
     # function with pre game description
 
+    print_board(rows, columns, character["position"])
+
     while is_alive(character) and not achieved_goal:
         # function to get users choice for direction
         direction = get_user_choice()
