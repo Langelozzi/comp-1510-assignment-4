@@ -1,20 +1,42 @@
 # 10 basic challenges which can be mob fights or puzzles
 # 3 sub boss fights
 # 1 final boss fights
-from helpers import cleanse
+from helpers import cleanse, print_in_color
 from character import make_character
 
 import random
+import time
 
 
-def get_generic_room_description():
-    descriptions = [
-        "aaa theres a snake",
-        "oo i think i see a ghost"
+def pre_game_story() -> None:
+    part_one = "You wake to the sound of metal against stone.\n" \
+               "You lift you head from the floor and as your eyes adjust to the darkness you start to scan your " \
+               "surroundings..\n"
+    part_two = "You are in a small cell, metal bars straight ahead; cobblestone lines the rest of the room\n" \
+               "You can feel the damp air in your breathe, and hear the slow drop of water against the stone floor\n" \
+               "You sense a darkness weighing in your chest and a cold breeze stroke down your spine\n" \
+               "From down the hall you see a shadow as it rounds the corner east, you catch a glimpse of a metal " \
+               "foot..\n"
+    part_three = "You feel your heart beat speed up, as the feeling of entrapment sets in.. but not for long\n" \
+                 "The metal door of the cell creaks open, revealing a clear stone path to the hall where the shadow " \
+                 "walked\n" \
+                 "You lift yourself to your feet from the cobblestone floor and contemplate your options\n" \
+                 "The curiosity twists in your cut and pulls you north..\n" \
+                 "You are now following the shadowy figure north down the dungeon hall...\n"
+    part_four = "As you approach the end of the hall, you feel a stronger wind against you skin\n" \
+                "At the end of the hall, the room opens to a small room, arched doorways to your north and east\n" \
+                "Another chill propagates along your spine, as you make your choice..\n"
 
-
-    ]
-    return random.choice(descriptions)
+    print_in_color("**CLANK**\n", "cyan")
+    time.sleep(3)
+    print_in_color(part_one, "cyan")
+    time.sleep(8)
+    print_in_color(part_two, "cyan")
+    time.sleep(12)
+    print_in_color(part_three, "cyan")
+    time.sleep(15)
+    print_in_color(part_four, "cyan")
+    time.sleep(8)
 
 
 def possessed_knight(character: dict) -> None:
@@ -50,17 +72,26 @@ def skeleton_soldier(character: dict) -> None:
             print(f'{counter} \t {skills}')
             counter += 1
         skill_prompt = cleanse(input())
-    #     if skill_prompt == '1':
-    #         # print(f'Select skill: \n\n Type: \n 1 \t {} \n 2 \t No \n\n')
-    #         # # maybe use for loop to list through each ability
-    #         # # skill_slection = input()
-    #         # print(f"You selected {skill_slection}")
-    #     elif skill_prompt == '2':
-    #         # attack phase
-    #     else:
-    #         print("Please select a valid input")
-    # else:
+        #     if skill_prompt == '1':
+        #         # print(f'Select skill: \n\n Type: \n 1 \t {} \n 2 \t No \n\n')
+        #         # # maybe use for loop to list through each ability
+        #         # # skill_slection = input()
+        #         # print(f"You selected {skill_slection}")
+        #     elif skill_prompt == '2':
+        #         # attack phase
+        #     else:
+        #         print("Please select a valid input")
+        # else:
         print("Please select a valid input")
+
+
+def get_generic_room_description():
+    descriptions = [
+        "aaa theres a snake",
+        "oo i think i see a ghost"
+
+    ]
+    return random.choice(descriptions)
 
 
 def get_generic_challenges():
@@ -72,11 +103,12 @@ def get_generic_challenges():
 
 
 def main():
-    test_char = make_character("joe")
-
-    skeleton_soldier(test_char)
-    # print(get_generic_room_description())
-    # get_generic_challenges()(test_char)
+    # test_char = make_character("joe")
+    #
+    # skeleton_soldier(test_char)
+    # # print(get_generic_room_description())
+    # # get_generic_challenges()(test_char)
+    pre_game_story()
 
 
 if __name__ == '__main__':
