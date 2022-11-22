@@ -1,6 +1,6 @@
 
 
-def make_character(name: str):
+def make_character(name: str) -> dict:
     return {
         "name": name,
         "hp": 100,
@@ -18,6 +18,9 @@ def move_character():
     pass
 
 
-def is_alive():
-    pass
+def is_alive(character: dict) -> bool:
+    if character["hp"] <= 0:
+        return False
+    else:
+        return True
 
