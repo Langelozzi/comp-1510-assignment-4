@@ -11,6 +11,7 @@ def make_character(name: str) -> dict:
         "name": name,
         "position": (1, 0),
         "hp": 100,
+        "xp": 0,
         "energy": 100,
         "level": 1,
         "abilities": {
