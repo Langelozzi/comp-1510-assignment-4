@@ -42,13 +42,25 @@ def skeleton_soldier(character: dict) -> None:
     if user_action == '1':
         print("I got away!")
     elif user_action == '2':
+        counter = 1
         print(f'I will get you {enemy["name"]}!')
-        skill_prompt = cleanse(input(print("Should I use a skill? \n\n Type: \n 1 \t Yes \n 2 \t No \n\n")))
-        if skill_prompt == '1':
-            print("I used a skill!")
-            # import skills from character
-    else:
-        print("Please type a valid input")
+        print("Should I use a skill?")
+        for skills in list(character["abilities"].keys()):
+            print("Type:")
+            print(f'{counter} \t {skills}')
+            counter += 1
+        skill_prompt = cleanse(input())
+    #     if skill_prompt == '1':
+    #         # print(f'Select skill: \n\n Type: \n 1 \t {} \n 2 \t No \n\n')
+    #         # # maybe use for loop to list through each ability
+    #         # # skill_slection = input()
+    #         # print(f"You selected {skill_slection}")
+    #     elif skill_prompt == '2':
+    #         # attack phase
+    #     else:
+    #         print("Please select a valid input")
+    # else:
+        print("Please select a valid input")
 
 
 def get_generic_challenges():
@@ -60,10 +72,11 @@ def get_generic_challenges():
 
 
 def main():
-    test_char = make_character("joe2")
+    test_char = make_character("joe")
 
-    print(get_generic_room_description())
-    get_generic_challenges()(test_char)
+    skeleton_soldier(test_char)
+    # print(get_generic_room_description())
+    # get_generic_challenges()(test_char)
 
 
 if __name__ == '__main__':
