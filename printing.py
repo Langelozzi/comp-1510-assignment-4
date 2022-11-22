@@ -1,3 +1,6 @@
+import os
+
+
 def print_in_color(value, color: str, end: str = "\n"):
     colors = {
         "purple": '\033[95m',
@@ -42,4 +45,5 @@ def print_board(x_coord, y_coord):
         print()
 
 
-print_board(1, 1)
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
