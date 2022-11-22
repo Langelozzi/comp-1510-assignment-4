@@ -12,7 +12,7 @@
 | || || || || || || || || || |
 | |---------------------------
 """
-from printing import print_in_color
+from helpers import print_in_color
 
 
 def test_challenge():
@@ -65,6 +65,23 @@ def make_board(rows, columns) -> dict:
     return board
 
 
+def print_board(rows, columns, coords: tuple):
+    x_pos, y_pos = coords
+
+    for y_coord in range(columns + 1, -1, -1):
+        for x_coord in range(1, rows + 1, 1):
+            if (y_coord == 11 and x_coord != 10) or (y_coord == 0 and x_coord != 1):
+                print_in_color('---', "green", end="")
+            elif y_coord == y_pos and x_coord == x_pos:
+                print_in_color('|', "green", end="")
+                print_in_color("#", "purple", end="")
+                print_in_color('|', "green", end="")
+            else:
+                print_in_color('| |', "green", end="")
+
+        print()
+
+
 def describe_current_location(board: dict, character: dict) -> None:
     current_position = character["position"]
     print_in_color(board[current_position]["description"], "cyan")
@@ -83,7 +100,6 @@ def main():
     columns = 10
 
     board = make_board(rows, columns)
-    describe_current_location(board, (1, 0))
 
 
 if __name__ == '__main__':

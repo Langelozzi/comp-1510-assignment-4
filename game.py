@@ -1,7 +1,6 @@
-from board import make_board, describe_current_location, is_valid_move
-from character import make_character, is_alive, move_character
-from helpers import get_user_choice
-from printing import print_board
+from board import make_board, describe_current_location, is_valid_move, print_board
+from character import make_character, is_alive, move_character, get_character_name
+from helpers import get_user_choice, print_in_color
 
 
 def game() -> None:
@@ -10,7 +9,7 @@ def game() -> None:
 
     board = make_board(rows, columns)
 
-    character_name = input("Please enter a name for your character: ")
+    character_name = get_character_name()
     character = make_character(character_name)
 
     achieved_goal = False
@@ -21,7 +20,9 @@ def game() -> None:
         # function to get users choice for direction
         direction = get_user_choice()
 
-        if is_valid_move(direction, board, character):
+        if direction == "q" or direction == "quit":
+            break
+        elif is_valid_move(direction, board, character):
             # function to move the character
             move_character(direction, board, character)
             print_board(rows, columns, character["position"])
@@ -35,9 +36,8 @@ def game() -> None:
                 # if they pick up a special item or something and there is addition challenge then start that
 
                 # if they levelled up, maybe print some cool ascii art or something
-
-        # else:
-            # tell the user that they can't go in that direction
+        else:
+            print_in_color("Thee cannot traverse down ye chosen direction!!", "red")
 
 
 def main() -> None:

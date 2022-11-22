@@ -1,4 +1,4 @@
-from printing import print_in_color
+from helpers import print_in_color
 
 
 def get_character_name() -> str:
