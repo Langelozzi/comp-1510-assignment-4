@@ -25,10 +25,10 @@ def game() -> None:
         if direction == "q" or direction == "quit":
             break
         elif is_valid_move(direction, board, character):
-            # function to move the character
+            # move the character to desired location
             move_character(direction, board, character)
+            # show their new location
             print_board(rows, columns, character["position"])
-
             # describe current location
             describe_current_location(board, character)
 
@@ -36,10 +36,11 @@ def game() -> None:
 
             # function to check if character leveled up, died, got items, etc.
                 # if they pick up a special item or something and there is addition challenge then start that
-
                 # if they levelled up, maybe print some cool ascii art or something
         else:
             print_in_color("Thee cannot traverse down ye chosen direction!!", "red")
+
+    # Game over function
 
 
 def main() -> None:
