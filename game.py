@@ -1,6 +1,7 @@
 from board import make_board, describe_current_location, is_valid_move, print_board
 from character import make_character, is_alive, move_character, get_character_name
 from helpers import get_user_choice, print_in_color
+from actions import pre_game_story
 
 
 def game() -> None:
@@ -14,7 +15,7 @@ def game() -> None:
 
     achieved_goal = False
 
-    # function with pre game description
+    pre_game_story()
 
     print_board(rows, columns, character["position"])
 

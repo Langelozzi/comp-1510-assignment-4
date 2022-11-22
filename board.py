@@ -21,12 +21,9 @@ def test_challenge():
 
 def make_board(rows, columns) -> dict:
     board = {
-        (1, 0): {
-            "description": "This is where you start lol",
-            "action": test_challenge,
-            "solved": False,
-            "north": (1, 1),
-            "east": None,
+        (1, 1): {
+            "north": (1, 2),
+            "east": (2, 1),
             "south": None,
             "west": None
         },
@@ -52,7 +49,8 @@ def make_board(rows, columns) -> dict:
                 "south": (x, y-1),
                 "west": (x-1, y)
             }
-
+            if x == 1 and y == 1:
+                continue
             if x == 1:
                 board[(x, y)]["west"] = None
             if x == 10:

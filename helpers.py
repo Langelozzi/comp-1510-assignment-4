@@ -39,5 +39,5 @@ def cleanse(text: str) -> str:
 
 
 def get_user_choice() -> str:
-    print_in_color("Which direction wouldst thee liketh to traverse?", "purple")
+    print_in_color("Which direction would you like to advance in?", "purple")
     return cleanse(input())

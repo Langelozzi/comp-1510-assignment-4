@@ -9,7 +9,7 @@ def get_character_name() -> str:
 def make_character(name: str) -> dict:
     return {
         "name": name,
-        "position": (1, 0),
+        "position": (1, 1),
         "hp": 100,
         "xp": 0,
         "energy": 100,
