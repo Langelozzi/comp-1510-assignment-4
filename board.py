@@ -40,6 +40,9 @@ def make_board(rows, columns) -> dict:
 
     for x in range(1, columns + 1):
         for y in range(1, rows + 1):
+            if x == 1 and y == 1:
+                continue
+
             board[(x, y)] = {
                 "description": "This is a generic spot",  # function from challenge.py
                 "action": test_challenge,  # function from challenge.py
@@ -49,8 +52,7 @@ def make_board(rows, columns) -> dict:
                 "south": (x, y-1),
                 "west": (x-1, y)
             }
-            if x == 1 and y == 1:
-                continue
+
             if x == 1:
                 board[(x, y)]["west"] = None
             if x == 10:

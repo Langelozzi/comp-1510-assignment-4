@@ -8,22 +8,35 @@ import random
 import time
 
 
-def pre_game_story() -> None:
+def cell_description() -> None:
     part_one = "You wake to the sound of metal against stone.\n" \
                "You lift you head from the floor and as your eyes adjust to the darkness you start to scan your " \
                "surroundings..\n"
+
     part_two = "You are in a small cell, metal bars straight ahead; cobblestone lines the rest of the room\n" \
-               "You can feel the damp air in your breathe, and hear the slow drop of water against the stone floor\n" \
+               "You can feel the damp air in your breath, and hear the slow drop of water against the stone floor\n" \
                "You sense a darkness weighing in your chest and a cold breeze stroke down your spine\n" \
                "From down the hall you see a shadow as it rounds the corner east, you catch a glimpse of a metal " \
                "foot..\n"
-    part_three = "You feel your heart beat speed up, as the feeling of entrapment sets in.. but not for long\n" \
-                 "The metal door of the cell creaks open, revealing a clear stone path to the hall where the shadow " \
-                 "walked\n" \
-                 "You lift yourself to your feet from the cobblestone floor and contemplate your options\n" \
-                 "The curiosity twists in your cut and pulls you north..\n" \
-                 "You are now following the shadowy figure north down the dungeon hall...\n"
-    part_four = "As you approach the end of the hall, you feel a stronger wind against you skin\n" \
+
+    part_three = "The last thing you can remember is the queen's ritual to Sabathiel..\n" \
+                 "The whole town was there..\n" \
+                 "There was lightning, darkness. It blanketed the sky; low and heavy causing a sense of confusion\n" \
+                 "You turn to your left to see the royal knights yelling and tearing at their heads..\n" \
+                 "As they glance up you see a glow of deep red, shining from the slits of their helmets\n" \
+                 "You tried to scream but fear restrained your voice,\n" \
+                 "And then nothing..\n"
+
+    part_four = "As you bring yourself back to the cell, to the present, you feel your heart beat speed up, " \
+                "as the feeling of entrapment sets in.. " \
+                "but not for long\n" \
+                "The metal door of the cell creaks open, revealing a clear stone path to the hall where the shadow " \
+                "walked\n" \
+                "You lift yourself to your feet from the cobblestone floor and contemplate your options\n" \
+                "The curiosity twists in your cut and pulls you north..\n" \
+                "You are now following the shadowy figure north down the dungeon hall...\n"
+
+    part_five = "As you approach the end of the hall, you feel a stronger wind against you skin\n" \
                 "At the end of the hall, the room opens to a small room, arched doorways to your north and east\n" \
                 "Another chill propagates along your spine, as you make your choice..\n"
 
@@ -32,10 +45,12 @@ def pre_game_story() -> None:
     print_in_color(part_one, "cyan")
     time.sleep(8)
     print_in_color(part_two, "cyan")
-    time.sleep(12)
+    time.sleep(15)
     print_in_color(part_three, "cyan")
     time.sleep(15)
     print_in_color(part_four, "cyan")
+    time.sleep(12)
+    print_in_color(part_five, "cyan")
     time.sleep(8)
 
 
