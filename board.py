@@ -41,28 +41,26 @@ def make_board(rows, columns) -> dict:
         }
     }
 
-    # a list of tuples where tuple[0] = description of tile, tuple[1] = challenge for that tile as a function
+    for x in range(1, columns + 1):
+        for y in range(1, rows + 1):
+            board[(x, y)] = {
+                "description": "This is a generic spot",  # function from challenge.py
+                "action": test_challenge,  # function from challenge.py
+                "solved": False,
+                "north": (x, y+1),
+                "east": (x+1, y),
+                "south": (x, y-1),
+                "west": (x-1, y)
+            }
 
-    # for x in range(1, columns + 1):
-    #     for y in range(1, rows + 1):
-    #         board[(x, y)] = {
-    #             "description": # function from challenge.py,
-    #             "action": # function from challenge.py,
-    #             "solved": False,
-    #             "north": (x, y+1),
-    #             "east": (x+1, y),
-    #             "south": (x, y-1),
-    #             "west": (x-1, y)
-    #         }
-    #
-    #         if x == 1:
-    #             board[(x, y)]["west"] = None
-    #         if x == 10:
-    #             board[(x, y)]["east"] = None
-    #         if y == 1 and x != 1:
-    #             board[(x, y)]["south"] = None
-    #         if y == 10 and x != 10:
-    #             board[(x, y)]["north"] = None
+            if x == 1:
+                board[(x, y)]["west"] = None
+            if x == 10:
+                board[(x, y)]["east"] = None
+            if y == 1 and x != 1:
+                board[(x, y)]["south"] = None
+            if y == 10 and x != 10:
+                board[(x, y)]["north"] = None
 
     return board
 
