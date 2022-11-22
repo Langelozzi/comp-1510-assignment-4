@@ -16,13 +16,14 @@ def make_character(name: str) -> dict:
     }
 
 
-def is_valid_move(choice: str, board: dict, character: dict) -> bool:
+def is_valid_move(direction: str, board: dict, character: dict) -> bool:
     current_position = character["position"]
 
-    if board[current_position][choice] is None:
-        return True
-    else:
+    if board[current_position][direction] is None:
         return False
+    else:
+        return True
+
 
 def move_character():
     pass
