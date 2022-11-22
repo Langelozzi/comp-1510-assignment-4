@@ -1,4 +1,3 @@
-from printing import print_board
 
 
 def make_character(name: str) -> dict:
@@ -16,8 +15,8 @@ def make_character(name: str) -> dict:
     }
 
 
-def move_character():
-    pass
+def move_character(current_room: dict, direction: str, character: dict):
+    character["position"] = current_room[direction]
 
 
 def is_alive(character: dict) -> bool:
