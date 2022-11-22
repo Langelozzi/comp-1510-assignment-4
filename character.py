@@ -1,3 +1,9 @@
+from printing import print_in_color
+
+
+def get_character_name() -> str:
+    print_in_color("Please enter a name for your character..", "purple")
+    return input()
 
 
 def make_character(name: str) -> dict:
