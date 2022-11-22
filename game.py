@@ -1,4 +1,5 @@
 from board import make_board
+from character import make_character, is_alive
 
 
 def game() -> None:
@@ -6,7 +7,9 @@ def game() -> None:
     columns = 10
 
     board = make_board(rows, columns)
-    character = make_character()
+
+    character_name = input("Please enter a name for your character: ")
+    character = make_character(character_name)
 
     achieved_goal = False
 
