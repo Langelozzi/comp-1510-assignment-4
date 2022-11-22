@@ -1,5 +1,6 @@
-from board import make_board
+from board import make_board, describe_current_location, is_valid_move
 from character import make_character, is_alive
+from helpers import get_user_choice
 
 
 def game() -> None:
@@ -13,26 +14,27 @@ def game() -> None:
 
     achieved_goal = False
 
+    # function with pre game description
+
     while is_alive(character) and not achieved_goal:
-        pass
-        # function to describe current location
+        current_position = character["position"]
+        current_room = board[current_position]
 
         # function to get users choice for direction
+        direction = get_user_choice()
 
-        # function to check if the move is valid
-
-        # if the move is valid
+        if is_valid_move(direction, board, current_position):
             # function to move the character
 
-            # describe next location
+            # describe current location
+            describe_current_location(board, current_position)
 
-            # if there is a challenge on that tile
-                # then execute the challenge function
+            # then execute the action function
 
-                # function to check if character leveled up, died, got items, etc.
-                    # if they pick up a special item or something and there is addition challenge then start that
+            # function to check if character leveled up, died, got items, etc.
+                # if they pick up a special item or something and there is addition challenge then start that
 
-                    # if they levelled up, maybe print some cool ascii art or something
+                # if they levelled up, maybe print some cool ascii art or something
 
         # else:
             # tell the user that they can't go in that direction
