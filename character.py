@@ -15,7 +15,8 @@ def make_character(name: str) -> dict:
     }
 
 
-def move_character(current_room: dict, direction: str, character: dict):
+def move_character(direction: str, board: dict, character: dict) -> None:
+    current_room = board[character["position"]]
     character["position"] = current_room[direction]
 
 

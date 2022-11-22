@@ -1,6 +1,7 @@
 from board import make_board, describe_current_location, is_valid_move
-from character import make_character, is_alive
+from character import make_character, is_alive, move_character
 from helpers import get_user_choice
+from printing import print_board
 
 
 def game() -> None:
@@ -17,14 +18,13 @@ def game() -> None:
     # function with pre game description
 
     while is_alive(character) and not achieved_goal:
-        current_position = character["position"]
-        current_room = board[current_position]
-
         # function to get users choice for direction
         direction = get_user_choice()
 
-        if is_valid_move(direction, board, current_position):
+        if is_valid_move(direction, board, character["position"]):
             # function to move the character
+            move_character(direction, board, character)
+            print_board(rows, columns, character["position"])
 
             # describe current location
             describe_current_location(board, current_position)
