@@ -30,7 +30,7 @@ def print_in_color(value, color: str, end: str = "\n") -> None:
     print(colors[color.lower()] + str(value) + colors["end_color"], end=end)
 
 
-def print_board(x_coord, y_coord):
+def print_board(rows, columns, coords: tuple):
     #board = """
     # ---------------------------| |
     # | || || || || || || || || || |
@@ -46,16 +46,18 @@ def print_board(x_coord, y_coord):
     # | |---------------------------
     # """
 
-    for y in range(11, -1, -1):
-        for x in range(1, 11, 1):
-            if (y == 11 and x != 10) or (y == 0 and x != 1):
-                print('---', end="")
-            elif y == y_coord and x == x_coord:
-                print('|', end="")
+    x_pos, y_pos = coords
+
+    for y_coord in range(columns + 1, -1, -1):
+        for x_coord in range(1, rows + 1, 1):
+            if (y_coord == 11 and x_coord != 10) or (y_coord == 0 and x_coord != 1):
+                print_in_color('---', "green", end="")
+            elif y_coord == y_pos and x_coord == x_pos:
+                print_in_color('|', "green", end="")
                 print_in_color("#", "purple", end="")
-                print('|', end="")
+                print_in_color('|', "green", end="")
             else:
-                print('| |', end="")
+                print_in_color('| |', "green", end="")
 
         print()
 
