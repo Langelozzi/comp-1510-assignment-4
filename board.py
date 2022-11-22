@@ -65,11 +65,13 @@ def make_board(rows, columns) -> dict:
     return board
 
 
-def describe_current_location(board: dict, current_position: tuple) -> None:
+def describe_current_location(board: dict, character: dict) -> None:
+    current_position = character["position"]
     print_in_color(board[current_position]["description"], "cyan")
 
 
-def is_valid_move(direction: str, board: dict, current_position: tuple) -> bool:
+def is_valid_move(direction: str, board: dict, character: dict) -> bool:
+    current_position = character["position"]
     if board[current_position][direction] is None:
         return False
     else:

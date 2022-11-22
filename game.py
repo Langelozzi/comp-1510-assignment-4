@@ -21,13 +21,13 @@ def game() -> None:
         # function to get users choice for direction
         direction = get_user_choice()
 
-        if is_valid_move(direction, board, character["position"]):
+        if is_valid_move(direction, board, character):
             # function to move the character
             move_character(direction, board, character)
             print_board(rows, columns, character["position"])
 
             # describe current location
-            describe_current_location(board, current_position)
+            describe_current_location(board, character)
 
             # then execute the action function
 
