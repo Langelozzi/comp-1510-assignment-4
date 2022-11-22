@@ -118,12 +118,11 @@ def get_generic_challenges():
 
 
 def main():
-    # test_char = make_character("joe")
-    #
-    # skeleton_soldier(test_char)
-    # # print(get_generic_room_description())
-    # # get_generic_challenges()(test_char)
-    pre_game_story()
+    test_char = make_character("joe")
+
+    skeleton_soldier(test_char)
+    # print(get_generic_room_description())
+    # get_generic_challenges()(test_char)
 
 
 if __name__ == '__main__':
