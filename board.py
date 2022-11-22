@@ -41,15 +41,12 @@ def make_board(rows, columns) -> dict:
     }
 
     # a list of tuples where tuple[0] = description of tile, tuple[1] = challenge for that tile as a function
-    tile_details = [("desc1", some_func), ("desc2", some_func), ("desc3", some_func)]
 
     for x in range(1, columns + 1):
         for y in range(1, rows + 1):
-            desc, challenge = random.choice(tile_details)
-
             board[(x, y)] = {
-                "description": desc,
-                "challenge": challenge,
+                "description": # function from challenge.py,
+                "challenge": # function from challenge.py,
                 "solved": False,
                 "north": (x, y+1),
                 "east": (x+1, y),
