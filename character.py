@@ -3,6 +3,7 @@
 def make_character(name: str) -> dict:
     return {
         "name": name,
+        "position": (1, 0),
         "hp": 100,
         "energy": 100,
         "level": 1,
