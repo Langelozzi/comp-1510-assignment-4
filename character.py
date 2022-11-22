@@ -1,4 +1,9 @@
-from printing import print_board
+from helpers import print_in_color
+
+
+def get_character_name() -> str:
+    print_in_color("Please enter a name for your character..", "purple")
+    return input()
 
 
 def make_character(name: str) -> dict:
@@ -6,6 +11,7 @@ def make_character(name: str) -> dict:
         "name": name,
         "position": (1, 0),
         "hp": 100,
+        "xp": 0,
         "energy": 100,
         "level": 1,
         "abilities": {
@@ -16,17 +22,9 @@ def make_character(name: str) -> dict:
     }
 
 
-def is_valid_move(direction: str, board: dict, character: dict) -> bool:
-    current_position = character["position"]
-
-    if board[current_position][direction] is None:
-        return False
-    else:
-        return True
-
-
-def move_character():
-    pass
+def move_character(direction: str, board: dict, character: dict) -> None:
+    current_room = board[character["position"]]
+    character["position"] = current_room[direction]
 
 
 def is_alive(character: dict) -> bool:

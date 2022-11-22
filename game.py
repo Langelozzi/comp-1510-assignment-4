@@ -1,5 +1,6 @@
-from board import make_board
-from character import make_character, is_alive
+from board import make_board, describe_current_location, is_valid_move, print_board
+from character import make_character, is_alive, move_character, get_character_name
+from helpers import get_user_choice, print_in_color
 
 
 def game() -> None:
@@ -8,34 +9,38 @@ def game() -> None:
 
     board = make_board(rows, columns)
 
-    character_name = input("Please enter a name for your character: ")
+    character_name = get_character_name()
     character = make_character(character_name)
 
     achieved_goal = False
 
+    # function with pre game description
+
+    print_board(rows, columns, character["position"])
+
     while is_alive(character) and not achieved_goal:
-        pass
-        # function to describe current location
-
         # function to get users choice for direction
+        direction = get_user_choice()
 
-        # function to check if the move is valid
+        if direction == "q" or direction == "quit":
+            break
+        elif is_valid_move(direction, board, character):
+            # move the character to desired location
+            move_character(direction, board, character)
+            # show their new location
+            print_board(rows, columns, character["position"])
+            # describe current location
+            describe_current_location(board, character)
 
-        # if the move is valid
-            # function to move the character
+            # then execute the action function
 
-            # describe next location
+            # function to check if character leveled up, died, got items, etc.
+                # if they pick up a special item or something and there is addition challenge then start that
+                # if they levelled up, maybe print some cool ascii art or something
+        else:
+            print_in_color("Thee cannot traverse down ye chosen direction!!", "red")
 
-            # if there is a challenge on that tile
-                # then execute the challenge function
-
-                # function to check if character leveled up, died, got items, etc.
-                    # if they pick up a special item or something and there is addition challenge then start that
-
-                    # if they levelled up, maybe print some cool ascii art or something
-
-        # else:
-            # tell the user that they can't go in that direction
+    # Game over function
 
 
 def main() -> None:

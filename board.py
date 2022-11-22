@@ -12,18 +12,18 @@
 | || || || || || || || || || |
 | |---------------------------
 """
-import random
+from helpers import print_in_color
 
 
-def some_func():
-    print("Complete the challenge")
+def test_challenge():
+    print("this is a test challenge")
 
 
 def make_board(rows, columns) -> dict:
     board = {
         (1, 0): {
             "description": "This is where you start lol",
-            "challenge": some_func,
+            "action": test_challenge,
             "solved": False,
             "north": (1, 1),
             "east": None,
@@ -32,6 +32,7 @@ def make_board(rows, columns) -> dict:
         },
         (10, 11): {
             "description": "This is how you get to the boss fight",
+            "action": test_challenge,
             "solved": False,
             "north": None,
             "east": None,
@@ -40,13 +41,11 @@ def make_board(rows, columns) -> dict:
         }
     }
 
-    # a list of tuples where tuple[0] = description of tile, tuple[1] = challenge for that tile as a function
-
     for x in range(1, columns + 1):
         for y in range(1, rows + 1):
             board[(x, y)] = {
-                "description": # function from challenge.py,
-                "challenge": # function from challenge.py,
+                "description": "This is a generic spot",  # function from challenge.py
+                "action": test_challenge,  # function from challenge.py
                 "solved": False,
                 "north": (x, y+1),
                 "east": (x+1, y),
@@ -66,14 +65,41 @@ def make_board(rows, columns) -> dict:
     return board
 
 
+def print_board(rows, columns, coords: tuple):
+    x_pos, y_pos = coords
+
+    for y_coord in range(columns + 1, -1, -1):
+        for x_coord in range(1, rows + 1, 1):
+            if (y_coord == 11 and x_coord != 10) or (y_coord == 0 and x_coord != 1):
+                print_in_color('---', "green", end="")
+            elif y_coord == y_pos and x_coord == x_pos:
+                print_in_color('|', "green", end="")
+                print_in_color("#", "purple", end="")
+                print_in_color('|', "green", end="")
+            else:
+                print_in_color('| |', "green", end="")
+
+        print()
+
+
+def describe_current_location(board: dict, character: dict) -> None:
+    current_position = character["position"]
+    print_in_color(board[current_position]["description"], "cyan")
+
+
+def is_valid_move(direction: str, board: dict, character: dict) -> bool:
+    current_position = character["position"]
+    if board[current_position][direction] is None:
+        return False
+    else:
+        return True
+
+
 def main():
     rows = 10
     columns = 10
 
     board = make_board(rows, columns)
-    print(board[(5, 5)])
-    print(board[(5, 5)]["description"])
-    board[(5, 5)]["challenge"]()
 
 
 if __name__ == '__main__':
