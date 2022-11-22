@@ -1,3 +1,4 @@
+from printing import print_board
 
 
 def make_character(name: str) -> dict:
@@ -14,6 +15,14 @@ def make_character(name: str) -> dict:
         "inventory": ["map"]
     }
 
+
+def is_valid_move(choice: str, board: dict, character: dict) -> bool:
+    current_position = character["position"]
+
+    if board[current_position][choice] is None:
+        return True
+    else:
+        return False
 
 def move_character():
     pass
