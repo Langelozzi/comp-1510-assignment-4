@@ -89,10 +89,13 @@ def describe_current_location(board: dict, character: dict) -> None:
 
 def is_valid_move(direction: str, board: dict, character: dict) -> bool:
     current_position = character["position"]
-    if board[current_position][direction] is None:
+    try:
+        if board[current_position][direction] is not None:
+            return True
+    except KeyError:
         return False
     else:
-        return True
+        return False
 
 
 def main():
