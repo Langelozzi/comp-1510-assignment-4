@@ -7,13 +7,14 @@ from actions import cell_description
 def game() -> None:
     rows = 10
     columns = 10
+    achieved_goal = False
 
     board = make_board(rows, columns)
 
+    # intro art and backstory
+
     character_name = get_character_name()
     character = make_character(character_name)
-
-    achieved_goal = False
 
     cell_description()
 
