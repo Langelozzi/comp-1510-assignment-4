@@ -48,7 +48,7 @@ def get_user_choice(board: dict, character: dict) -> str:
     for number, direction in options:
         print(f"{number:<15}{direction}")
 
-    print_in_color("Which direction would you like to advance in?", "purple")
+    print_in_color("\nWhich direction would you like to advance in?", "purple")
 
     user_choice = cleanse(input())
 

@@ -35,10 +35,10 @@ def is_alive(character: dict) -> bool:
 
 
 def print_abilities(character: dict) -> None:
-    print_in_color("{:<20}Level".format("Ability"), "blue")
+    print_in_color("{:<15}{:<15}Level".format("Command", "Ability"), "blue")
 
     for ability, ability_level in character["abilities"].items():
-        print(f"{ability:<20}{ability_level}")
+        print(f"{ability:<15}{ability_level}")
 
 
 def main() -> None:

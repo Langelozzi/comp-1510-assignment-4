@@ -74,6 +74,7 @@ def make_board(rows, columns) -> dict:
 def print_board(rows, columns, coords: tuple):
     x_pos, y_pos = coords
 
+    print()
     for y_coord in range(columns + 1, -1, -1):
         for x_coord in range(1, rows + 1, 1):
             if (y_coord == 11 and x_coord != 10) or (y_coord == 0 and x_coord != 1):
@@ -86,6 +87,7 @@ def print_board(rows, columns, coords: tuple):
                 print_in_color('| |', "green", end="")
 
         print()
+    print()
 
 
 def describe_current_location(board: dict, character: dict) -> None:
