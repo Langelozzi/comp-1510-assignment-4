@@ -34,7 +34,9 @@ def game() -> None:
             # describe current location
             describe_current_location(board, character)
 
-            # then execute the action function
+            if board[character["position"]]["action"] is not None:
+                action_function = board[character["position"]]["action"]
+                action_function(character)
 
             # function to check if character leveled up, died, got items, etc.
                 # if they pick up a special item or something and there is addition challenge then start that
