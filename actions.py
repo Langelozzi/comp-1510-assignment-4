@@ -100,10 +100,9 @@ def skeleton_soldier(character: dict) -> None:
         print("Please select a valid input")
 
 
-def spider_web_blockade(character: dict):
-    print_in_color("As you enter the next room, you see that all of the archways are blocked off with layers upon "
+def spider_web_blockade(character: dict) -> None:
+    print_in_color("You pause once in the room. You see that all of the archways are blocked off with layers upon "
                    "layers of spider webs. You need some way to clear the archways before you can proceed.", "cyan")
-
     print_in_color("You might be able to use one of your abilities to clear the webs!\n", "cyan")
 
     print_abilities(character)
@@ -121,11 +120,15 @@ def spider_web_blockade(character: dict):
     print_in_color(f"[{character['name']} -- xp: +12, fireball: +1]", "yellow")
 
 
+def eye_riddle(character: dict) -> None:
+    pass
+
+
 def get_generic_room_description():
     descriptions = [
-        "aaa theres a snake",
-        "oo i think i see a ghost"
-
+        "As your foot passes the threshold into the next room, you feel something slither across your toes..",
+        "You are approaching the next room, and you see a dark mist fly past the archway..",
+        "The room feels cold and appears empty, but you feel a presence lingering.."
     ]
     return random.choice(descriptions)
 
@@ -134,6 +137,7 @@ def get_generic_challenges():
     challenges = [
         possessed_knight,
         skeleton_soldier,
+        spider_web_blockade
     ]
     return random.choice(challenges)
 
