@@ -49,11 +49,11 @@ def select_ability(character: dict) -> tuple:
 
     print_in_color("\nWhich ability would you like to use?", "purple")
 
-    user_choice = int(cleanse(input()))
-    while user_choice not in list(range(1, len(ability_options) + 1)):
+    user_choice = cleanse(input())
+    while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(1, len(ability_options) + 1))):
         print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
         print_in_color("Which ability would you like to use?", "purple")
-        user_choice = int(cleanse(input()))
+        user_choice = cleanse(input())
 
     return [ability for number, ability in ability_options if number == int(user_choice)][0]
 
