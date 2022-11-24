@@ -22,19 +22,23 @@ def test_challenge():
 def make_board(rows, columns) -> dict:
     board = {
         (1, 1): {
-            "north": (1, 2),
-            "east": (2, 1),
-            "south": None,
-            "west": None
+            "directions": {
+                "north": (1, 2),
+                "east": (2, 1),
+                "south": None,
+                "west": None
+            }
         },
         (10, 11): {
             "description": "This is how you get to the boss fight",
             "action": test_challenge,
             "solved": False,
-            "north": None,
-            "east": None,
-            "south": (10, 10),
-            "west": None
+            "directions": {
+                "north": None,
+                "east": None,
+                "south": (10, 10),
+                "west": None
+            }
         }
     }
 
@@ -47,20 +51,22 @@ def make_board(rows, columns) -> dict:
                 "description": "This is a generic spot",  # function from challenge.py
                 "action": test_challenge,  # function from challenge.py
                 "solved": False,
-                "north": (x, y+1),
-                "east": (x+1, y),
-                "south": (x, y-1),
-                "west": (x-1, y)
+                "directions": {
+                    "north": (x, y + 1),
+                    "east": (x + 1, y),
+                    "south": (x, y - 1),
+                    "west": (x - 1, y)
+                }
             }
 
             if x == 1:
-                board[(x, y)]["west"] = None
+                board[(x, y)]["directions"]["west"] = None
             if x == 10:
-                board[(x, y)]["east"] = None
+                board[(x, y)]["directions"]["east"] = None
             if y == 1 and x != 1:
-                board[(x, y)]["south"] = None
+                board[(x, y)]["directions"]["south"] = None
             if y == 10 and x != 10:
-                board[(x, y)]["north"] = None
+                board[(x, y)]["directions"]["north"] = None
 
     return board
 
@@ -90,7 +96,7 @@ def describe_current_location(board: dict, character: dict) -> None:
 def is_valid_move(direction: str, board: dict, character: dict) -> bool:
     current_position = character["position"]
     try:
-        if board[current_position][direction] is not None:
+        if board[current_position]["directions"][direction] is not None:
             return True
     except KeyError:
         return False

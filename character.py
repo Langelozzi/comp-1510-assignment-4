@@ -24,7 +24,7 @@ def make_character(name: str) -> dict:
 
 def move_character(direction: str, board: dict, character: dict) -> None:
     current_room = board[character["position"]]
-    character["position"] = current_room[direction]
+    character["position"] = current_room["directions"][direction]
 
 
 def is_alive(character: dict) -> bool:
@@ -33,3 +33,18 @@ def is_alive(character: dict) -> bool:
     else:
         return True
 
+
+def print_abilities(character: dict) -> None:
+    print_in_color("{:<20}Level".format("Ability"), "blue")
+
+    for ability, ability_level in character["abilities"].items():
+        print(f"{ability:<20}{ability_level}")
+
+
+def main() -> None:
+    test_character = make_character("Test")
+    print_abilities(test_character)
+
+
+if __name__ == "__main__":
+    main()
