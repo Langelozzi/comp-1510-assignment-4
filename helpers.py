@@ -51,5 +51,9 @@ def get_user_choice(board: dict, character: dict) -> str:
     print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
 
     user_choice = cleanse(input())
+    while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(1, len(options) + 1))):
+        print_in_color("That is not a valid choice, try again.", "red")
+        print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
+        user_choice = cleanse(input())
 
     return [direction for number, direction in options if number == int(user_choice)][0]
