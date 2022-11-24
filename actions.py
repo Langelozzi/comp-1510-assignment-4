@@ -6,7 +6,7 @@ from character import make_character, print_abilities, select_ability
 
 import random
 import time
-
+import json
 
 def cell_description() -> None:
     part_one = "You wake to the sound of metal against stone.\n" \
@@ -120,8 +120,58 @@ def spider_web_blockade(character: dict) -> None:
     print_in_color(f"[{character['name']} -- xp: +12, fireball: +1]", "yellow")
 
 
-def eye_riddle(character: dict) -> None:
-    pass
+def generate_riddle(riddle_data: dict):
+    def riddle(character: dict) -> None:
+        print_in_color("Before you get the chance to analyze your new environment, metal barred gates slam down around "
+                       "you blocking every archway, and leaving no escape.", "cyan")
+        print_in_color("Through thick purple smoke, a knight of the royal order suddenly appears, eyes glowing red, "
+                       "and in a deep threatening voice, speaks:", "cyan")
+        time.sleep(8)
+        print(f"Oh {character['name']}, you foolish creature, you may not pass through that easily. You must prove your"
+              f" intellect to me with a riddle before I can let you proceed..\n")
+        time.sleep(5)
+        print_in_color(riddle_data["question"], "purple")
+
+        print_in_color("\n{:<15}Response".format("Command"), "blue")
+        options = list(enumerate(riddle_data["options"], start=1))
+
+        for number, option in options:
+            print(f"{number:<15}{option}")
+
+        print_in_color("\nPlease choose the correct answer to this riddle:", "purple")
+
+        #################### Rethink how to check if the answer is correct #########################
+        # user_answer = cleanse(input())
+        # while (not user_answer.isnumeric()) or (int(user_answer) not in list(range(1, len(options) + 1))):
+        #     print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+        #     print_in_color("Please choose the correct answer to this riddle:", "purple")
+        #     user_answer = cleanse(input())
+        #
+        # user_answer_string = [option for number, option in options if number == int(user_answer)][0]
+        # while user_answer_string != riddle_data["answer"]:
+        #     print_in_color("That is not correct!", "red")
+        #     character["hp"] -= 5
+        #     print_in_color(f"[{character['name']} -- hp: -5]", "yellow")
+        #
+        # print_in_color(f"Congratulations {character['name']}, you are not as dumb as I thought for a creature such as "
+        #                f"yourself.", "red")
+        #
+        # character["xp"] += 15
+        # print_in_color(f"[{character['name']} -- xp: +15]", "yellow")
+
+    return riddle
+
+
+def create_batch_of_riddles(amount: int) -> list:
+    riddles = []
+
+    with open("riddles.json") as file_object:
+        riddles_data = json.load(file_object)
+
+        for riddle in riddles_data:
+            riddles.append(generate_riddle(riddle))
+
+    return riddles[:amount + 1]
 
 
 def get_generic_room_description():
@@ -148,7 +198,9 @@ def main():
     # skeleton_soldier(test_char)
     # print(get_generic_room_description())
     # get_generic_challenges()(test_char)
-    spider_web_blockade(test_char)
+    # spider_web_blockade(test_char)
+    riddles = create_batch_of_riddles(5)
+    riddles[0](test_char)
 
 
 if __name__ == '__main__':
