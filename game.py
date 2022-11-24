@@ -16,13 +16,13 @@ def game() -> None:
     character_name = get_character_name()
     character = make_character(character_name)
 
-    cell_description()
+    # cell_description()
 
     print_board(rows, columns, character["position"])
 
     while is_alive(character) and not achieved_goal:
         # function to get users choice for direction
-        direction = get_user_choice()
+        direction = get_user_choice(board, character)
 
         if direction == "q" or direction == "quit":
             break
@@ -40,7 +40,7 @@ def game() -> None:
                 # if they pick up a special item or something and there is addition challenge then start that
                 # if they levelled up, maybe print some cool ascii art or something
         else:
-            print_in_color("Thee cannot traverse down ye chosen direction!!", "red")
+            print_in_color("There is no path in that direction, you can't walk through walls!!", "red")
 
     # Game over function
 

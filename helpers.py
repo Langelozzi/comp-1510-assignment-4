@@ -38,6 +38,18 @@ def cleanse(text: str) -> str:
     return text.lower().strip()
 
 
-def get_user_choice() -> str:
+def get_user_choice(board: dict, character: dict) -> str:
+    current_room = board[character["position"]]
+    possible_directions = [direction for direction, coord in current_room["directions"].items() if coord is not None]
+    options = list(enumerate(possible_directions, start=1))
+
+    print_in_color("{:<15}Direction".format("Command"), "blue")
+
+    for number, direction in options:
+        print(f"{number:<15}{direction}")
+
     print_in_color("Which direction would you like to advance in?", "purple")
-    return cleanse(input())
+
+    user_choice = cleanse(input())
+
+    return [direction for number, direction in options if number == int(user_choice)][0]
