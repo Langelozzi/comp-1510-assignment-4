@@ -1,4 +1,4 @@
-from helpers import print_in_color
+from helpers import print_in_color, cleanse
 
 
 def get_character_name() -> str:
@@ -34,16 +34,25 @@ def is_alive(character: dict) -> bool:
         return True
 
 
-def print_abilities(character: dict) -> None:
+def use_ability(character: dict) -> str:
     print_in_color("{:<15}{:<15}Level".format("Command", "Ability"), "blue")
+    ability_options = list(enumerate(character["abilities"].items(), start=1))
 
-    for ability, ability_level in character["abilities"].items():
-        print(f"{ability:<15}{ability_level}")
+    for number, ability in ability_options:
+        ability_description, ability_level = ability
+
+        print(f"{number:<15}{ability_description:<15}{ability_level}")
+
+    print_in_color("\nWhich ability would you like to use?", "purple")
+
+    user_choice = cleanse(input())
+
+    return [ability for number, ability in ability_options if number == int(user_choice)][0]
 
 
 def main() -> None:
     test_character = make_character("Test")
-    print_abilities(test_character)
+    use_ability(test_character)
 
 
 if __name__ == "__main__":
