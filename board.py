@@ -87,7 +87,6 @@ def print_board(rows, columns, coords: tuple):
                 print_in_color('| |', "green", end="")
 
         print()
-    print()
 
 
 def describe_current_location(board: dict, character: dict) -> None:

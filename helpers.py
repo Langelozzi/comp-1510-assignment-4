@@ -43,12 +43,12 @@ def get_user_choice(board: dict, character: dict) -> str:
     possible_directions = [direction for direction, coord in current_room["directions"].items() if coord is not None]
     options = list(enumerate(possible_directions, start=1))
 
-    print_in_color("{:<15}Direction".format("Command"), "blue")
+    print_in_color("\n{:<15}Direction".format("Command"), "blue")
 
     for number, direction in options:
         print(f"{number:<15}{direction}")
 
-    print_in_color("\nWhich direction would you like to advance in?", "purple")
+    print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
 
     user_choice = cleanse(input())
 
