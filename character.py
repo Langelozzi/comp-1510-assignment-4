@@ -34,7 +34,7 @@ def is_alive(character: dict) -> bool:
         return True
 
 
-def use_ability(character: dict) -> str:
+def print_abilities(character: dict) -> None:
     print_in_color("{:<15}{:<15}Level".format("Command", "Ability"), "blue")
     ability_options = list(enumerate(character["abilities"].items(), start=1))
 
@@ -43,16 +43,25 @@ def use_ability(character: dict) -> str:
 
         print(f"{number:<15}{ability_description:<15}{ability_level}")
 
+
+def select_ability(character: dict) -> tuple:
+    ability_options = list(enumerate(character["abilities"].items(), start=1))
+
     print_in_color("\nWhich ability would you like to use?", "purple")
 
-    user_choice = cleanse(input())
+    user_choice = int(cleanse(input()))
+    while user_choice not in list(range(1, len(ability_options) + 1)):
+        print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+        print_in_color("Which ability would you like to use?", "purple")
+        user_choice = int(cleanse(input()))
 
     return [ability for number, ability in ability_options if number == int(user_choice)][0]
 
 
 def main() -> None:
     test_character = make_character("Test")
-    use_ability(test_character)
+    print_abilities(test_character)
+    print(select_ability(test_character))
 
 
 if __name__ == "__main__":
