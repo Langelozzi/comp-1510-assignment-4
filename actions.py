@@ -2,7 +2,7 @@
 # 3 sub boss fights
 # 1 final boss fights
 from helpers import cleanse, print_in_color
-from character import make_character
+from character import make_character, print_abilities, select_ability
 
 import random
 import time
@@ -100,6 +100,27 @@ def skeleton_soldier(character: dict) -> None:
         print("Please select a valid input")
 
 
+def spider_web_blockade(character: dict):
+    print_in_color("As you enter the next room, you see that all of the archways are blocked off with layers upon "
+                   "layers of spider webs. You need some way to clear the archways before you can proceed.", "cyan")
+
+    print_in_color("You might be able to use one of your abilities to clear the webs!\n", "cyan")
+
+    print_abilities(character)
+
+    ability_used = select_ability(character)
+    while ability_used[0] != "fireball":
+        print_in_color(f"I don't think {ability_used[0]} will work here, try a different one.", "red")
+        ability_used = select_ability(character)
+
+    print_in_color("Nice work! You were able to clear out all of those webs with your fireball!", "cyan")
+
+    character["xp"] += 12
+    character["abilities"]["fireball"] += 1
+
+    print_in_color(f"[{character['name']} -- xp: +12, fireball: +1]", "yellow")
+
+
 def get_generic_room_description():
     descriptions = [
         "aaa theres a snake",
@@ -120,9 +141,10 @@ def get_generic_challenges():
 def main():
     test_char = make_character("joe")
 
-    skeleton_soldier(test_char)
+    # skeleton_soldier(test_char)
     # print(get_generic_room_description())
     # get_generic_challenges()(test_char)
+    spider_web_blockade(test_char)
 
 
 if __name__ == '__main__':
