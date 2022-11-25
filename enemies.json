@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Dark Knight",
+    "hp": 100,
+    "level": 1,
+    "item": {
+      "type": "sword",
+      "name": "golden shaft",
+      "rarity": 2
+    }
+  }
+]
