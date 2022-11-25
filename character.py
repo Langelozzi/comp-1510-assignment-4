@@ -10,9 +10,9 @@ def make_character(name: str) -> dict:
     return {
         "name": name,
         "position": (1, 1),
-        "hp": 100,
+        "max_hp": 100,
+        "current_hp": 100,
         "xp": 0,
-        "energy": 100,
         "damage": 20,
         "level": 1,
         "abilities": ["fireball"],
