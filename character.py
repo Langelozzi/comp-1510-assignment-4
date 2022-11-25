@@ -15,7 +15,7 @@ def make_character(name: str) -> dict:
         "xp": 0,
         "damage": 20,
         "level": 1,
-        "abilities": ["fireball"],
+        "abilities": ["Fireball"],
         "sword": None,
         "shield": None,
         "talisman": None
