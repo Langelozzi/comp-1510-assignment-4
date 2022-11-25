@@ -8,6 +8,53 @@ import random
 import time
 import json
 
+
+def opening_dialogue() -> None:
+    part_one = "You wake to the sound of metal against stone.\n" \
+               "You lift you head from the floor and as your eyes adjust to the darkness you start to scan your " \
+               "surroundings..\n"
+
+    part_two = "You are in a small cell, metal bars straight ahead; cobblestone lines the rest of the room\n" \
+               "You can feel the damp air in your breath, and hear the slow drop of water against the stone floor\n" \
+               "You sense a darkness weighing in your chest and a cold breeze stroke down your spine\n" \
+               "From down the hall you see a shadow as it rounds the corner east, you catch a glimpse of a metal " \
+               "foot..\n"
+
+    part_three = "The last thing you can remember is the queen's ritual to Sabathiel..\n" \
+                 "The whole town was there..\n" \
+                 "There was lightning, darkness. It blanketed the sky; low and heavy causing a sense of confusion\n" \
+                 "You turn to your left to see the royal knights yelling and tearing at their heads..\n" \
+                 "As they glance up you see a glow of deep red, shining from the slits of their helmets\n" \
+                 "You tried to scream but fear restrained your voice,\n" \
+                 "And then nothing..\n"
+
+    part_four = "As you bring yourself back to the cell, to the present, you feel your heart beat speed up, " \
+                "as the feeling of entrapment sets in.. " \
+                "but not for long\n" \
+                "The metal door of the cell creaks open, revealing a clear stone path to the hall where the shadow " \
+                "walked\n" \
+                "You lift yourself to your feet from the cobblestone floor and contemplate your options\n" \
+                "The curiosity twists in your cut and pulls you north..\n" \
+                "You are now following the shadowy figure north down the dungeon hall...\n"
+
+    part_five = "As you approach the end of the hall, you feel a stronger wind against you skin\n" \
+                "At the end of the hall, the room opens to a small room, arched doorways to your north and east\n" \
+                "Another chill propagates along your spine, as you make your choice..\n"
+
+    print_in_color("**CLANK**\n", "cyan")
+    time.sleep(3)
+    print_in_color(part_one, "cyan")
+    time.sleep(8)
+    print_in_color(part_two, "cyan")
+    time.sleep(15)
+    print_in_color(part_three, "cyan")
+    time.sleep(15)
+    print_in_color(part_four, "cyan")
+    time.sleep(12)
+    print_in_color(part_five, "cyan")
+    time.sleep(8)
+
+
 def cell_description() -> None:
     part_one = "You wake to the sound of metal against stone.\n" \
                "You lift you head from the floor and as your eyes adjust to the darkness you start to scan your " \
@@ -101,7 +148,7 @@ def skeleton_soldier(character: dict) -> None:
 
 
 def spider_web_blockade(character: dict) -> None:
-    print_in_color("You pause once in the room. You see that all of the archways are blocked off with layers upon "
+    print_in_color("You pause once in the room. You see that all of the archways are blocked off with layers upon \n"
                    "layers of spider webs. You need some way to clear the archways before you can proceed.", "cyan")
     print_in_color("You might be able to use one of your abilities to clear the webs!\n", "cyan")
 
@@ -122,13 +169,55 @@ def spider_web_blockade(character: dict) -> None:
 
 def generate_riddle(riddle_data: dict):
     def riddle(character: dict) -> None:
-        print_in_color("Before you get the chance to analyze your new environment, metal barred gates slam down around "
-                       "you blocking every archway, and leaving no escape.", "cyan")
-        print_in_color("Through thick purple smoke, a knight of the royal order suddenly appears, eyes glowing red, "
-                       "and in a deep threatening voice, speaks:", "cyan")
+        print_in_color("As you enter a dark, candle-lit room; you notice a mysterious potion placed by your feet.\n"
+                       "You picked it up out of curiosity, but it started to shake violently.", "cyan")
+        print_in_color("***POOF***", "cyan")
+        print_in_color("Through the thick purple smoke, a Phantom Imp appears, with unnaturally wide smile, \n"
+                       "and in a high-pitch crackle, speaks:", "cyan")
         time.sleep(8)
-        print(f"Oh {character['name']}, you foolish creature, you may not pass through that easily. You must prove your"
-              f" intellect to me with a riddle before I can let you proceed..\n")
+
+        print_in_color(
+            "            _.----._     _.---.\n"
+            "         .-'        `-.-'      `.\n"
+            "       .'                 .:''':.`.\n"
+            "     .'        .:'''':. .' .----.  `.\n"
+            " .-./        .' .----.    /  .-. \   `.\n"
+            "/.-.           /  .-. \   \ ' O ' |    \ \n"
+            "||        `.   | ' O '/    \ `-' /     |\n"
+            "|| (        \   \ `-'/      `-.__     / `.\n"
+            " \`-'        )   .-'  --         )        `.\n"
+            "  `-'     _.'   (            _.-'    _/\    \ \n"
+            "     `.       /\_ `-.____..-'     .-' _/    / \n"
+            "       `.     \_ `-._         _.-'_.-'   .' \n"
+            "         `--.._ `-._ `-.__..-'_.-'     .' \n"
+            "       .-'     `-._ `--.__..-'  _.----'`. \n"
+            "      /            `---.......-' _     \ \ \n"
+            "     /                          ( `-._.-` ) \n"
+            "    /  /     _                  .-    _.-' \n"
+            "   (  `-._.-' )                (_   .'    \ \n"
+            "    `-._      -.               (_.-'       |\n"
+            "        `.     _)                   __..---'\n"
+            "       |  `-._) ''...__ .-. __...'''__..---'\n"
+            "        \      '''...__((=))__...'''      /\n"
+            "         |              `-'             .'\n"
+            "         \                             /\n"
+            "          |                           |\n"
+            "          \     \    \      /    /   /\n"
+            "           `. \               /     /\n"
+            "             `.    \   \   /   /   /\n"
+            "               `--.._   ` '  _.--'\n"
+            "                      [====]\n"
+            "                       )  (\n"
+            "                    .-'    '-.\n"
+            "                   |          |\n"
+            "                   | .------. |\n"
+            "                   | |  LGB | |\n"
+            "                   | '------' |\n"
+            "                   |          |\n"
+            "                   '----------'\n", "green")
+
+        print(f"Oh {character['name']}, you foolish creature, how dare you interrupt my slumber. For your transgression"
+              f" you must prove your intellect to me with a riddle if you want me to spare your life..\n")
         time.sleep(5)
         print_in_color(riddle_data["question"], "purple")
 
