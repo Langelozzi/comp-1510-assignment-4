@@ -120,6 +120,21 @@ def spider_web_blockade(character: dict) -> None:
     print_in_color(f"[{character['name']} -- xp: +12, fireball: +1]", "yellow")
 
 
+def generate_enemy_battle(enemy_data: dict):
+    def enemy_battle(character: dict):
+        print_in_color(f"Out of the corner of your eye you see a {enemy_data['name']} appear!", "cyan")
+
+        if character["level"] < enemy_data["level"]:
+            print_in_color(f"This enemies level is greater than yours, you might want to weigh your options before "
+                           f"you make your decision", "red")
+
+        while (character["hp"] > 0) and (enemy_data["hp"] > 0):
+            print_abilities(character)
+            chosen_ability = select_ability(character)
+
+    return enemy_battle
+
+
 def generate_riddle(riddle_data: dict):
     def riddle(character: dict) -> None:
         print_in_color("Before you get the chance to analyze your new environment, metal barred gates slam down around "
@@ -153,8 +168,8 @@ def generate_riddle(riddle_data: dict):
         #     character["hp"] -= 5
         #     print_in_color(f"[{character['name']} -- hp: -5]", "yellow")
         #
-        # print_in_color(f"Congratulations {character['name']}, you are not as dumb as I thought for a creature such as "
-        #                f"yourself.", "red")
+        # print_in_color(f"Congratulations {character['name']}, you are not as dumb as I thought for a creature such as"
+        #                f" yourself.", "red")
         #
         # character["xp"] += 15
         # print_in_color(f"[{character['name']} -- xp: +15]", "yellow")
@@ -198,9 +213,9 @@ def main():
     # skeleton_soldier(test_char)
     # print(get_generic_room_description())
     # get_generic_challenges()(test_char)
-    # spider_web_blockade(test_char)
-    riddles = create_batch_of_riddles(5)
-    riddles[0](test_char)
+    spider_web_blockade(test_char)
+    # riddles = create_batch_of_riddles(5)
+    # riddles[0](test_char)
 
 
 if __name__ == '__main__':
