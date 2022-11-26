@@ -216,8 +216,9 @@ def generate_riddle(riddle_data: dict):
             "                   |          |\n"
             "                   '----------'\n", "green")
 
-        print(f"Oh {character['name']}, you foolish creature, how dare you interrupt my slumber. For your transgression"
-              f" you must prove your intellect to me with a riddle if you want me to spare your life..\n")
+        print(f"Oh {character['name']}, you foolish creature, how dare you interrupt my slumber."
+              f"For your transgression, you must prove your intellect to me with a riddle if you"
+              f"want me to spare your life..\n")
         time.sleep(5)
         print_in_color(riddle_data["question"], "purple")
 
@@ -229,7 +230,7 @@ def generate_riddle(riddle_data: dict):
 
         print_in_color("\nPlease choose the correct answer to this riddle:", "purple")
 
-        #################### Rethink how to check if the answer is correct #########################
+        # !!!!!!!!!!!!!!!!!!!!Rethink how to check if the answer is correct !!!!!!!!!!!!!!!!
         # user_answer = cleanse(input())
         # while (not user_answer.isnumeric()) or (int(user_answer) not in list(range(1, len(options) + 1))):
         #     print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
@@ -242,7 +243,7 @@ def generate_riddle(riddle_data: dict):
         #     character["hp"] -= 5
         #     print_in_color(f"[{character['name']} -- hp: -5]", "yellow")
         #
-        # print_in_color(f"Congratulations {character['name']}, you are not as dumb as I thought for a creature such as "
+        # print_in_color(f"Congratulations {character['name']}, you are not as dumb as I thought for a creature such as"
         #                f"yourself.", "red")
         #
         # character["xp"] += 15
