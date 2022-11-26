@@ -168,6 +168,8 @@ def spider_web_blockade(character: dict) -> None:
 
 def generate_enemy_battle(enemy_data: dict):
     def fight(character: dict) -> None:
+        print_in_color(f"Both you and the {enemy_data['name']} step forward, and prepare for a battle..\n")
+
         while (character["current_hp"] > 0) and (enemy_data["hp"] > 0):
             print_abilities(character)
             chosen_ability = select_ability(character)
@@ -195,7 +197,7 @@ def generate_enemy_battle(enemy_data: dict):
             print_in_color("\nWhat would you like to do?", "purple")
             decision = cleanse(input())
 
-        if decision == 1:
+        if int(decision) == 1:
             fight(character)
         else:
             print_in_color(f"\nAs you turn to flee the {enemy_data['name']} says:", "cyan")
