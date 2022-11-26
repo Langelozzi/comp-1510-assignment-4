@@ -164,19 +164,124 @@ def spider_web_blockade(character: dict) -> None:
     print_abilities(character)
 
     ability_used = select_ability(character)
-    while ability_used[0] != "fireball":
+    while ability_used[0] != "Fireball":
         print_in_color(f"I don't think {ability_used[0]} will work here, try a different one.", "red")
         ability_used = select_ability(character)
 
-    print_in_color("Nice work! You were able to clear out all of those webs with your fireball!", "cyan")
+    print_in_color("Nice work! You were able to clear out all of those webs with your Fireball!", "cyan")
 
     character["xp"] += 12
-    character["abilities"]["fireball"] += 1
 
-    print_in_color(f"[{character['name']} -- xp: +12, fireball: +1]", "yellow")
+    print_in_color(f"[{character['name']} | xp: +12]", "yellow")
+
+
+def generate_enemy_battle(enemy: dict):
+    def fight(character: dict) -> None:
+        print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
+
+        while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
+            print_abilities(character)
+            chosen_ability = select_ability(character)
+
+            print_in_color(f"Your {chosen_ability} hits the {enemy['name']}", "cyan")
+            # enemy health will decrease by character damage * character level * (1 + (0.1 * sword rarity))
+            try:
+                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["sword"]["rarity"]))
+            except TypeError:
+                damage_given = character["damage"] * character["level"]
+            enemy["current_hp"] -= damage_given
+
+            print_in_color(f"But the {enemy['name']}'s attack lands successfully as well", "cyan")
+            # character health with decrease by 10 * (1 + (0.2 * enemy level))
+            damage_taken = 10 * (1 + (0.2 * enemy["level"]))
+            character["current_hp"] -= damage_taken
+
+            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
+            print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
+
+        if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
+            print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
+
+            earned_xp = 12 * enemy["level"]
+            character["xp"] += earned_xp
+
+            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+
+    def enemy_battle(character: dict):
+        print_in_color(f"Out of the corner of your eye you see a {enemy['name']} appear!\n", "cyan")
+
+        if character["level"] < enemy["level"]:
+            print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
+                           f"you make your decision\n", "red")
+
+        print_in_color("{:<15}Choice".format("Command"), "blue")
+
+        options = list(enumerate(["Fight", "Flee"], start=1))
+        for number, option in options:
+            print(f"{number:<15}{option}")
+
+        print_in_color("\nWhat would you like to do?", "purple")
+
+        decision = cleanse(input())
+        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
+            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+            print_in_color("\nWhat would you like to do?", "purple")
+            decision = cleanse(input())
+
+        if int(decision) == 1:
+            fight(character)
+        else:
+            print_in_color(f"\nAs you turn to flee the {enemy['name']} says:", "cyan")
+            print("I should have guessed. You do seem like a cowardly creature. I will be here if you wish "
+                  "to return with a bit more courage..")
+
+    return enemy_battle
 
 
 def generate_riddle(riddle_data: dict):
+    def riddle_success(character: dict) -> None:
+        character["xp"] += 15
+        print_in_color(f"[{character['name']} | xp: +15]", "yellow")
+
+        print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
+                       f"as yourself.", "green")
+        print_in_color(f"To appreciate your success, I give you two options: try your luck at possibly earning a "
+                       f"new ability, or except the gift of maximum health", "green")
+
+        success_options = list(enumerate(["Try my luck at a new ability", "Refill HP to max"], start=1))
+
+        print_in_color("\n{:<15}Choice".format("Command"), "blue")
+
+        for number, option in success_options:
+            print(f"{number:<15}{option}")
+
+        print_in_color("\nPlease choose an option:", "purple")
+
+        user_choice = cleanse(input())
+        while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(1, len(success_options) + 1))):
+            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+            print_in_color("Please choose an option:", "purple")
+            user_choice = cleanse(input())
+
+        if int(user_choice) == 1:
+            gets_new_ability = random.choice([True, False])
+            new_ability = riddle_data["ability"]
+            if (
+                    gets_new_ability and
+                    new_ability is not None and
+                    new_ability not in character["abilities"]
+            ):
+                character["abilities"].append(new_ability)
+                print(f"\nYou got lucky! I am feeling generous and will grant you a new ability. You can now use "
+                      f"{new_ability}")
+                print_in_color(f"[{character['name']} | abilities: +'{new_ability}']", "yellow")
+            else:
+                print("\nOh no, looks like you lost the coin flip, you will not be getting a new ability.")
+        else:
+            difference = character["max_hp"] - character["current_hp"]
+            character["current_hp"] = character["max_hp"]
+            print_in_color(f"[{character['name']} | xp: +{difference}]", "yellow")
+
     def riddle(character: dict) -> None:
         print_in_color("As you enter a dark, candle-lit room; you notice a mysterious potion placed by your feet.\n"
                        "You picked it up out of curiosity, but it started to shake violently.", "cyan")
@@ -236,28 +341,37 @@ def generate_riddle(riddle_data: dict):
         for number, option in options:
             print(f"{number:<15}{option}")
 
-        print_in_color("\nPlease choose the correct answer to this riddle:", "purple")
+        print_in_color("\nYou have one chance to guess the answer or you will be punished.\nPlease choose the correct "
+                       "answer to this riddle:", "purple")
 
-        #################### Rethink how to check if the answer is correct #########################
-        # user_answer = cleanse(input())
-        # while (not user_answer.isnumeric()) or (int(user_answer) not in list(range(1, len(options) + 1))):
-        #     print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-        #     print_in_color("Please choose the correct answer to this riddle:", "purple")
-        #     user_answer = cleanse(input())
-        #
-        # user_answer_string = [option for number, option in options if number == int(user_answer)][0]
-        # while user_answer_string != riddle_data["answer"]:
-        #     print_in_color("That is not correct!", "red")
-        #     character["hp"] -= 5
-        #     print_in_color(f"[{character['name']} -- hp: -5]", "yellow")
-        #
-        # print_in_color(f"Congratulations {character['name']}, you are not as dumb as I thought for a creature such as "
-        #                f"yourself.", "red")
-        #
-        # character["xp"] += 15
-        # print_in_color(f"[{character['name']} -- xp: +15]", "yellow")
+        user_answer = cleanse(input())
+        while (not user_answer.isnumeric()) or (int(user_answer) not in list(range(1, len(options) + 1))):
+            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+            print_in_color("Please choose the correct answer to this riddle:", "purple")
+            user_answer = cleanse(input())
+
+        user_answer_string = [option for number, option in options if number == int(user_answer)][0]
+        if user_answer_string == riddle_data["answer"]:
+            riddle_success(character)
+        else:
+            print_in_color("That is not correct, and for that you must be punished!", "red")
+            lost_hp = round(character["current_hp"] * 0.25)
+            character["current_hp"] -= lost_hp
+            print_in_color(f"[{character['name']} | hp: -{lost_hp}]", "yellow")
 
     return riddle
+
+
+def create_batch_of_enemy_battles(amount: int) -> list:
+    battles = []
+
+    with open("enemies.json") as file_object:
+        enemy_data = json.load(file_object)
+
+        for enemy in enemy_data:
+            battles.append(generate_enemy_battle(enemy))
+
+    return battles[:amount + 1]
 
 
 def create_batch_of_riddles(amount: int) -> list:
@@ -296,9 +410,14 @@ def main():
     # skeleton_soldier(test_char)
     # print(get_generic_room_description())
     # get_generic_challenges()(test_char)
+
     # spider_web_blockade(test_char)
-    riddles = create_batch_of_riddles(5)
-    riddles[0](test_char)
+
+    # riddles = create_batch_of_riddles(5)
+    # riddles[0](test_char)
+
+    battles = create_batch_of_enemy_battles(5)
+    battles[0](test_char)
 
 
 if __name__ == '__main__':

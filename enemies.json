@@ -1,7 +1,8 @@
 [
   {
     "name": "Dark Knight",
-    "hp": 100,
+    "max_hp": 100,
+    "current_hp": 100,
     "level": 1,
     "item": {
       "type": "sword",

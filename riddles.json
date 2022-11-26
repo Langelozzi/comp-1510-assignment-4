@@ -2,6 +2,7 @@
   {
     "question": "A vessel have I, that is round as a pear, moist in the middle, surrounded with hair; and often it happens, that water flows there.\nOf what do I speak?",
     "options": ["Lake", "River", "Eye", "Well"],
-    "answer": "Eye"
+    "answer": "Eye",
+    "ability": "Dark Aether Attack"
   }
 ]

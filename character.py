@@ -10,15 +10,15 @@ def make_character(name: str) -> dict:
     return {
         "name": name,
         "position": (1, 1),
-        "hp": 100,
+        "max_hp": 100,
+        "current_hp": 100,
         "xp": 0,
-        "energy": 100,
+        "damage": 20,
         "level": 1,
-        "abilities": {
-            "fireball": 1,
-            "heal": 1,
-        },
-        "inventory": ["map"]
+        "abilities": ["Fireball"],
+        "sword": None,
+        "shield": None,
+        "talisman": None
     }
 
 
@@ -35,17 +35,15 @@ def is_alive(character: dict) -> bool:
 
 
 def print_abilities(character: dict) -> None:
-    print_in_color("{:<15}{:<15}Level".format("Command", "Ability"), "blue")
-    ability_options = list(enumerate(character["abilities"].items(), start=1))
+    print_in_color("{:<15}Ability".format("Command"), "blue")
+    ability_options = list(enumerate(character["abilities"], start=1))
 
     for number, ability in ability_options:
-        ability_description, ability_level = ability
-
-        print(f"{number:<15}{ability_description:<15}{ability_level}")
+        print(f"{number:<15}{ability}")
 
 
 def select_ability(character: dict) -> tuple:
-    ability_options = list(enumerate(character["abilities"].items(), start=1))
+    ability_options = list(enumerate(character["abilities"], start=1))
 
     print_in_color("\nWhich ability would you like to use?", "purple")
 
