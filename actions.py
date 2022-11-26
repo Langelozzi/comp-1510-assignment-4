@@ -166,20 +166,42 @@ def spider_web_blockade(character: dict) -> None:
     print_in_color(f"[{character['name']} | xp: +12]", "yellow")
 
 
-def generate_enemy_battle(enemy_data: dict):
+def generate_enemy_battle(enemy: dict):
     def fight(character: dict) -> None:
-        print_in_color(f"Both you and the {enemy_data['name']} step forward, and prepare for a battle..\n")
+        print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
 
-        while (character["current_hp"] > 0) and (enemy_data["hp"] > 0):
+        while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
             print_abilities(character)
             chosen_ability = select_ability(character)
 
-            # add hp increases and decreases for enemy and character here
+            print_in_color(f"Your {chosen_ability} hits the {enemy['name']}", "cyan")
+            # enemy health will decrease by character damage * character level * (1 + (0.1 * sword rarity))
+            try:
+                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["sword"]["rarity"]))
+            except TypeError:
+                damage_given = character["damage"] * character["level"]
+            enemy["current_hp"] -= damage_given
+
+            print_in_color(f"But the {enemy['name']}'s attack lands successfully as well", "cyan")
+            # character health with decrease by 10 * (1 + (0.2 * enemy level))
+            damage_taken = 10 * (1 + (0.2 * enemy["level"]))
+            character["current_hp"] -= damage_taken
+
+            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
+            print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
+
+        if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
+            print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
+
+            earned_xp = 12 * enemy["level"]
+            character["xp"] += earned_xp
+
+            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
     def enemy_battle(character: dict):
-        print_in_color(f"Out of the corner of your eye you see a {enemy_data['name']} appear!\n", "cyan")
+        print_in_color(f"Out of the corner of your eye you see a {enemy['name']} appear!\n", "cyan")
 
-        if character["level"] < enemy_data["level"]:
+        if character["level"] < enemy["level"]:
             print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
                            f"you make your decision\n", "red")
 
@@ -200,7 +222,7 @@ def generate_enemy_battle(enemy_data: dict):
         if int(decision) == 1:
             fight(character)
         else:
-            print_in_color(f"\nAs you turn to flee the {enemy_data['name']} says:", "cyan")
+            print_in_color(f"\nAs you turn to flee the {enemy['name']} says:", "cyan")
             print("I should have guessed. You do seem like a cowardly creature. I will be here if you wish "
                   "to return with a bit more courage..")
 
