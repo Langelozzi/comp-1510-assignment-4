@@ -167,16 +167,40 @@ def spider_web_blockade(character: dict) -> None:
 
 
 def generate_enemy_battle(enemy_data: dict):
-    def enemy_battle(character: dict):
-        print_in_color(f"Out of the corner of your eye you see a {enemy_data['name']} appear!", "cyan")
-
-        if character["level"] < enemy_data["level"]:
-            print_in_color(f"This enemies level is greater than yours, you might want to weigh your options before "
-                           f"you make your decision", "red")
-
-        while (character["hp"] > 0) and (enemy_data["hp"] > 0):
+    def fight(character: dict) -> None:
+        while (character["current_hp"] > 0) and (enemy_data["hp"] > 0):
             print_abilities(character)
             chosen_ability = select_ability(character)
+
+            # add hp increases and decreases for enemy and character here
+
+    def enemy_battle(character: dict):
+        print_in_color(f"Out of the corner of your eye you see a {enemy_data['name']} appear!\n", "cyan")
+
+        if character["level"] < enemy_data["level"]:
+            print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
+                           f"you make your decision\n", "red")
+
+        print_in_color("{:<15}Choice".format("Command"), "blue")
+
+        options = list(enumerate(["Fight", "Flee"], start=1))
+        for number, option in options:
+            print(f"{number:<15}{option}")
+
+        print_in_color("\nWhat would you like to do?", "purple")
+
+        decision = cleanse(input())
+        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
+            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+            print_in_color("\nWhat would you like to do?", "purple")
+            decision = cleanse(input())
+
+        if decision == 1:
+            fight(character)
+        else:
+            print_in_color(f"\nAs you turn to flee the {enemy_data['name']} says:", "cyan")
+            print("I should have guessed. You do seem like a cowardly creature. I will be here if you wish "
+                  "to return with a bit more courage..")
 
     return enemy_battle
 
@@ -305,6 +329,18 @@ def generate_riddle(riddle_data: dict):
     return riddle
 
 
+def create_batch_of_enemy_battles(amount: int) -> list:
+    battles = []
+
+    with open("enemies.json") as file_object:
+        enemy_data = json.load(file_object)
+
+        for enemy in enemy_data:
+            battles.append(generate_enemy_battle(enemy))
+
+    return battles[:amount + 1]
+
+
 def create_batch_of_riddles(amount: int) -> list:
     riddles = []
 
@@ -341,9 +377,14 @@ def main():
     # skeleton_soldier(test_char)
     # print(get_generic_room_description())
     # get_generic_challenges()(test_char)
+
     # spider_web_blockade(test_char)
-    riddles = create_batch_of_riddles(5)
-    riddles[0](test_char)
+
+    # riddles = create_batch_of_riddles(5)
+    # riddles[0](test_char)
+
+    battles = create_batch_of_enemy_battles(5)
+    battles[0](test_char)
 
 
 if __name__ == '__main__':
