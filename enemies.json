@@ -1,13 +1,134 @@
 [
   {
-    "name": "Dark Knight",
+    "name": "Skeleton Soldier",
     "max_hp": 100,
     "current_hp": 100,
     "level": 1,
     "item": {
       "type": "sword",
-      "name": "golden shaft",
+      "name": "Rusted Broadsword",
+      "rarity": 1
+    }
+  },
+  {
+    "name": "Undead Knight",
+    "max_hp": 125,
+    "current_hp": 125,
+    "level": 2,
+    "item": {
+      "type": "sword",
+      "name": "Knight's Broadsword",
       "rarity": 2
+    }
+  },
+  {
+    "name": "Corrupted Crusader",
+    "max_hp": 150,
+    "current_hp": 150,
+    "level": 3,
+    "item": {
+      "type": "sword",
+      "name": "Crusader's Cursed Broadsword",
+      "rarity": 3
+    }
+  },
+  {
+    "name": "Draconic Knight",
+    "max_hp": 200,
+    "current_hp": 200,
+    "level": 4,
+    "item": {
+      "type": "sword",
+      "name": "Draconic Broadsword",
+      "rarity": 4
+    }
+  },
+  {
+    "name": "Heavily-Armoured Skeleton Soldier",
+    "max_hp": 100,
+    "current_hp": 100,
+    "level": 1,
+    "item": {
+      "type": "shield",
+      "name": "Rusted Shield",
+      "rarity": 1
+    }
+  },
+  {
+    "name": " Heavily-Armoured Undead Knight",
+    "max_hp": 125,
+    "current_hp": 125,
+    "level": 2,
+    "item": {
+      "type": "shield",
+      "name": "Knight's Shield",
+      "rarity": 2
+    }
+  },
+  {
+    "name": "Heavily-Armoured Corrupted Crusader",
+    "max_hp": 150,
+    "current_hp": 150,
+    "level": 3,
+    "item": {
+      "type": "shield",
+      "name": "Crusader's Corrupted Shield",
+      "rarity": 3
+    }
+  },
+  {
+    "name": "Heavily-Armoured Draconic Knight",
+    "max_hp": 200,
+    "current_hp": 200,
+    "level": 4,
+    "item": {
+      "type": "shield",
+      "name": "Draconic Shield",
+      "rarity": 4
+    }
+  },
+  {
+    "name": "Skeletal Sorcerer",
+    "max_hp": 100,
+    "current_hp": 100,
+    "level": 1,
+    "item": {
+      "type": "talisman",
+      "name": "Rusted Shield",
+      "rarity": 1
+    }
+  },
+  {
+    "name": "Undead Battlemage",
+    "max_hp": 125,
+    "current_hp": 125,
+    "level": 2,
+    "item": {
+      "type": "talisman",
+      "name": "Knight's Shield",
+      "rarity": 2
+    }
+  },
+  {
+    "name": "Corrupted Spellsword",
+    "max_hp": 150,
+    "current_hp": 150,
+    "level": 3,
+    "item": {
+      "type": "talisman",
+      "name": "Spellsword's Corrupted Talisman",
+      "rarity": 3
+    }
+  },
+  {
+    "name": "Draconic Lich Knight",
+    "max_hp": 200,
+    "current_hp": 200,
+    "level": 4,
+    "item": {
+      "type": "talisman",
+      "name": "Draconic Talisman",
+      "rarity": 4
     }
   }
 ]

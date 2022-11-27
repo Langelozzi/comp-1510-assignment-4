@@ -6,9 +6,9 @@
     "ability": "Dark Aether"
   },
   {
-    "question": "I don’t have eyes,\n\nBut once I did see.\n\nI once had thoughts,\n\nNow white and empty.\n\nOf what do I speak?",
-    "options": ["River", "Sea", "Moon"],
-    "answer": "River",
+    "question": "Some are cherished,\n\nSome are hated,\n\nAnd even if lost they remain with you.\n\nOf what do I speak?",
+    "options": ["Memories", "Mistakes", "Love"],
+    "answer": "Memories",
     "ability": "Adula's Moonblade"
   },
   {
@@ -20,7 +20,7 @@
   {
     "question": "Bright as diamonds,\n\nLoud as thunder,\n\nNever still,\n\nA thing of wonder.\n\nOf what do I speak?",
     "options": ["Lightening", "Waterfall", "Fire"],
-    "answer":"Waterfall",
+    "answer": "Waterfall",
     "ability": "Flame, Fall Upon Them"
   },
   {
