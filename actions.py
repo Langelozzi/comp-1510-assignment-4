@@ -244,6 +244,10 @@ def generate_enemy_battle(enemy: dict):
             earned_xp = 12 * enemy["level"]
             character["xp"] += earned_xp
 
+            if enemy["item"] and (enemy["item"]["rarity"] > character[enemy["item"]["type"]]["rarity"]):
+                character[enemy["item"]["type"]] = enemy["item"]
+                print_in_color(f"[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]", "yellow")
+
             print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
     def enemy_battle(character: dict):
