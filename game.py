@@ -14,12 +14,11 @@ def game() -> None:
     character_name = get_character_name()
     character = make_character(character_name)
 
-    opening_dialogue()
-    cell_description()
-
-    print_board(rows, columns, character["position"])
+    # opening_dialogue()
+    # cell_description()
 
     while is_alive(character) and not achieved_goal:
+        print_board(rows, columns, character["position"])
         direction = get_user_choice(board, character)
 
         if direction == "q" or direction == "quit":
