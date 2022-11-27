@@ -1,116 +1,158 @@
 [
   {
-    "question": "A vessel have I, that is round as a pear, moist in the middle, surrounded with hair; and often it happens, that water flows there.\nOf what do I speak?",
-    "options": ["Lake", "River", "Eye", "Well"],
+    "question": "What always runs but never walks.\n\nOften murmurs, never talks.\n\nHas a bed but never sleeps.\n\nAn open mouth that never eats?\n\nOf what do I speak?",
+    "options": ["Lake", "River", "Eye"],
     "answer": "Eye",
     "ability": "Dark Aether"
   },
   {
-    "question": "It always runs but never walks. Often murmurs, never talks. Has a bed but never sleeps. An open mouth that never eats. \nOf what do I speak?",
-    "options": ["River", "Sea", "Moon", "Rain"],
+    "question": "I don’t have eyes,\n\nBut once I did see.\n\nI once had thoughts,\n\nNow white and empty.\n\nOf what do I speak?",
+    "options": ["River", "Sea", "Moon"],
     "answer": "River",
-    "ability": "Crystal Shard"
+    "ability": "Adula's Moonblade"
   },
   {
-    "question": "I don’t have eyes, but once I did see, I once had thoughts, now white and empty. \nOf what do I speak?",
-    "options": ["Death", "Chrysalis", "Moon","Skull" ],
+    "question": "I don’t have eyes,\n\nBut once I did see.\n\nI once had thoughts,\n\nNow white and empty.\n\nOf what do I speak?",
+    "options": ["Death", "Chrysalis", "Skull"],
     "answer": "Skull",
-    "ability": "Lightening Bolt"
+    "ability": "Ancient Dragons' Lightning Spear"
   },
   {
-    "question": "Bright as diamonds, Loud as thunder, Never still, A thing of wonder. \nOf what do I speak?" ,
-    "options": ["Lightening, Waterfall, Fire, Dragon"],
+    "question": "Bright as diamonds,\n\nLoud as thunder,\n\nNever still,\n\nA thing of wonder.\n\nOf what do I speak?",
+    "options": ["Lightening", "Waterfall", "Fire"],
     "answer":"Waterfall",
-    "ability": "Flame of Aesir",
+    "ability": "Flame, Fall Upon Them"
   },
   {
-    "question":,
-    "options":,
-    "answer":,
-    "ability":,
+    "question": "My life can be measured in hours,\n\nI only serve to be devoured.\n\nSlim, I am quick.\n\nFat, I am slow.\n\nWind is my foe.\n\nOf what do I speak?",
+    "options":["Torch", "Life", "Candle"],
+    "answer": "Candle",
+    "ability": "Dragonclaw"
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question":"What is it that given one,\n\nyou’ll have either two or none?\n\nOf what do I speak?",
+    "options": ["Coin", "Choice", "Twins"],
+    "answer": "Choice",
+    "ability": "Collapsing Stars"
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "If you drop me, I’m sure to crack.\n\nGive me a smile, and I’ll always smile back.\n\nOf what do I speak?",
+    "options":["Mirror", "Vase", "Pond"],
+    "answer": "Mirror",
+    "ability": "Zamor's Ice Storm"
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "Never resting, never still.\n\nMoving silently from hill to hill.\n\nIt does not walk, run or trot.\n\nAll is cool where it is not.\n\nOf what do I speak?",
+    "options": ["Sunshine", "Forest Fire", "Desert"],
+    "answer": "Sunshine",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "A father’s child,\n\na mother’s child,\n\nyet no one’s son.\n\nOf who do I speak?",
+    "options": ["Step-son", "Pet", "Daughter"],
+    "answer": "Daughter",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "What has cities, but no houses;\n\nforests, but no trees;\n\nand water, but no fish?\n\nOf what do I speak?",
+    "options": ["Map", "Ruins", "Space"],
+    "answer": "Map",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "The cost of making only the maker knows,\n\nValueless if bought, but sometimes traded.\n\nA poor man may give one as easily as a king.\n\nWhen one is broken pain and deceit are assured.\n\nOf what do I speak?",
+    "options": ["Trust", "Promise", "Contract"],
+    "answer": "Promise",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "I am born in fear,\n\nraised in truth,\n\nand I come to my own in deed.\n\nWhen comes a time that I’m called forth,\n\nI come to serve the cause of need.\n\nOf what do I speak?",
+    "options": ["Courage", "Justice", "Revenge"],
+    "answer": "Courage",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "What falls but never breaks? What breaks but never falls?\n\nOf what do I speak?",
+    "options": ["Night and Day", "Leaf", "Meteor Shower"],
+    "answer": "Night and Day",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "What goes through a door but never goes in or comes out?\n\nOf what do I speak?",
+    "options": ["Mail", "Keyhole", "Key"],
+    "answer": "Keyhole",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "What does man love more than life\n\nFear more than death or mortal strife\n\nWhat the poor have, the rich lack, and what contented men desire,\n\nWhat the miser spends and the spendthrift saves\n\nAnd all men carry to their graves?\n\nOf what do I speak?",
+    "options": ["Regret", "Shame", "Nothing"],
+    "answer": "Nothing",
+    "ability": null
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "Three lives have I.\n\nGentle enough to soothe the skin,\n\nLight enough to caress the sky,\n\nHard enough to crack rocks.\n\nOf what do I speak?",
+    "options": ["Rain", "Water", "Sunshine"],
+    "answer": "Water",
+    "ability": "Dark Aether"
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "Often held but never touched,\n\nalways wet but never rusts,\n\noften bites but seldom bit,\n\nto use me well you must have wit.\n\nOf what do I speak?",
+    "options": ["Word", "Intelligence", "Tongue"],
+    "answer": "Tongue",
+    "ability": "Adula's Moonblade"
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "What is it that you ought to keep after you have given it to someone else?\n\nOf what do I speak?",
+    "options": ["Promise", "Your word", "Trust"],
+    "answer": "Your word",
+    "ability": "Ancient Dragons' Lightning Spear"
   },
   {
-    "question":
-    "options":
-    "answer":
-    "ability":
+    "question": "Man walks over, man walks under, in times of war he burns asunder.\n\nOf what do I speak?",
+    "options": ["Castle", "Life", "Bridge"],
+    "answer": "Bridge",
+    "ability": "Flame, Fall Upon Them"
+  },
+  {
+    "question": "One by one we fall from heaven down into the depths of past,\n\nAnd our world is ever upturned so that yet some time we’ll last.\n\nOf what do I speak?",
+    "options": ["Falling Star", "Sands in an hourglass", "Rain"],
+    "answer": "Sands in an hourglass",
+    "ability": "Dragonclaw"
+  },
+  {
+  "question": "You saw me where I never was and where I could not be. And yet within that very place, my face you often see.\n\nOf what do I speak?",
+  "options": ["Mirror", "Illusion", "Reflection"],
+  "answer": "Reflection",
+  "ability": "Collapsing Stars"
+  },
+  {
+  "question": "Alive without breath,\n\nAs cold as death,\n\nClad in mail never clinking,\n\nNever thirsty, ever drinking\n\nOf what do I speak?",
+  "options": ["Fish", "River", "Iceberg"],
+  "answer": "Fish",
+  "ability": "Zamor's Ice Storm"
+  },
+  {
+  "question": "I go around in circles,\n\nBut always straight ahead\n\nNever complain,\n\nNo matter where I am led.\n\nOf what do I speak?",
+  "options": ["Horse", "Life", "Wheel"],
+  "answer": "Wheel",
+  "ability": null
+  },
+  {
+  "question": "A thousand coloured folds stretch toward the sky,\n\nAtop a tender strand,\n\nRising from the land,\n\n‘Til killed by maiden’s hand,\n\nPerhaps a token of love, perhaps to say goodbye.\n\nOf what do I speak?",
+  "options": ["Butterfly", "Rainbow", "Flower"],
+  "answer": "Flower",
+  "ability": null
+  },
+  {
+  "question": "I have a tail,\n\nI have a head,\n\nBut i have no body.\n\nI am NOT a snake.\n\nOf what do I speak?",
+  "options": ["Worm", "Coin", "Shrimp"],
+  "answer": "Coin",
+  "ability": null
+  },
+  {
+  "question": "Feed me and I will live,\n\ngive me a drink and I will die.\n\nOf what do I speak?",
+  "options": ["Fire", "Rage", "Storm"],
+  "answer": "Fire",
+  "ability": null
   }
 ]
