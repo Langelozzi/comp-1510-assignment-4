@@ -11,8 +11,6 @@ def game() -> None:
 
     board = make_board(rows, columns)
 
-    # intro art and backstory
-
     character_name = get_character_name()
     character = make_character(character_name)
 
