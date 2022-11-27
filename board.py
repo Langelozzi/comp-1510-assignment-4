@@ -63,11 +63,11 @@ def make_board(rows, columns) -> dict:
 
             if x == 1:
                 board[(x, y)]["directions"]["west"] = None
-            if x == 10:
+            if x == rows:
                 board[(x, y)]["directions"]["east"] = None
             if y == 1 and x != 1:
                 board[(x, y)]["directions"]["south"] = None
-            if y == 10 and x != 10:
+            if y == columns and x != rows:
                 board[(x, y)]["directions"]["north"] = None
 
     return board
