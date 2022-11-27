@@ -253,11 +253,12 @@ def generate_enemy_battle(enemy: dict):
 
 def generate_riddle(riddle_data: dict):
     def riddle_success(character: dict) -> None:
+        print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
+                       f"as yourself.", "green")
+
         character["xp"] += 15
         print_in_color(f"[{character['name']} | xp: +15]", "yellow")
 
-        print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
-                       f"as yourself.", "green")
         print_in_color(f"To appreciate your success, I give you two options: try your luck at possibly earning a "
                        f"new ability, or except the gift of maximum health", "green")
 
@@ -367,7 +368,7 @@ def generate_riddle(riddle_data: dict):
         if user_answer_string == riddle_data["answer"]:
             riddle_success(character)
         else:
-            print_in_color(f"{character['name']}, I new a creature such as yourself was not intellectually gifted. "
+            print_in_color(f"\n{character['name']}, I knew a creature such as yourself was not intellectually gifted. "
                            f"That answer is far from correct and for that you must be punished!", "red")
             lost_hp = round(character["current_hp"] * 0.25)
             character["current_hp"] -= lost_hp
