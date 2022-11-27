@@ -402,44 +402,44 @@ def create_batch_of_riddles(amount: int) -> list:
 
 def get_generic_room_description():
     descriptions = [
-        "As your foot passes the threshold into the next room, you feel something slither across your toes..",
-        "You are approaching the next room, and you see a dark mist fly past the archway..",
-        "The room feels cold and appears empty, but you sense a presence lingering..",
-        "You can taste the dampness in the air as you enter through the arched cobblestone..",
-        "The cold stone walls seem to radiate brisk air as you enter the room..",
-        "You step forward into the next room, you examine the walls and notice the hand of a skeleton jammed between "
+        "\nAs your foot passes the threshold into the next room, you feel something slither across your toes..",
+        "\nYou are approaching the next room, and you see a dark mist fly past the archway..",
+        "\nThe room feels cold and appears empty, but you sense a presence lingering..",
+        "\nYou can taste the dampness in the air as you enter through the arched cobblestone..",
+        "\nThe cold stone walls seem to radiate brisk air as you enter the room..",
+        "\nYou step forward into the next room, you examine the walls and notice the hand of a skeleton jammed between "
         "two stones..",
-        "You hear the soft tapping of spider legs across the cobblestone archway..",
-        "Beyond the cobblestone archway is a crumbling room, covered in crawling insects, broken pottery and bat "
+        "\nYou hear the soft tapping of spider legs across the cobblestone archway..",
+        "\nBeyond the cobblestone archway is a crumbling room, covered in crawling insects, broken pottery and bat "
         "droppings..",
-        "To the west you see a small statue of the queen's crown, crumbling onto the stone floor. It is covered in "
+        "\nTo the west you see a small statue of the queen's crown, crumbling onto the stone floor. It is covered in "
         "small bones, rat droppings and dead insects..",
-        "A warn banner hangs from archway, displaying the crest of our dear queen. It is battered and torn, "
+        "\nA warn banner hangs from archway, displaying the crest of our dear queen. It is battered and torn, "
         "covered in condensation and insects..",
-        "A fallen statue blocks the archway. You are able to slip thorough under arm, and enter into a room too clean "
-        "for comfort..",
-        "You hear the drip of water to your east. There is a small fountain streaming out of the mouth of a stone "
+        "\nA fallen statue blocks the archway. You are able to slip thorough under arm, and enter into a room too "
+        "clean for comfort..",
+        "\nYou hear the drip of water to your east. There is a small fountain streaming out of the mouth of a stone "
         "gargoyle, mounted to the wall..",
-        "A dim torch highlights the features of a pillaged statue, that has been eaten by time itself..",
-        "The deep purple banners flood the walls, with bats gripping to the bottom. You enter silently as to not "
+        "\nA dim torch highlights the features of a pillaged statue, that has been eaten by time itself..",
+        "\nThe deep purple banners flood the walls, with bats gripping to the bottom. You enter silently as to not "
         "disrupt them..",
-        "A small puddle makes contact with the sole of your foot. You look up to see a crack in the cobblestone "
+        "\nA small puddle makes contact with the sole of your foot. You look up to see a crack in the cobblestone "
         "dripping at an unsettling-ly slow pace..",
-        "Ivy cracks the cobblestone and lines the ceiling. It's vines seem to plague the room, having propagated from "
-        "north wall..",
-        "A gloomy torch sits on the wall to the south. It's light fading with each grain of the hourglass..",
-        "Under your foot you hear the crack of bone. The room is a wasteland of bone and insects..",
-        "A minor hum echoes off of the cobblestone walls. It is not random, but in an unsettling rhythm..",
-        "A grand statue of the kingdom stands 10 feet tall in the far corner of the room, silently inspiring you to "
+        "\nIvy cracks the cobblestone and lines the ceiling. It's vines seem to plague the room, having propagated "
+        "from north wall..",
+        "\nA gloomy torch sits on the wall to the south. It's light fading with each grain of the hourglass..",
+        "\nUnder your foot you hear the crack of bone. The room is a wasteland of bone and insects..",
+        "\nA minor hum echoes off of the cobblestone walls. It is not random, but in an unsettling rhythm..",
+        "\nA grand statue of the kingdom stands 10 feet tall in the far corner of the room, silently inspiring you to "
         "escape..",
-        "Overgrown vines plague the stone floor, making you conscious of your feet. You fear that getting your foot "
+        "\nOvergrown vines plague the stone floor, making you conscious of your feet. You fear that getting your foot "
         "stuck could render you a target for attack..",
-        "Broken pottery carpets the floor. As you step you hear the cracking and fear that there may be creatures "
+        "\nBroken pottery carpets the floor. As you step you hear the cracking and fear that there may be creatures "
         "lurking beneath..",
-        "You advance carefully deeper through the castle dungeon, and enter a dark room, lit only by a dim torch..",
-        "The archway to the next room is crumbling under the damp runoff, pebbles fall like rain as you cover your "
+        "\nYou advance carefully deeper through the castle dungeon, and enter a dark room, lit only by a dim torch..",
+        "\nThe archway to the next room is crumbling under the damp runoff, pebbles fall like rain as you cover your "
         "head to enter..",
-        "There is a suspicious hole on the west wall, you fear something may be watching.."
+        "\nThere is a suspicious hole on the west wall, you fear something may be watching.."
     ]
 
     return random.choice(descriptions)
@@ -454,8 +454,8 @@ def get_generic_actions():
     actions += enemy_battles
 
     # 36 riddles
-    riddles = create_batch_of_riddles(24)
-    actions += (riddles + riddles[:13])
+    riddles = create_batch_of_riddles(26)
+    actions += (riddles + riddles[:11])
 
     # 13 spider web rooms
     actions += list(itertools.repeat(spider_web_blockade, 13))
