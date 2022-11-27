@@ -171,8 +171,8 @@ def spider_web_blockade(character: dict) -> None:
     print_abilities(character)
 
     ability_used = select_ability(character)
-    while ability_used[0] != "Fireball":
-        print_in_color(f"I don't think {ability_used[0]} will work here, try a different one.", "red")
+    while ability_used != "Fireball":
+        print_in_color(f"I don't think {ability_used} will work here, try a different one.", "red")
         ability_used = select_ability(character)
 
     print_in_color("Nice work! You were able to clear out all of those webs with your Fireball!", "cyan")
