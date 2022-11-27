@@ -20,7 +20,6 @@ def game() -> None:
     print_board(rows, columns, character["position"])
 
     while is_alive(character) and not achieved_goal:
-        # function to get users choice for direction
         direction = get_user_choice(board, character)
 
         if direction == "q" or direction == "quit":
@@ -33,8 +32,8 @@ def game() -> None:
             # describe current location
             describe_current_location(board, character)
 
-            if board[character["position"]]["action"] is not None:
-                action_function = board[character["position"]]["action"]
+            action_function = board[character["position"]]["action"]
+            if action_function is not None:
                 action_function(character)
 
             # function to check if character leveled up, died, got items, etc.
