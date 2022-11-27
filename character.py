@@ -16,9 +16,8 @@ def make_character(name: str) -> dict:
         "damage": 20,
         "level": 1,
         "abilities": ["Fireball"],
-        "sword": None,
-        "shield": None,
-        "talisman": None
+        "staff": None,
+        "armour": None
     }
 
 
@@ -56,10 +55,59 @@ def select_ability(character: dict) -> tuple:
     return [ability for number, ability in ability_options if number == int(user_choice)][0]
 
 
+def show_stats(character: dict) -> None:
+    print('+------------------------------------------------------------------+')
+    print('|', end="")
+    print_in_color('{:^66}'.format(character["name"]), "red", end="")
+    print('|')
+    print('+------------------------------------------------------------------+')
+
+    print('{:<12}'.format("|"), end="")
+    print_in_color('{:<20}'.format("Current Coordinates"), "blue", end="")
+    print('{:<35}'.format(f": {character['position']}"), end="")
+    print('|')
+
+    print('{:<12}'.format("|"), end="")
+    print_in_color('{:<20}'.format("Level"), "blue", end="")
+    print('{:<35}'.format(f": {character['level']}"), end="")
+    print('|')
+
+    print('{:<12}'.format("|"), end="")
+    print_in_color('{:<20}'.format("HP"), "blue", end="")
+    print('{:<35}'.format(f": {character['current_hp']}/{character['max_hp']}"), end="")
+    print('|')
+
+    print('{:<12}'.format("|"), end="")
+    print_in_color('{:<20}'.format("XP"), "blue", end="")
+    print('{:<35}'.format(f": {character['xp']}/100"), end="")
+    print('|')
+
+    print('{:<12}'.format("|"), end="")
+    print_in_color('{:<20}'.format("Sword"), "blue", end="")
+    print('{:<35}'.format(f": {character['sword']}"), end="")
+    print('|')
+
+    print('{:<12}'.format("|"), end="")
+    print_in_color('{:<20}'.format("Shield"), "blue", end="")
+    print('{:<35}'.format(f": {character['shield']}"), end="")
+    print('|')
+
+    print('{:<12}'.format("|"), end="")
+    print_in_color('{:<20}'.format("Talisman"), "blue", end="")
+    try:
+        print('{}'.format(f": {character['talisman']['name']} ("), end="")
+        print_in_color(f"{'*' * character['talisman']['rarity']}", "yellow", end="")
+        print("{:<17}".format(")"), end="")
+    except TypeError:
+        print('{:<35}'.format(f": {character['talisman']}"), end="")
+    print('|')
+
+
 def main() -> None:
-    test_character = make_character("Test")
-    print_abilities(test_character)
-    print(select_ability(test_character))
+    test_character = make_character("Sir charles")
+    # print_abilities(test_character)
+    # print(select_ability(test_character))
+    show_stats(test_character)
 
 
 if __name__ == "__main__":
