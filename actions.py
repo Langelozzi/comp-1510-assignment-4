@@ -1,6 +1,7 @@
 # 10 basic challenges which can be mob fights or puzzles
 # 3 sub boss fights
 # 1 final boss fights
+
 from helpers import cleanse, print_in_color
 from character import make_character, print_abilities, select_ability
 
@@ -57,17 +58,20 @@ def opening_dialogue() -> None:
     print_in_color(
         "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of  \n"
         "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n", "cyan")
-    time.sleep(8)
+    time.sleep(3)
     print_in_color(
         "However, power such as these often corrupts, and the God King of Aleyndelle were no different. His \n"
         "arrogance lead him to enslaving an angel to extract their power to truly transcend the realm of \n"
         "humanhood. His greed and transgression angered the Gods leading the world into the Age of Strife.\n"
         "The gods eventually slayed the King and as punishment, snuff out the flame of humanity, casting \n"
-        "the humanity into darkness...\n", "cyan")
-    time.sleep(15)
+        " humanity into darkness...\n", "cyan")
+    time.sleep(10)
+    # print_in_color(
+    #     "Gods proclaimed. 'The flame \n", "cyan")
+    # time.sleep(3)
     print_in_color(
         "Someone...please defeat the God King Angelozzi and rekindle the fire of humanity.\n", "cyan")
-    time.sleep(15)
+    time.sleep(3)
     print_in_color(
         "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n"
         "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n"
@@ -107,8 +111,8 @@ def opening_dialogue() -> None:
         "|     __)|  __)      | |   | | ____ | (\ \) |  | |   | ||  __)     |  __)      | |   |     __)|  __)    \n"
         "| (\ (   | (         | |   | | \_  )| | \   |  | |   | || (        | (         | |   | (\ (   | (       \n"
         "| ) \ \__| (____/\___) (___| (___) || )  \  |  | (___) || )        | )      ___) (___| ) \ \__| (____/\ \n"
-        "|/   \__/(_______/\_______/(_______)|/    )_)  (_______)|/         |/       \_______/|/   \__/(_______/ \n",
-        "cyan")
+        "|/   \__/(_______/\_______/(_______)|/    )_)  (_______)|/         |/       \_______/|/   \__/(_______/ \n"
+        , "cyan")
     time.sleep(3)
 
 
@@ -123,7 +127,7 @@ def cell_description() -> None:
                "From down the hall you see a shadow as it rounds the corner east, you catch a glimpse of a metal " \
                "foot..\n"
 
-    part_three = "The last thing you can remember is the queen's ritual to Sabathiel..\n" \
+    part_three = "The last thing you can remember is when gods descended on Alyndelle and took our flame of humanity\n" \
                  "The whole town was there..\n" \
                  "There was lightning, darkness. It blanketed the sky; low and heavy causing a sense of confusion\n" \
                  "You turn to your left to see the royal knights yelling and tearing at their heads..\n" \
