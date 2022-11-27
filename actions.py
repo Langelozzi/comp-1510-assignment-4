@@ -1,6 +1,7 @@
 # 10 basic challenges which can be mob fights or puzzles
 # 3 sub boss fights
 # 1 final boss fights
+import itertools
 
 from helpers import cleanse, print_in_color
 from character import make_character, print_abilities, select_ability
@@ -227,6 +228,11 @@ def spider_web_blockade(character: dict) -> None:
     print_in_color(f"[{character['name']} | xp: +12]", "yellow")
 
 
+def empty_room(character: dict) -> None:
+    # will add code for empty room here
+    pass
+
+
 def generate_enemy_battle(enemy: dict):
     def fight(character: dict) -> None:
         print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
@@ -448,12 +454,25 @@ def get_generic_room_description():
 
 
 def get_generic_challenges():
-    challenges = [
-        possessed_knight,
-        skeleton_soldier,
-        spider_web_blockade
-    ]
-    return random.choice(challenges)
+    actions = []
+
+    # 36 battles
+    enemy_battles = create_batch_of_enemy_battles(12)
+    enemy_battles *= 3
+    actions += enemy_battles
+
+    # 36 riddles
+    riddles = create_batch_of_riddles(12)
+    riddles *= 3
+    actions += riddles
+
+    # 13 spider web rooms
+    actions += list(itertools.repeat(spider_web_blockade, 13))
+
+    # 6 empty rooms
+    actions += list(itertools.repeat(empty_room, 12))
+
+    return actions
 
 
 def main():
