@@ -28,7 +28,7 @@ def move_character(direction: str, board: dict, character: dict) -> None:
 
 
 def is_alive(character: dict) -> bool:
-    if character["hp"] <= 0:
+    if character["current_hp"] <= 0:
         return False
     else:
         return True

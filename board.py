@@ -12,7 +12,10 @@
 | || || || || || || || || || |
 | |---------------------------
 """
+import itertools
+
 from helpers import print_in_color
+from actions import get_generic_actions, get_generic_room_description
 
 
 def test_challenge():
@@ -22,9 +25,10 @@ def test_challenge():
 def make_board(rows, columns) -> dict:
     board = {
         (1, 1): {
+            "description": "Looks like you have come back to the start, try the opposite direction of the cell",
+            "action": None,
+            "solved": False,
             "directions": {
-                "description": "Looks like you have come back to the start, try the opposite direction of the cell",
-                "action": None,
                 "north": (1, 2),
                 "east": (2, 1),
                 "south": None,
@@ -44,14 +48,16 @@ def make_board(rows, columns) -> dict:
         }
     }
 
+    actions = itertools.cycle(get_generic_actions())
+
     for x in range(1, columns + 1):
         for y in range(1, rows + 1):
             if (x == 1 and y == 1) or (x == 10 and y == 11):
                 continue
 
             board[(x, y)] = {
-                "description": "This is a generic spot",  # function from challenge.py
-                "action": test_challenge,  # function from challenge.py
+                "description": get_generic_room_description(),
+                "action": next(actions),
                 "solved": False,
                 "directions": {
                     "north": (x, y + 1),
