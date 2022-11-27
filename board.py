@@ -25,9 +25,10 @@ def test_challenge():
 def make_board(rows, columns) -> dict:
     board = {
         (1, 1): {
+            "description": "Looks like you have come back to the start, try the opposite direction of the cell",
+            "action": None,
+            "solved": False,
             "directions": {
-                "description": "Looks like you have come back to the start, try the opposite direction of the cell",
-                "action": None,
                 "north": (1, 2),
                 "east": (2, 1),
                 "south": None,
