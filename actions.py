@@ -460,8 +460,10 @@ def get_generic_actions():
     # 13 spider web rooms
     actions += list(itertools.repeat(spider_web_blockade, 13))
 
-    # 6 empty rooms
+    # 12 empty rooms
     actions += list(itertools.repeat(empty_room, 12))
+
+    random.shuffle(actions)
 
     return actions
 
