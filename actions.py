@@ -242,7 +242,7 @@ def generate_enemy_battle(enemy: dict):
         if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
             print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
 
-            earned_xp = 12 * enemy["level"]
+            earned_xp = 15 * ((enemy["level"] - character["level"]) + 1)
             character["xp"] += earned_xp
 
             enemy_item = enemy["item"]
@@ -339,7 +339,7 @@ def royal_knight_angelozzi():
         if (angelozzi["current_hp"] <= 0) and (character["current_hp"] > 0):
             print_in_color(f"\nCongratulations! You have defeated the {angelozzi['name']}", "cyan")
 
-            earned_xp = 12 * angelozzi["level"]
+            earned_xp = 15 * ((angelozzi["level"] - character["level"]) + 1)
             character["xp"] += earned_xp
 
             # gain enemy item if they have one, and it's rarity is more than the one you have
