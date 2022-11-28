@@ -242,7 +242,7 @@ def generate_enemy_battle(enemy: dict):
             print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
 
             earned_xp = 15 * ((enemy["level"] - character["level"]) + 1)
-            character["xp"] += earned_xp
+            character["xp"] += earned_xp if character["level"] < 3 else 0
 
             enemy_item = enemy["item"]
             try:
@@ -341,7 +341,7 @@ def royal_knight_angelozzi():
             print_in_color(f"\nCongratulations! You have defeated the {angelozzi['name']}", "cyan")
 
             earned_xp = 15 * ((angelozzi["level"] - character["level"]) + 1)
-            character["xp"] += earned_xp
+            character["xp"] += earned_xp if character["level"] < 3 else 0
 
             # gain enemy item if they have one, and it's rarity is more than the one you have
             enemy_item = angelozzi["item"]
@@ -404,7 +404,7 @@ def generate_riddle(riddle_data: dict):
         print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
                        f"as yourself.", "green")
 
-        character["xp"] += 15
+        character["xp"] += 15 if character["level"] < 3 else 0
         print_in_color(f"[{character['name']} | xp: +15]", "yellow")
 
         print_in_color(f"To reward your success, I give you two options: try your luck at possibly earning a "
