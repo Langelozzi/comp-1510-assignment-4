@@ -64,6 +64,15 @@ def level_up_sequence(character: dict) -> None:
     print("Congrats you leveled up")
 
 
+def died(character: dict) -> None:
+    character["position"] = (1, 1)
+    character["xp"] = 0
+    character["level"] = 1
+    character["current_hp"] = 100
+
+    print_in_color("Rip, you died. Skill issue.", "red")
+
+
 def show_stats(character: dict) -> None:
     print('+----------------------------------------------------------------------------------+')
     print('|', end="")
