@@ -55,6 +55,15 @@ def select_ability(character: dict) -> tuple:
     return [ability for number, ability in ability_options if number == int(user_choice)][0]
 
 
+def leveled_up(character: dict) -> bool:
+    return True if (character['xp'] >= 100) and (character['level'] <= 3) else False
+
+
+def level_up_sequence(character: dict) -> None:
+    # replace with ascii art and message
+    print("Congrats you leveled up")
+
+
 def show_stats(character: dict) -> None:
     print('+----------------------------------------------------------------------------------+')
     print('|', end="")

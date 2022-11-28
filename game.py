@@ -1,7 +1,8 @@
 from board import make_board, describe_current_location, is_valid_move, print_board
-from character import make_character, is_alive, move_character, get_character_name, show_stats
+from character import make_character, is_alive, move_character, get_character_name, show_stats, leveled_up, \
+    level_up_sequence
 from helpers import get_user_choice, print_in_color
-from actions import cell_description, opening_dialogue
+from actions import cell_description, opening_dialogue, game_over, game_completed
 
 
 def game() -> None:
@@ -26,24 +27,32 @@ def game() -> None:
         elif choice == "show stats":
             show_stats(character)
         elif is_valid_move(choice, board, character):
-            # move the character to desired location
+
             move_character(choice, board, character)
-            # show their new location
+
             print_board(rows, columns, character["position"])
-            # describe current location
-            describe_current_location(board, character)
 
-            action_function = board[character["position"]]["action"]
-            if action_function is not None:
-                action_function(character)
+            room_solved = board[character["position"]]["solved"]
+            if not room_solved:
+                describe_current_location(board, character)
 
-            # function to check if character leveled up, died, got items, etc.
-                # if they pick up a special item or something and there is addition challenge then start that
-                # if they levelled up, maybe print some cool ascii art or something
+                action_function = board[character["position"]]["action"]
+                if action_function is not None:
+                    board[character["position"]]["solved"] = action_function(character)
+            else:
+                print_in_color("\nYou have already completed your duties here, please move on.\n", "cyan")
+
+            if leveled_up(character):
+                level_up_sequence(character)
         else:
             print_in_color("There is no path in that direction, you can't walk through walls!!", "red")
 
-    # Game over function
+    if character["current_hp"] < 0:
+        game_over(character)
+    elif achieved_goal:
+        game_completed(character)
+    else:
+        print_in_color("\nThanks for playing, we hope you play again sometime :)", "cyan")
 
 
 def main() -> None:
