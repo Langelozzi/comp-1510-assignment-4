@@ -406,8 +406,8 @@ def generate_riddle(riddle_data: dict):
         character["xp"] += 15
         print_in_color(f"[{character['name']} | xp: +15]", "yellow")
 
-        print_in_color(f"To appreciate your success, I give you two options: try your luck at possibly earning a "
-                       f"new ability, or except the gift of maximum health", "green")
+        print_in_color(f"To reward your success, I give you two options: try your luck at possibly earning a "
+                       f"new ability, or accept the gift of maximum health", "green")
 
         success_options = list(enumerate(["Try my luck at a new ability", "Refill HP to max"], start=1))
 
