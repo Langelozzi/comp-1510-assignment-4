@@ -257,7 +257,7 @@ def generate_enemy_battle(enemy: dict):
         print_in_color(f"Out of the corner of your eye you see a {enemy['name']} appear!\n", "cyan")
 
         if character["level"] < enemy["level"]:
-            print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
+            print_in_color(f"This enemies level is greater than yours, you might want to weigh your options before "
                            f"you make your decision\n", "red")
 
         print_in_color("{:<15}Choice".format("Command"), "blue")
