@@ -5,8 +5,8 @@
     "current_hp": 100,
     "level": 1,
     "item": {
-      "type": "sword",
-      "name": "Rusted Broadsword",
+      "type": "armour",
+      "name": "Rusted Armour",
       "rarity": 1
     }
   },
@@ -16,8 +16,8 @@
     "current_hp": 125,
     "level": 2,
     "item": {
-      "type": "sword",
-      "name": "Knight's Broadsword",
+      "type": "armour",
+      "name": "Knight's Armour",
       "rarity": 2
     }
   },
@@ -27,8 +27,8 @@
     "current_hp": 150,
     "level": 3,
     "item": {
-      "type": "sword",
-      "name": "Crusader's Cursed Broadsword",
+      "type": "armour",
+      "name": "Crusader's Cursed Armour",
       "rarity": 3
     }
   },
@@ -38,54 +38,38 @@
     "current_hp": 200,
     "level": 4,
     "item": {
-      "type": "sword",
-      "name": "Draconic Broadsword",
+      "type": "armour",
+      "name": "Draconic Armour",
       "rarity": 4
     }
   },
   {
-    "name": "Heavily-Armoured Skeleton Soldier",
+    "name": "Giant Rat",
     "max_hp": 100,
     "current_hp": 100,
     "level": 1,
-    "item": {
-      "type": "shield",
-      "name": "Rusted Shield",
-      "rarity": 1
-    }
+    "item": null
   },
   {
-    "name": " Heavily-Armoured Undead Knight",
+    "name": "Lesser Shade",
     "max_hp": 125,
     "current_hp": 125,
     "level": 2,
-    "item": {
-      "type": "shield",
-      "name": "Knight's Shield",
-      "rarity": 2
-    }
+    "item": null
   },
   {
-    "name": "Heavily-Armoured Corrupted Crusader",
+    "name": "Rabid Werewolf",
     "max_hp": 150,
     "current_hp": 150,
     "level": 3,
-    "item": {
-      "type": "shield",
-      "name": "Crusader's Corrupted Shield",
-      "rarity": 3
-    }
+    "item": null
   },
   {
-    "name": "Heavily-Armoured Draconic Knight",
+    "name": "Stone Golem",
     "max_hp": 200,
     "current_hp": 200,
     "level": 4,
-    "item": {
-      "type": "shield",
-      "name": "Draconic Shield",
-      "rarity": 4
-    }
+    "item": null
   },
   {
     "name": "Skeletal Sorcerer",
@@ -93,8 +77,8 @@
     "current_hp": 100,
     "level": 1,
     "item": {
-      "type": "talisman",
-      "name": "Rusted Shield",
+      "type": "staff",
+    "name": "Wooden Staff",
       "rarity": 1
     }
   },
@@ -104,8 +88,8 @@
     "current_hp": 125,
     "level": 2,
     "item": {
-      "type": "talisman",
-      "name": "Knight's Shield",
+      "type": "staff",
+      "name": "Battlemage's Staff",
       "rarity": 2
     }
   },
@@ -115,8 +99,8 @@
     "current_hp": 150,
     "level": 3,
     "item": {
-      "type": "talisman",
-      "name": "Spellsword's Corrupted Talisman",
+      "type": "staff",
+      "name": "Spellsword's Corrupted Staff",
       "rarity": 3
     }
   },
@@ -126,8 +110,8 @@
     "current_hp": 200,
     "level": 4,
     "item": {
-      "type": "talisman",
-      "name": "Draconic Talisman",
+      "type": "staff",
+      "name": "Draconic Staff",
       "rarity": 4
     }
   }
