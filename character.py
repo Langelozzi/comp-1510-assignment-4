@@ -60,6 +60,8 @@ def leveled_up(character: dict) -> bool:
 
 
 def level_up_sequence(character: dict) -> None:
+    character["level"] += 1
+    character["xp"] = 0
     # replace with ascii art and message
     print("Congrats you leveled up")
 
@@ -84,8 +86,7 @@ def show_stats(character: dict) -> None:
         ("Current Coordinates", character['position']),
         ("Level", character['level']),
         ("HP", f"{character['current_hp']}/{character['max_hp']}"),
-        ("XP (to next level)", f"{character['xp']}/60"),
-        ("Ability Power", character['damage'])
+        ("XP (to next level)", f"{character['xp']}/60")
     )
     for title, stat in general_stats:
         print('{:<18}'.format("|"), end="")
