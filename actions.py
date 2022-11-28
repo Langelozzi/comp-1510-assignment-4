@@ -238,7 +238,6 @@ def generate_enemy_battle(enemy: dict):
             print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
             print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
 
-        enemy["current_hp"] = enemy["max_hp"]
         if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
             print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
 
@@ -260,8 +259,10 @@ def generate_enemy_battle(enemy: dict):
 
             print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
+            enemy["current_hp"] = enemy["max_hp"]
             return True
 
+        enemy["current_hp"] = enemy["max_hp"]
         return False
 
     def enemy_battle(character: dict) -> bool:
