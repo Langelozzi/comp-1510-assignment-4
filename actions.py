@@ -614,10 +614,12 @@ def get_generic_actions():
 
 
 def game_over(character: dict) -> None:
+    # replace with ascii art and message
     print("Game Over")
 
 
 def game_completed(character: dict) -> None:
+    # replace with ascii art and message
     print("You won the game")
 
 
