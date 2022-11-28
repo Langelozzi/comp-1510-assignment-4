@@ -56,7 +56,7 @@ def select_ability(character: dict) -> tuple:
 
 
 def leveled_up(character: dict) -> bool:
-    return True if (character['xp'] >= 100) and (character['level'] <= 3) else False
+    return True if (character['xp'] >= 60) and (character['level'] <= 3) else False
 
 
 def level_up_sequence(character: dict) -> None:
@@ -84,7 +84,7 @@ def show_stats(character: dict) -> None:
         ("Current Coordinates", character['position']),
         ("Level", character['level']),
         ("HP", f"{character['current_hp']}/{character['max_hp']}"),
-        ("XP (to next level)", f"{character['xp']}/100"),
+        ("XP (to next level)", f"{character['xp']}/60"),
         ("Ability Power", character['damage'])
     )
     for title, stat in general_stats:
