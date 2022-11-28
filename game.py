@@ -19,7 +19,7 @@ def game() -> None:
     # cell_description()
 
     while not achieved_goal:
-        print_board(rows, columns, character["position"], (4, 4), (7, 7))
+        print_board(board, rows, columns, character["position"], (4, 4), (7, 7))
         choice = get_user_choice(board, character)
 
         if choice == "quit":
@@ -30,7 +30,7 @@ def game() -> None:
 
             move_character(choice, board, character)
 
-            print_board(rows, columns, character["position"], (4, 4), (7, 7))
+            print_board(board, rows, columns, character["position"], (4, 4), (7, 7))
 
             room_solved = board[character["position"]]["solved"]
             if not room_solved:

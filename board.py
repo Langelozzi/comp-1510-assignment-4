@@ -28,7 +28,7 @@ def make_board(rows, columns) -> dict:
         (1, 1): {
             "description": "Looks like you have come back to the start, try the opposite direction of the cell",
             "action": None,
-            "solved": False,
+            "solved": True,
             "directions": {
                 "north": (1, 2),
                 "east": (2, 1),
@@ -76,9 +76,9 @@ def make_board(rows, columns) -> dict:
     for x_coord in range(1, columns + 1):
         for y_coord in range(1, rows + 1):
             if (x_coord == 1 and y_coord == 1) or \
-               (x_coord == 10 and y_coord == 11) or \
-               (x_coord == 4 and y_coord == 4) or \
-               (x_coord == 7 and y_coord == 7):
+                    (x_coord == 10 and y_coord == 11) or \
+                    (x_coord == 4 and y_coord == 4) or \
+                    (x_coord == 7 and y_coord == 7):
                 continue
 
             board[(x_coord, y_coord)] = {
@@ -105,7 +105,7 @@ def make_board(rows, columns) -> dict:
     return board
 
 
-def print_board(rows, columns, coords: tuple, boss_1_coords: tuple, boss_2_coords: tuple):
+def print_board(board: dict, rows: int, columns: int, coords: tuple, boss_1_coords: tuple, boss_2_coords: tuple):
     x_pos, y_pos = coords
     boss_1_x, boss_1_y = boss_1_coords
     boss_2_x, boss_2_y = boss_2_coords
@@ -118,6 +118,10 @@ def print_board(rows, columns, coords: tuple, boss_1_coords: tuple, boss_2_coord
                 print_in_color('|', "green", end="")
                 print_in_color("#", "purple", end="")
                 print_in_color('|', "green", end="")
+
+            elif (y_coord == 0 and x_coord == 1) or ((x_coord, y_coord) in board.keys()) and \
+                    (board[(x_coord, y_coord)]["solved"]):
+                print_in_color('| |', "green", end="")
 
             elif (y_coord == boss_1_y and x_coord == boss_1_x) or (y_coord == boss_2_y and x_coord == boss_2_x):
                 print_in_color('|', "green", end="")
@@ -133,7 +137,7 @@ def print_board(rows, columns, coords: tuple, boss_1_coords: tuple, boss_2_coord
                 print_in_color('---', "green", end="")
 
             else:
-                print_in_color('| |', "green", end="")
+                print_in_color('|?|', "green", end="")
 
         print()
 
