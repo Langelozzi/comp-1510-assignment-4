@@ -1,5 +1,5 @@
 from board import make_board, describe_current_location, is_valid_move, print_board
-from character import make_character, is_alive, move_character, get_character_name
+from character import make_character, is_alive, move_character, get_character_name, show_stats
 from helpers import get_user_choice, print_in_color
 from actions import cell_description, opening_dialogue
 
@@ -19,13 +19,15 @@ def game() -> None:
 
     while is_alive(character) and not achieved_goal:
         print_board(rows, columns, character["position"])
-        direction = get_user_choice(board, character)
+        choice = get_user_choice(board, character)
 
-        if direction == "q" or direction == "quit":
+        if choice == "quit":
             break
-        elif is_valid_move(direction, board, character):
+        elif choice == "show stats":
+            show_stats(character)
+        elif is_valid_move(choice, board, character):
             # move the character to desired location
-            move_character(direction, board, character)
+            move_character(choice, board, character)
             # show their new location
             print_board(rows, columns, character["position"])
             # describe current location

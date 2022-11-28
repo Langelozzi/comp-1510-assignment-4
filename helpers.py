@@ -41,9 +41,13 @@ def cleanse(text: str) -> str:
 def get_user_choice(board: dict, character: dict) -> str:
     current_room = board[character["position"]]
     possible_directions = [direction for direction, coord in current_room["directions"].items() if coord is not None]
-    options = list(enumerate(possible_directions, start=1))
 
-    print_in_color("\n{:<15}Direction".format("Command"), "blue")
+    options = [('q', "quit"), ('s', "show stats")]
+    options += list(enumerate(possible_directions, start=1))
+
+    # use map to change numbers to strings
+
+    print_in_color("\n{:<15}Option".format("Command"), "blue")
 
     for number, direction in options:
         print(f"{number:<15}{direction}")
@@ -51,7 +55,7 @@ def get_user_choice(board: dict, character: dict) -> str:
     print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
 
     user_choice = cleanse(input())
-    while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(1, len(options) + 1))):
+    while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(0, len(options) + 1))):
         print_in_color("That is not a valid choice, try again.", "red")
         print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
         user_choice = cleanse(input())
