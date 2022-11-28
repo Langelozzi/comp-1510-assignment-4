@@ -56,12 +56,21 @@ def select_ability(character: dict) -> tuple:
 
 
 def leveled_up(character: dict) -> bool:
-    return True if (character['xp'] >= 100) and (character['level'] <= 3) else False
+    return True if (character['xp'] >= 60) and (character['level'] <= 3) else False
 
 
 def level_up_sequence(character: dict) -> None:
     # replace with ascii art and message
     print("Congrats you leveled up")
+
+
+def died(character: dict) -> None:
+    character["position"] = (1, 1)
+    character["xp"] = 0
+    character["level"] = 1
+    character["current_hp"] = 100
+
+    print_in_color("Rip, you died. Skill issue.", "red")
 
 
 def show_stats(character: dict) -> None:
@@ -75,7 +84,7 @@ def show_stats(character: dict) -> None:
         ("Current Coordinates", character['position']),
         ("Level", character['level']),
         ("HP", f"{character['current_hp']}/{character['max_hp']}"),
-        ("XP (to next level)", f"{character['xp']}/100"),
+        ("XP (to next level)", f"{character['xp']}/60"),
         ("Ability Power", character['damage'])
     )
     for title, stat in general_stats:
