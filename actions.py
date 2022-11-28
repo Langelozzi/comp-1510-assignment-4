@@ -11,62 +11,22 @@ import time
 import json
 
 
+# Game Opening ---------------------------------------------------------------------------------------------------------
 def opening_dialogue() -> None:
-    # intro_one = "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of  \n" \
-    #             "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n"
-    #
-    # intro_two = "However, power such as these often corrupts, and the God King of Aleyndelle were no different. His\n"
-    #             " arrogance lead him to enslaving an angel to extract their power to truly transcend the realm of \n"
-    #             "humanhood. His greed and transgression angered the Gods leading the world into the Age of Strife.\n"
-    #             "The gods eventually slayed the King and as punishment, snuff out the flame of humanity, casting \n"
-    #             "the humanity into darkness...\n"
-    #
-    # intro_three = "Someone...please defeat the God King Angelozzi and rekindle the fire of humanity.\n"
-    #
-    # intro_four = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▄░░▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██▌░░▒▒▒▒\n" \
-    #              "▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░▄▄███▀░░░░▒▒▒\n" \
-    #              "▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░█████░▄█░░░░▒▒\n" \
-    #              "▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░▄████████▀░░░░▒▒\n" \
-    #              "▒▒░░░░░░░░░░░░░░░░░░░░░░░░▄█████████░░░░░░░▒\n" \
-    #              "▒░░░░░░░░░░░░░░░░░░░░░░░░░░▄███████▌░░░░░░░▒\n" \
-    #              "▒░░░░░░░░░░░░░░░░░░░░░░░░▄█████████░░░░░░░░▒\n" \
-    #              "▒░░░░░░░░░░░░░░░░░░░░░▄███████████▌░░░░░░░░▒\n" \
-    #              "▒░░░░░░░░░░░░░░░▄▄▄▄██████████████▌░░░░░░░░▒\n" \
-    #              "▒░░░░░░░░░░░▄▄███████████████████▌░░░░░░░░░▒\n" \
-    #              "▒░░░░░░░░░▄██████████████████████▌░░░░░░░░░▒\n" \
-    #              "▒░░░░░░░░████████████████████████░░░░░░░░░░▒\n" \
-    #              "▒█░░░░░▐██████████▌░▀▀███████████░░░░░░░░░░▒\n" \
-    #              "▐██░░░▄██████████▌░░░░░░░░░▀██▐█▌░░░░░░░░░▒▒\n" \
-    #              "▒██████░█████████░░░░░░░░░░░▐█▐█▌░░░░░░░░░▒▒\n" \
-    #              "▒▒▀▀▀▀░░░██████▀░░░░░░░░░░░░▐█▐█▌░░░░░░░░▒▒▒\n" \
-    #              "▒▒▒▒▒░░░░▐█████▌░░░░░░░░░░░░▐█▐█▌░░░░░░░▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒░░░░███▀██░░░░░░░░░░░░░█░█▌░░░░░░▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒▒▒░▐██░░░██░░░░░░░░▄▄████████▄▒▒▒▒▒▒▒▒\n" \
-    #              "▒▒▒▒▒▒▒▒▒██▌░░░░█▄░░░░░░▄███████████████████\n" \
-    #              "▒▒▒▒▒▒▒▒▒▐██▒▒░░░██▄▄███████████████████████\n" \
-    #              "▒▒▒▒▒▒▒▒▒▒▐██▒▒▄████████████████████████████\n" \
-    #              "▒▒▒▒▒▒▒▒▒▒▄▄████████████████████████████████\n" \
-    #              "████████████████████████████████████████████\n"
 
     print_in_color("...\n", "cyan")
-    time.sleep(3)
+    time.sleep(1)
     print_in_color(
         "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of  \n"
         "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n", "cyan")
-    time.sleep(3)
+    time.sleep(1)
     print_in_color(
         "However, power such as these often corrupts, and the God King of Aleyndelle were no different. His \n"
         "arrogance lead him to enslaving an angel to extract their power to truly transcend the realm of \n"
         "humanhood. His greed and transgression angered the Gods leading the world into the Age of Strife.\n"
         "The gods eventually slayed the King and as punishment, snuff out the flame of humanity, casting \n"
         " humanity into darkness...\n", "cyan")
-    time.sleep(10)
+    time.sleep(1)
     # print_in_color(
     #     "Gods proclaimed. 'The flame \n", "cyan")
     # time.sleep(3)
@@ -142,7 +102,7 @@ def opening_dialogue() -> None:
         , "cyan")
     time.sleep(3)
 
-
+# Game Intro -----------------------------------------------------------------------------------------------------------
 def cell_description() -> None:
     part_one = "You wake to the sound of metal against stone.\n" \
                "You lift you head from the floor and as your eyes adjust to the darkness you start to scan your " \
@@ -176,19 +136,20 @@ def cell_description() -> None:
                 "Another chill propagates along your spine, as you make your choice..\n"
 
     print_in_color("**CLANK**\n", "cyan")
-    time.sleep(3)
+    time.sleep(1)
     print_in_color(part_one, "cyan")
-    time.sleep(8)
+    time.sleep(1)
     print_in_color(part_two, "cyan")
-    time.sleep(15)
+    time.sleep(1)
     print_in_color(part_three, "cyan")
-    time.sleep(15)
+    time.sleep(1)
     print_in_color(part_four, "cyan")
-    time.sleep(12)
+    time.sleep(1)
     print_in_color(part_five, "cyan")
-    time.sleep(8)
+    time.sleep(1)
 
 
+# Spider Web -----------------------------------------------------------------------------------------------------------
 def spider_web_blockade(character: dict) -> None:
     print_in_color("You pause once in the room. You see that all of the archways are blocked off with layers upon \n"
                    "layers of spider webs. You need some way to clear the archways before you can proceed.", "cyan")
@@ -213,7 +174,7 @@ def empty_room(character: dict) -> None:
     print_in_color(f"{character['name']}, keep walking if you know what's good for you!", "cyan")
     print_in_color("You hastily make your decision..", "cyan")
 
-
+# Default Battles ------------------------------------------------------------------------------------------------------
 def generate_enemy_battle(enemy: dict):
     def fight(character: dict) -> bool:
         print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
@@ -297,10 +258,115 @@ def generate_enemy_battle(enemy: dict):
     return enemy_battle
 
 
-# Sub-Boss 1: Royal Knight
-def royal_knight_angelozzi():
+# Sub-Boss 1: Lord-Commander Ymir --------------------------------------------------------------------------------------
+def lord_commander_ymir():
+    ymir = {
+                "name": "Lord-Commander Ymir",
+                "max_hp": 500,
+                "current_hp": 500,
+                "level": 5,
+                "item": {
+                    "type": "armour",
+                    "name": "Ymir's Armour",
+                    "rarity": 5
+                    }
+                }
+
+    def fight(character: dict) -> bool:
+        print_in_color(f"The giant knight notices you, and he readies his greatsword: \n", "cyan")
+        print("I commend you for making this far, but, your luck ends here, mortal.\n"
+              "On my honour as the Right wing of Alyndelle, the guardian of this empire,\n"
+              "and as the Lord-Commander, I will stop you.\n")
+        print_in_color(f"Both you and the {ymir['name']} step forward, and prepare for a battle..\n", "cyan")
+
+        while (character["current_hp"] > 0) and (ymir["current_hp"] > 0):
+            print_abilities(character)
+            chosen_ability = select_ability(character)
+
+            print_in_color(f"Your {chosen_ability} hits the {ymir['name']}", "cyan")
+            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
+            try:
+                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
+            except TypeError:
+                damage_given = character["damage"] * character["level"]
+            ymir["current_hp"] -= damage_given
+
+            print_in_color(f"But the {ymir['name']}'s attack lands successfully as well", "cyan")
+            # character health with decrease by 10 * (1 + (0.2 * enemy level))
+            damage_taken = 10 * (1 + (0.2 * ymir["level"]))
+            character["current_hp"] -= damage_taken
+
+            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
+            print(f"[{ymir['name']} | hp: {ymir['current_hp']}/{ymir['max_hp']}]")
+
+        if (ymir["current_hp"] <= 0) and (character["current_hp"] > 0):
+            print_in_color(f"\nCongratulations! You have defeated the {ymir['name']}", "cyan")
+
+            earned_xp = 15 * ((ymir["level"] - character["level"]) + 1)
+            character["xp"] += earned_xp if character["level"] < 3 else 0
+
+            # gain enemy item if they have one, and it's rarity is more than the one you have
+            enemy_item = ymir["item"]
+            try:
+                character_item_rarity = character[enemy_item["type"]]["rarity"]
+            except TypeError:
+                character_item_rarity = 0
+
+            # gain enemy item if they have one, and it's rarity is more than the one you have
+            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
+                character[ymir["item"]["type"]] = {
+                    key: value for key, value in ymir['item'].items() if key != 'type'
+                }
+                print_in_color(f"[{character['name']} | {ymir['item']['type']}: +'{ymir['item']['name']}']",
+                               "yellow")
+
+            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+
+            return True
+
+        return False
+
+    def ymir_battle(character: dict) -> bool:
+        print_in_color("As you reach closer to the throne room, you arrive at a grand hall of what seems to have a "
+                       "religious significane.\n\n Arts painted on the ceiling depicting the Age of Strife.\n\n",
+                       "cyan")
+        print_in_color("***CRASH***.\n\n"
+                       "There's dust and smoke everywhere!\n\n"
+                       "*cough cough*\n\n"
+                       "You see a huge figure appear as the dust settles.", "cyan")
+        print_in_color("He is clad in ornate armor; those scratches and gouges on his armor proves the warrior's"
+                       "skill.\n\n You admire his prowess but know that you must deaft him to advance.\n", "cyan")
+
+        if character["level"] <= 3:  # max level is three?
+            print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
+                           f"you make your decision\n", "red")
+
+        print_in_color("{:<15}Choice".format("Command"), "blue")
+
+        options = list(enumerate(["Fight", "Flee"], start=1))
+        for number, option in options:
+            print(f"{number:<15}{option}")
+
+        print_in_color("\nWhat would you like to do?", "purple")
+
+        decision = cleanse(input())
+        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
+            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+            print_in_color("\nWhat would you like to do?", "purple")
+            decision = cleanse(input())
+
+        if int(decision) == 1:
+            return fight(character)
+        else:
+            print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
+            return False
+
+    return ymir_battle
+
+# Sub-Boss 2: Royal Knight ---------------------------------------------------------------------------------------------
+def royal_mage_angelozzi():
     angelozzi = {
-                "name": "Royal Knight Angelozzi",
+                "name": "Royal Mage Angelozzi",
                 "max_hp": 250,
                 "current_hp": 250,
                 "level": 7,
@@ -312,9 +378,9 @@ def royal_knight_angelozzi():
                 }
 
     def fight(character: dict) -> bool:
-        print_in_color(f"The giant knight notices you, he readies his staff: \n", "cyan")
+        print_in_color(f"The battle mage notices you, he readies his staff: \n", "cyan")
         print("You wretched createre, how dare you stain this sacred haven with your miserable existence.\n"
-              "On my honour as the Royal Knight of Alyndelle, I will eliminate you.\n")
+              "On my honour as the Left wing of Alyndelle, the guardian of this empire, I will eliminate you.\n")
         print_in_color(f"Both you and the {angelozzi['name']} step forward, and prepare for a battle..\n", "cyan")
 
         while (character["current_hp"] > 0) and (angelozzi["current_hp"] > 0):
@@ -399,6 +465,108 @@ def royal_knight_angelozzi():
     return angelozzi_battle
 
 
+# Final Boss: God-King Thompson ----------------------------------------------------------------------------------------
+def god_king_thompson():
+    thompson = {
+                "name": "God-King Thompson",
+                "max_hp": 600,
+                "current_hp": 600,
+                "level": 9,
+                "item": {
+                    "type": "staff",
+                    "name": "Demonic Python Staff",
+                    "rarity": 7
+                    }
+                }
+
+    def fight(character: dict) -> bool:
+        print_in_color("The King acknowledge you, and readies his Warhammer: \n", "cyan")
+        print("You have done well, mortal. It is commendable.\n\n However, as the God King of Alyndelle,\n\n"
+              "I cannot allow your transgression no longer. Your treachery will end here, I will not "
+              "allow the Flame of Humanity to be returned.")
+        print_in_color(f"Both you and the {thompson['name']} step forward, and prepare for a battle..\n", "cyan")
+
+        while (character["current_hp"] > 0) and (thompson["current_hp"] > 0):
+            print_abilities(character)
+            chosen_ability = select_ability(character)
+
+            print_in_color(f"Your {chosen_ability} hits the {thompson['name']}", "cyan")
+            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
+            try:
+                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
+            except TypeError:
+                damage_given = character["damage"] * character["level"]
+            thompson["current_hp"] -= damage_given
+
+            print_in_color(f"But the {thompson['name']}'s attack lands successfully as well", "cyan")
+            # character health with decrease by 10 * (1 + (0.2 * enemy level))
+            damage_taken = 10 * (1 + (0.2 * thompson["level"]))
+            character["current_hp"] -= damage_taken
+
+            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
+            print(f"[{thompson['name']} | hp: {thompson['current_hp']}/{thompson['max_hp']}]")
+
+        if (thompson["current_hp"] <= 0) and (character["current_hp"] > 0):
+            print_in_color(f"\nCongratulations! You have defeated the {thompson['name']}", "cyan")
+
+            earned_xp = 15 * ((thompson["level"] - character["level"]) + 1)
+            character["xp"] += earned_xp if character["level"] < 3 else 0
+
+            # gain enemy item if they have one, and it's rarity is more than the one you have
+            enemy_item = thompson["item"]
+            try:
+                character_item_rarity = character[enemy_item["type"]]["rarity"]
+            except TypeError:
+                character_item_rarity = 0
+
+            # gain enemy item if they have one, and it's rarity is more than the one you have
+            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
+                character[thompson["item"]["type"]] = {
+                    key: value for key, value in thompson['item'].items() if key != 'type'
+                }
+                print_in_color(f"[{character['name']} | {thompson['item']['type']}: +'{thompson['item']['name']}']",
+                               "yellow")
+
+            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+
+            return True
+
+        return False
+
+    def thompson_battle(character: dict) -> bool:
+        print_in_color("As you enter into throne room, you see a colossal of a man sitting on the Golden throne.\n\n"
+                       "He must be the king, the man who stole the light and betrayed the very gods itself.\n\n",
+                       "cyan")
+        print_in_color("You approach the golden throne\n", "cyan")
+
+        if character["level"] <= 3:  # max level is three?
+            print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
+                           f"you make your decision\n", "red")
+
+        print_in_color("{:<15}Choice".format("Command"), "blue")
+
+        options = list(enumerate(["Fight", "Flee"], start=1))
+        for number, option in options:
+            print(f"{number:<15}{option}")
+
+        print_in_color("\nWhat would you like to do?", "purple")
+
+        decision = cleanse(input())
+        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
+            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+            print_in_color("\nWhat would you like to do?", "purple")
+            decision = cleanse(input())
+
+        if int(decision) == 1:
+            return fight(character)
+        else:
+            print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
+            return False
+
+    return thompson_battle
+
+
+# Generate Riddles -----------------------------------------------------------------------------------------------------
 def generate_riddle(riddle_data: dict):
     def riddle_success(character: dict) -> None:
         print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
@@ -494,7 +662,7 @@ def generate_riddle(riddle_data: dict):
 
         print(f"Oh {character['name']}, you foolish creature, how dare you interrupt my slumber. For your transgression"
               f" you must prove your intellect to me with a riddle if you want me to spare your life..\n")
-        time.sleep(5)
+        time.sleep(1)
         print_in_color(riddle_data["question"], "purple")
 
         print_in_color("\n{:<15}Response".format("Command"), "blue")
@@ -632,15 +800,15 @@ def main():
         "current_hp": 100,
         "xp": 0,
         "damage": 20,
-        "level": 4,
+        "level": 3,
         "abilities": ["Fireball"],
         "staff": {
             "name": "Draconic Staff",
-            "rarity": 2
+            "rarity": 4
         },
         "armour": {
             "name": "Draconic Armour",
-            "rarity": 2
+            "rarity": 4
         }
     }
 
@@ -652,7 +820,7 @@ def main():
 
     # riddles = create_batch_of_riddles(5)
     # riddles[0](test_char)
-    royal_knight_angelozzi()(test_char)
+    # royal_mage_angelozzi()(test_char)
     # battles = create_batch_of_enemy_battles(5)
     # battles[0](test_char)
 

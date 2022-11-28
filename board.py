@@ -15,7 +15,8 @@
 import itertools
 
 from helpers import print_in_color
-from actions import get_generic_actions, get_generic_room_description, royal_knight_angelozzi
+from actions import get_generic_actions, get_generic_room_description, \
+    royal_mage_angelozzi, lord_commander_ymir, god_king_thompson
 
 
 def test_challenge():
@@ -36,8 +37,8 @@ def make_board(rows, columns) -> dict:
             }
         },
         (4, 4): {
-            "description": "Mini Boss 1: Royal Knight Angelozzi",
-            "action": royal_knight_angelozzi(),
+            "description": "Royal Mage Angelozzi, Left Wing of Alyndelle",
+            "action": royal_mage_angelozzi(),
             "solved": False,
             "directions": {
                 "north": (4, 5),
@@ -47,8 +48,8 @@ def make_board(rows, columns) -> dict:
             }
         },
         (7, 7): {
-            "description": "Mini Boss 2: ",
-            "action": test_challenge,
+            "description": "Lord-Commander Ymir, Right Wing of Alyndelle",
+            "action": lord_commander_ymir(),
             "solved": False,
             "directions": {
                 "north": (7, 8),
@@ -58,8 +59,8 @@ def make_board(rows, columns) -> dict:
             }
         },
         (10, 11): {
-            "description": "Final Boss: God King Thompson",
-            "action": test_challenge,
+            "description": "God-King Thompson, the God Slayer",
+            "action": god_king_thompson(),
             "solved": False,
             "directions": {
                 "north": None,
