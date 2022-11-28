@@ -1,5 +1,6 @@
 from board import make_board, describe_current_location, is_valid_move, print_board
-from character import make_character, is_alive, move_character, get_character_name, show_stats
+from character import make_character, is_alive, move_character, get_character_name, show_stats, leveled_up, \
+    level_up_sequence
 from helpers import get_user_choice, print_in_color
 from actions import cell_description, opening_dialogue, game_over, game_completed
 
@@ -41,9 +42,8 @@ def game() -> None:
             else:
                 print_in_color("\nYou have already completed your duties here, please move on.\n", "cyan")
 
-            # function to check if character leveled up, died, got items, etc.
-                # if they pick up a special item or something and there is addition challenge then start that
-                # if they levelled up, maybe print some cool ascii art or something
+            if leveled_up(character):
+                level_up_sequence(character)
         else:
             print_in_color("There is no path in that direction, you can't walk through walls!!", "red")
 
