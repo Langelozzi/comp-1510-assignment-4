@@ -215,7 +215,7 @@ def empty_room(character: dict) -> None:
 
 
 def generate_enemy_battle(enemy: dict):
-    def fight(character: dict) -> None:
+    def fight(character: dict) -> bool:
         print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
 
         while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
@@ -238,6 +238,7 @@ def generate_enemy_battle(enemy: dict):
             print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
             print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
 
+        enemy["current_hp"] = enemy["max_hp"]
         if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
             print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
 
@@ -258,6 +259,10 @@ def generate_enemy_battle(enemy: dict):
                 print_in_color(f"[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]", "yellow")
 
             print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+
+            return True
+
+        return False
 
     def enemy_battle(character: dict) -> bool:
         print_in_color(f"Out of the corner of your eye you see a {enemy['name']} appear!\n", "cyan")
@@ -281,8 +286,7 @@ def generate_enemy_battle(enemy: dict):
             decision = cleanse(input())
 
         if int(decision) == 1:
-            fight(character)
-            return True
+            return fight(character)
         else:
             print_in_color(f"\nAs you turn to flee the {enemy['name']} says:", "cyan")
             print("I should have guessed. You do seem like a cowardly creature. I will be here if you wish "
@@ -306,7 +310,7 @@ def royal_knight_angelozzi():
                     }
                 }
 
-    def fight(character: dict) -> None:
+    def fight(character: dict) -> bool:
         print_in_color(f"The giant knight notices you, he readies his staff: \n", "cyan")
         print("You wretched createre, how dare you stain this sacred haven with your miserable existence.\n"
               "On my honour as the Royal Knight of Alyndelle, I will eliminate you.\n")
@@ -355,7 +359,9 @@ def royal_knight_angelozzi():
 
             print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
-            print(character)
+            return True
+
+        return False
 
     def angelozzi_battle(character: dict) -> bool:
         print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like an giant "
@@ -384,8 +390,7 @@ def royal_knight_angelozzi():
             decision = cleanse(input())
 
         if int(decision) == 1:
-            fight(character)
-            return True
+            return fight(character)
         else:
             print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
             return False
@@ -611,11 +616,6 @@ def get_generic_actions():
     random.shuffle(actions)
 
     return actions
-
-
-def game_over(character: dict) -> None:
-    # replace with ascii art and message
-    print("Game Over")
 
 
 def game_completed(character: dict) -> None:
