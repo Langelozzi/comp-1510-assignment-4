@@ -158,6 +158,10 @@ def is_valid_move(direction: str, board: dict, character: dict) -> bool:
         return False
 
 
+def boss_defeated(board: dict) -> bool:
+    return True if board[(10, 11)]['solved'] else False
+
+
 def main():
     rows = 10
     columns = 10

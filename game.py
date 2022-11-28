@@ -1,4 +1,4 @@
-from board import make_board, describe_current_location, is_valid_move, print_board
+from board import make_board, describe_current_location, is_valid_move, print_board, boss_defeated
 from character import make_character, is_alive, move_character, get_character_name, show_stats, leveled_up, \
     level_up_sequence, died
 from helpers import get_user_choice, print_in_color
@@ -47,6 +47,8 @@ def game() -> None:
 
             if not is_alive(character):
                 died(character)
+
+            achieved_goal = boss_defeated(board)
         else:
             print_in_color("There is no path in that direction, you can't walk through walls!!", "red")
 
