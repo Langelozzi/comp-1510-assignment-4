@@ -246,7 +246,9 @@ def generate_enemy_battle(enemy: dict):
 
             # gain enemy item if they have one, and it's rarity is more than the one you have
             if enemy["item"] and (enemy["item"]["rarity"] > character[enemy["item"]["type"]]["rarity"]):
-                character[enemy["item"]["type"]] = enemy["item"]
+                character[enemy["item"]["type"]] = {
+                    key: value for key, value in enemy['item'].items() if key != 'type'
+                }
                 print_in_color(f"[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]", "yellow")
 
             print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
@@ -283,8 +285,7 @@ def generate_enemy_battle(enemy: dict):
 
 
 # Sub-Boss 1: Royal Knight
-def royal_knight_Angelozzi():  # does this part function needs to be annotated
-
+def royal_knight_angelozzi():
     angelozzi = {
                 "name": "Royal Knight Angelozzi",
                 "max_hp": 250,
@@ -330,17 +331,22 @@ def royal_knight_Angelozzi():  # does this part function needs to be annotated
             character["xp"] += earned_xp
 
             # gain enemy item if they have one, and it's rarity is more than the one you have
-            if angelozzi["item"] and (angelozzi["item"]["rarity"] > character[angelozzi["item"]["type"]]["rarity"]):
-                character[angelozzi["item"]["type"]] = angelozzi["item"]
-                print_in_color(f"[{character['name']} | {angelozzi['item']['type']}: +{angelozzi['item']['name']}]", "yellow")
+            if (angelozzi["item"]) and (angelozzi["item"]["rarity"] > character[angelozzi["item"]["type"]]["rarity"]):
+                character[angelozzi["item"]["type"]] = {
+                    key: value for key, value in angelozzi['item'].items() if key != 'type'
+                }
+                print_in_color(f"[{character['name']} | {angelozzi['item']['type']}: +'{angelozzi['item']['name']}']",
+                               "yellow")
 
             print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+
+            print(character)
 
     def angelozzi_battle(character: dict):
         print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like an giant "
                        "underground cave.\n\nYou notice a cathedral in the distance.\n\n"
                        "'How can someone build something so magnificent underground,' you thought.\n", "cyan")
-        print_in_color("As you stand there in awe, you notice a huge knight clad in royal armour towering over the"
+        print_in_color("As you stand there in awe, you notice a huge knight clad in royal armour towering over the "
                        "cathedral entrance.\n", "cyan")
         print_in_color(f"You approach the giant knight to observe them better.\n", "cyan")
 
@@ -598,8 +604,14 @@ def main():
         "damage": 20,
         "level": 4,
         "abilities": ["Fireball"],
-        "staff": "Draconic Staff",
-        "armour": "Draconic Armour"
+        "staff": {
+            "name": "Draconic Staff",
+            "rarity": 2
+        },
+        "armour": {
+            "name": "Draconic Armour",
+            "rarity": 2
+        }
     }
 
     # skeleton_soldier(test_char)
@@ -610,7 +622,7 @@ def main():
 
     # riddles = create_batch_of_riddles(5)
     # riddles[0](test_char)
-    royal_knight_Angelozzi()(test_char)
+    royal_knight_angelozzi()(test_char)
     # battles = create_batch_of_enemy_battles(5)
     # battles[0](test_char)
 
