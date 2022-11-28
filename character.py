@@ -87,9 +87,9 @@ def show_stats(character: dict) -> None:
         ("Level", character['level']),
         ("HP", f"{character['current_hp']}/{character['max_hp']}"),
     ]
-    general_stats += ("XP (to next level)", f"{character['xp']}/60") \
-        if character["level"] < 3 else \
-        ("XP (to next level)", "Max")
+    xp_stat = ("XP (to next level)", f"{character['xp']}/60") if character["level"] < 3 \
+        else ("XP (to next level)", "Max")
+    general_stats.append(xp_stat)
 
     for title, stat in general_stats:
         print('{:<18}'.format("|"), end="")
