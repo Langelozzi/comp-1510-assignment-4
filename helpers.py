@@ -38,6 +38,13 @@ def cleanse(text: str) -> str:
     return text.lower().strip()
 
 
+def convert_first_index_to_str(iterable: tuple) -> tuple:
+    new_iterable = [element for element in iterable]
+    new_iterable[0] = str(new_iterable[0])
+
+    return tuple(new_iterable)
+
+
 def get_user_choice(board: dict, character: dict) -> str:
     current_room = board[character["position"]]
     possible_directions = [direction for direction, coord in current_room["directions"].items() if coord is not None]
@@ -45,7 +52,8 @@ def get_user_choice(board: dict, character: dict) -> str:
     options = [('q', "quit"), ('s', "show stats")]
     options += list(enumerate(possible_directions, start=1))
 
-    # use map to change numbers to strings
+    options = list(map(convert_first_index_to_str, options))
+    commands = [command for command, option in options]
 
     print_in_color("\n{:<15}Option".format("Command"), "blue")
 
@@ -55,9 +63,9 @@ def get_user_choice(board: dict, character: dict) -> str:
     print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
 
     user_choice = cleanse(input())
-    while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(0, len(options) + 1))):
+    while user_choice not in commands:
         print_in_color("That is not a valid choice, try again.", "red")
         print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
         user_choice = cleanse(input())
 
-    return [direction for number, direction in options if number == int(user_choice)][0]
+    return [direction for number, direction in options if number == user_choice][0]
