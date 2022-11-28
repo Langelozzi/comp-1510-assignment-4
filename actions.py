@@ -71,7 +71,7 @@ def opening_dialogue() -> None:
     #     "Gods proclaimed. 'The flame \n", "cyan")
     # time.sleep(3)
     print_in_color(
-        "Someone...please defeat the God King Angelozzi and rekindle the fire of humanity.\n", "cyan")
+        "Someone...please defeat the God King Thompson and rekindle the fire of humanity.\n", "cyan")
     time.sleep(3)
     print_in_color(r"""\
                                                                                                     
@@ -280,6 +280,94 @@ def generate_enemy_battle(enemy: dict):
                   "to return with a bit more courage..")
 
     return enemy_battle
+
+
+# Sub-Boss 1: Royal Knight
+def royal_knight_Angelozzi():  # does this part function needs to be annotated
+
+    angelozzi = {
+                "name": "Royal Knight Angelozzi",
+                "max_hp": 250,
+                "current_hp": 250,
+                "level": 7,
+                "item": {
+                    "type": "staff",
+                    "name": "Angelozzi's Ill-Omen",
+                    "rarity": 5
+                    }
+                }
+
+    def fight(character: dict) -> None:
+        print_in_color(f"The giant knight notices you, he readies his staff: \n", "cyan")
+        print("You wretched createre, how dare you stain this sacred haven with your miserable existence.\n"
+              "On my honour as the Royal Knight of Alyndelle, I will eliminate you.\n")
+        print_in_color(f"Both you and the {angelozzi['name']} step forward, and prepare for a battle..\n", "cyan")
+
+        while (character["current_hp"] > 0) and (angelozzi["current_hp"] > 0):
+            print_abilities(character)
+            chosen_ability = select_ability(character)
+
+            print_in_color(f"Your {chosen_ability} hits the {angelozzi['name']}", "cyan")
+            # enemy health will decrease by character damage * character level * (1 + (0.1 * sword rarity))
+            try:
+                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
+            except TypeError:
+                damage_given = character["damage"] * character["level"]
+            angelozzi["current_hp"] -= damage_given
+
+            print_in_color(f"But the {angelozzi['name']}'s attack lands successfully as well", "cyan")
+            # character health with decrease by 10 * (1 + (0.2 * enemy level))
+            damage_taken = 10 * (1 + (0.2 * angelozzi["level"]))
+            character["current_hp"] -= damage_taken
+
+            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
+            print(f"[{angelozzi['name']} | hp: {angelozzi['current_hp']}/{angelozzi['max_hp']}]")
+
+        if (angelozzi["current_hp"] <= 0) and (character["current_hp"] > 0):
+            print_in_color(f"\nCongratulations! You have defeated the {angelozzi['name']}", "cyan")
+
+            earned_xp = 12 * angelozzi["level"]
+            character["xp"] += earned_xp
+
+            # gain enemy item if they have one, and it's rarity is more than the one you have
+            if angelozzi["item"] and (angelozzi["item"]["rarity"] > character[angelozzi["item"]["type"]]["rarity"]):
+                character[angelozzi["item"]["type"]] = angelozzi["item"]
+                print_in_color(f"[{character['name']} | {angelozzi['item']['type']}: +{angelozzi['item']['name']}]", "yellow")
+
+            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+
+    def angelozzi_battle(character: dict):
+        print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like an giant "
+                       "underground cave.\n\nYou notice a cathedral in the distance.\n\n"
+                       "'How can someone build something so magnificent underground,' you thought.\n", "cyan")
+        print_in_color("As you stand there in awe, you notice a huge knight clad in royal armour towering over the"
+                       "cathedral entrance.\n", "cyan")
+        print_in_color(f"You approach the giant knight to observe them better.\n", "cyan")
+
+        if character["level"] <= 3:  # max level is three?
+            print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
+                           f"you make your decision\n", "red")
+
+        print_in_color("{:<15}Choice".format("Command"), "blue")
+
+        options = list(enumerate(["Fight", "Flee"], start=1))
+        for number, option in options:
+            print(f"{number:<15}{option}")
+
+        print_in_color("\nWhat would you like to do?", "purple")
+
+        decision = cleanse(input())
+        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
+            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+            print_in_color("\nWhat would you like to do?", "purple")
+            decision = cleanse(input())
+
+        if int(decision) == 1:
+            fight(character)
+        else:
+            print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
+
+    return angelozzi_battle
 
 
 def generate_riddle(riddle_data: dict):
@@ -501,7 +589,18 @@ def get_generic_actions():
 
 
 def main():
-    test_char = make_character("joe")
+    test_char = {
+        "name": "Ymir",
+        "position": (1, 1),
+        "max_hp": 100,
+        "current_hp": 100,
+        "xp": 0,
+        "damage": 20,
+        "level": 4,
+        "abilities": ["Fireball"],
+        "staff": "Draconic Staff",
+        "armour": "Draconic Armour"
+    }
 
     # skeleton_soldier(test_char)
     # print(get_generic_room_description())
@@ -511,9 +610,9 @@ def main():
 
     # riddles = create_batch_of_riddles(5)
     # riddles[0](test_char)
-
-    battles = create_batch_of_enemy_battles(5)
-    battles[0](test_char)
+    royal_knight_Angelozzi()(test_char)
+    # battles = create_batch_of_enemy_battles(5)
+    # battles[0](test_char)
 
 
 if __name__ == '__main__':
