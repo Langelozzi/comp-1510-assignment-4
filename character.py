@@ -56,51 +56,54 @@ def select_ability(character: dict) -> tuple:
 
 
 def show_stats(character: dict) -> None:
-    print('+------------------------------------------------------------------+')
+    print('+----------------------------------------------------------------------------------+')
     print('|', end="")
-    print_in_color('{:^66}'.format(character["name"]), "red", end="")
+    print_in_color('{:^82}'.format(character["name"]), "red", end="")
     print('|')
-    print('+------------------------------------------------------------------+')
+    print('+----------------------------------------------------------------------------------+')
 
-    print('{:<12}'.format("|"), end="")
-    print_in_color('{:<20}'.format("Current Coordinates"), "blue", end="")
-    print('{:<35}'.format(f": {character['position']}"), end="")
+    general_stats = (
+        ("Current Coordinates", character['position']),
+        ("Level", character['level']),
+        ("HP", f"{character['current_hp']}/{character['max_hp']}"),
+        ("XP (to next level)", f"{character['xp']}/100"),
+        ("Ability Power", character['damage'])
+    )
+    for title, stat in general_stats:
+        print('{:<18}'.format("|"), end="")
+        print_in_color(f"{title:<20}", "blue", end="")
+        print("{:<45}".format(f": [ {stat} ]"), end="")
+        print('|')
+
+    print('+----------------------------------------------------------------------------------+')
+
+    inventory_stats = (
+        ("Staff", "staff"),
+        ("Armour", "armour")
+    )
+    for item, key in inventory_stats:
+        print('{:<18}'.format("|"), end="")
+        print_in_color(f"{item:<20}", "blue", end="")
+        try:
+            print('{:<54}'.format(f": [ {character[key]['name']} (\033[93m{'*' * character[key]['rarity']}\033[0m) ]"),
+                  end="")
+        except TypeError:
+            print('{:<45}'.format(f": None"), end="")
+        print('|')
+
+    print('+----------------------------------------------------------------------------------+')
+
+    print('{:<18}'.format("|"), end="")
+    print_in_color("{:<20}".format("Abilities"), "blue", end="")
+    print("{:<45}".format(f": [ {character['abilities'][0]} ]"), end="")
     print('|')
 
-    print('{:<12}'.format("|"), end="")
-    print_in_color('{:<20}'.format("Level"), "blue", end="")
-    print('{:<35}'.format(f": {character['level']}"), end="")
-    print('|')
+    for ability in character['abilities'][1:]:
+        print('{:<38}'.format("|"), end="")
+        print("{:<45}".format(f"  [ {ability} ]"), end="")
+        print('|')
 
-    print('{:<12}'.format("|"), end="")
-    print_in_color('{:<20}'.format("HP"), "blue", end="")
-    print('{:<35}'.format(f": {character['current_hp']}/{character['max_hp']}"), end="")
-    print('|')
-
-    print('{:<12}'.format("|"), end="")
-    print_in_color('{:<20}'.format("XP"), "blue", end="")
-    print('{:<35}'.format(f": {character['xp']}/100"), end="")
-    print('|')
-
-    print('{:<12}'.format("|"), end="")
-    print_in_color('{:<20}'.format("Sword"), "blue", end="")
-    print('{:<35}'.format(f": {character['sword']}"), end="")
-    print('|')
-
-    print('{:<12}'.format("|"), end="")
-    print_in_color('{:<20}'.format("Shield"), "blue", end="")
-    print('{:<35}'.format(f": {character['shield']}"), end="")
-    print('|')
-
-    print('{:<12}'.format("|"), end="")
-    print_in_color('{:<20}'.format("Talisman"), "blue", end="")
-    try:
-        print('{}'.format(f": {character['talisman']['name']} ("), end="")
-        print_in_color(f"{'*' * character['talisman']['rarity']}", "yellow", end="")
-        print("{:<17}".format(")"), end="")
-    except TypeError:
-        print('{:<35}'.format(f": {character['talisman']}"), end="")
-    print('|')
+    print('+----------------------------------------------------------------------------------+')
 
 
 def main() -> None:
