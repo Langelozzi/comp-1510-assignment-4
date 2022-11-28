@@ -12,7 +12,7 @@
     "ability": "Adula's Moonblade"
   },
   {
-    "question": "I don’t have eyes,\n\nBut once I did see.\n\nI once had thoughts,\n\nNow white and empty.\n\nOf what do I speak?",
+    "question": "I don't have eyes,\n\nBut once I did see.\n\nI once had thoughts,\n\nNow white and empty.\n\nOf what do I speak?",
     "options": ["Death", "Chrysalis", "Skull"],
     "answer": "Skull",
     "ability": "Ancient Dragons' Lightning Spear"
@@ -30,13 +30,13 @@
     "ability": "Dragonclaw"
   },
   {
-    "question":"What is it that given one,\n\nyou’ll have either two or none?\n\nOf what do I speak?",
+    "question":"What is it that given one,\n\nyou'll have either two or none?\n\nOf what do I speak?",
     "options": ["Coin", "Choice", "Twins"],
     "answer": "Choice",
     "ability": "Collapsing Stars"
   },
   {
-    "question": "If you drop me, I’m sure to crack.\n\nGive me a smile, and I’ll always smile back.\n\nOf what do I speak?",
+    "question": "If you drop me, I'm sure to crack.\n\nGive me a smile, and I'll always smile back.\n\nOf what do I speak?",
     "options":["Mirror", "Vase", "Pond"],
     "answer": "Mirror",
     "ability": "Zamor's Ice Storm"
@@ -48,7 +48,7 @@
     "ability": null
   },
   {
-    "question": "A father’s child,\n\na mother’s child,\n\nyet no one’s son.\n\nOf who do I speak?",
+    "question": "A father's child,\n\na mother's child,\n\nyet no one's son.\n\nOf who do I speak?",
     "options": ["Step-son", "Pet", "Daughter"],
     "answer": "Daughter",
     "ability": null
@@ -66,7 +66,7 @@
     "ability": null
   },
   {
-    "question": "I am born in fear,\n\nraised in truth,\n\nand I come to my own in deed.\n\nWhen comes a time that I’m called forth,\n\nI come to serve the cause of need.\n\nOf what do I speak?",
+    "question": "I am born in fear,\n\nraised in truth,\n\nand I come to my own in deed.\n\nWhen comes a time that I'm called forth,\n\nI come to serve the cause of need.\n\nOf what do I speak?",
     "options": ["Courage", "Justice", "Revenge"],
     "answer": "Courage",
     "ability": null
@@ -114,7 +114,7 @@
     "ability": "Flame, Fall Upon Them"
   },
   {
-    "question": "One by one we fall from heaven down into the depths of past,\n\nAnd our world is ever upturned so that yet some time we’ll last.\n\nOf what do I speak?",
+    "question": "One by one we fall from heaven down into the depths of past,\n\nAnd our world is ever upturned so that yet some time we'll last.\n\nOf what do I speak?",
     "options": ["Falling Star", "Sands in an hourglass", "Rain"],
     "answer": "Sands in an hourglass",
     "ability": "Dragonclaw"
@@ -138,7 +138,7 @@
   "ability": null
   },
   {
-  "question": "A thousand coloured folds stretch toward the sky,\n\nAtop a tender strand,\n\nRising from the land,\n\n‘Til killed by maiden’s hand,\n\nPerhaps a token of love, perhaps to say goodbye.\n\nOf what do I speak?",
+  "question": "A thousand coloured folds stretch toward the sky,\n\nAtop a tender strand,\n\nRising from the land,\n\n‘Til killed by maiden's hand,\n\nPerhaps a token of love, perhaps to say goodbye.\n\nOf what do I speak?",
   "options": ["Butterfly", "Rainbow", "Flower"],
   "answer": "Flower",
   "ability": null
