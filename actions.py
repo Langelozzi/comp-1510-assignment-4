@@ -441,7 +441,7 @@ def generate_riddle(riddle_data: dict):
         else:
             difference = character["max_hp"] - character["current_hp"]
             character["current_hp"] = character["max_hp"]
-            print_in_color(f"[{character['name']} | xp: +{difference}]", "yellow")
+            print_in_color(f"[{character['name']} | hp: +{difference}]", "yellow")
 
     def riddle(character: dict) -> True:
         print_in_color("As you enter a dark, candle-lit room; you notice a mysterious potion placed by your feet.\n"
