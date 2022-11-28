@@ -223,9 +223,9 @@ def generate_enemy_battle(enemy: dict):
             chosen_ability = select_ability(character)
 
             print_in_color(f"Your {chosen_ability} hits the {enemy['name']}", "cyan")
-            # enemy health will decrease by character damage * character level * (1 + (0.1 * sword rarity))
+            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
             try:
-                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["sword"]["rarity"]))
+                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
             except TypeError:
                 damage_given = character["damage"] * character["level"]
             enemy["current_hp"] -= damage_given
@@ -244,8 +244,14 @@ def generate_enemy_battle(enemy: dict):
             earned_xp = 12 * enemy["level"]
             character["xp"] += earned_xp
 
+            enemy_item = enemy["item"]
+            try:
+                character_item_rarity = character[enemy_item["type"]]["rarity"]
+            except TypeError:
+                character_item_rarity = 0
+
             # gain enemy item if they have one, and it's rarity is more than the one you have
-            if enemy["item"] and (enemy["item"]["rarity"] > character[enemy["item"]["type"]]["rarity"]):
+            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
                 character[enemy["item"]["type"]] = {
                     key: value for key, value in enemy['item'].items() if key != 'type'
                 }
@@ -253,7 +259,7 @@ def generate_enemy_battle(enemy: dict):
 
             print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
-    def enemy_battle(character: dict):
+    def enemy_battle(character: dict) -> bool:
         print_in_color(f"Out of the corner of your eye you see a {enemy['name']} appear!\n", "cyan")
 
         if character["level"] < enemy["level"]:
@@ -276,10 +282,12 @@ def generate_enemy_battle(enemy: dict):
 
         if int(decision) == 1:
             fight(character)
+            return True
         else:
             print_in_color(f"\nAs you turn to flee the {enemy['name']} says:", "cyan")
             print("I should have guessed. You do seem like a cowardly creature. I will be here if you wish "
                   "to return with a bit more courage..")
+            return False
 
     return enemy_battle
 
@@ -309,7 +317,7 @@ def royal_knight_angelozzi():
             chosen_ability = select_ability(character)
 
             print_in_color(f"Your {chosen_ability} hits the {angelozzi['name']}", "cyan")
-            # enemy health will decrease by character damage * character level * (1 + (0.1 * sword rarity))
+            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
             try:
                 damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
             except TypeError:
@@ -331,7 +339,14 @@ def royal_knight_angelozzi():
             character["xp"] += earned_xp
 
             # gain enemy item if they have one, and it's rarity is more than the one you have
-            if (angelozzi["item"]) and (angelozzi["item"]["rarity"] > character[angelozzi["item"]["type"]]["rarity"]):
+            enemy_item = angelozzi["item"]
+            try:
+                character_item_rarity = character[enemy_item["type"]]["rarity"]
+            except TypeError:
+                character_item_rarity = 0
+
+            # gain enemy item if they have one, and it's rarity is more than the one you have
+            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
                 character[angelozzi["item"]["type"]] = {
                     key: value for key, value in angelozzi['item'].items() if key != 'type'
                 }
@@ -342,7 +357,7 @@ def royal_knight_angelozzi():
 
             print(character)
 
-    def angelozzi_battle(character: dict):
+    def angelozzi_battle(character: dict) -> bool:
         print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like an giant "
                        "underground cave.\n\nYou notice a cathedral in the distance.\n\n"
                        "'How can someone build something so magnificent underground,' you thought.\n", "cyan")
@@ -370,8 +385,10 @@ def royal_knight_angelozzi():
 
         if int(decision) == 1:
             fight(character)
+            return True
         else:
             print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
+            return False
 
     return angelozzi_battle
 
@@ -421,13 +438,13 @@ def generate_riddle(riddle_data: dict):
             character["current_hp"] = character["max_hp"]
             print_in_color(f"[{character['name']} | xp: +{difference}]", "yellow")
 
-    def riddle(character: dict) -> None:
+    def riddle(character: dict) -> True:
         print_in_color("As you enter a dark, candle-lit room; you notice a mysterious potion placed by your feet.\n"
                        "You picked it up out of curiosity, but it started to shake violently.", "cyan")
         print_in_color("***POOF***", "cyan")
         print_in_color("Through the thick purple smoke, a Phantom Imp appears, with unnaturally wide smile, \n"
                        "and in a high-pitch crackle, speaks:", "cyan")
-        time.sleep(8)
+        time.sleep(3)
 
         print_in_color(
             "            _.----._     _.---.\n"
@@ -492,12 +509,14 @@ def generate_riddle(riddle_data: dict):
         user_answer_string = [option for number, option in options if number == int(user_answer)][0]
         if user_answer_string == riddle_data["answer"]:
             riddle_success(character)
+            return True
         else:
             print_in_color(f"\n{character['name']}, I knew a creature such as yourself was not intellectually gifted. "
                            f"That answer is far from correct and for that you must be punished!", "red")
             lost_hp = round(character["current_hp"] * 0.25)
             character["current_hp"] -= lost_hp
             print_in_color(f"[{character['name']} | hp: -{lost_hp}]", "yellow")
+            return False
 
     return riddle
 
@@ -592,6 +611,14 @@ def get_generic_actions():
     random.shuffle(actions)
 
     return actions
+
+
+def game_over(character: dict) -> None:
+    print("Game Over")
+
+
+def game_completed(character: dict) -> None:
+    print("You won the game")
 
 
 def main():
