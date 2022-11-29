@@ -25,11 +25,15 @@ from actions import get_generic_actions, get_generic_room_description, \
 
 def make_board(rows, columns) -> dict:
     """
-    Generate a 10 by 10 game board
+    Generate coordinate for all actions, room descriptions and determines
 
-    :param rows:
-    :param columns:
-    :return:
+    :param rows: a positive integer
+    :param columns: a positive integer
+    :precondition: rows must be a positive non-zero integer
+    :precondition: columns must be a positive non-zero integer
+    :postcondition: return a dictionary called board that contain game relevant information
+                    for every tile in the game 
+    :return: a dictionary called board that contain game relevant information for every tile in the game
     """
     board = {
         (1, 1): {
@@ -114,15 +118,25 @@ def make_board(rows, columns) -> dict:
 
 def print_board(board: dict, rows: int, columns: int, coords: tuple, boss_1_coords: tuple, boss_2_coords: tuple):
     """
-    Print a 10 by 10 game board with unicode markings for uncleared rooms, sub-bosses and a final boss.
+    Print a game board indicating the map border, uncleared rooms, sub-bosses and a final boss.
+    
+    The size is determined by the parameter that is passed through this function.
 
-    :param board:
-    :param rows:
-    :param columns:
-    :param coords:
-    :param boss_1_coords:
-    :param boss_2_coords:
-    :return:
+    The board dictionary is not modified during execution.
+
+    :param board: a dictionary in the form of our game board with at least the key "solved"
+    :param rows: a positive integer
+    :param columns: a positive integer
+    :param coords: a tuple of positive non-zero integers
+    :param boss_1_coords: a tuple of positive non-zero integers which is determined in the main game function
+    :param boss_2_coords: a tuple of positive non-zero integers which is determined in the main game function
+    :precondition: board must be a dictionary in the form of our game board with at least the key "solved"
+    :precondition: rows must be a positive non-zero integer
+    :precondition: columns must be a positive non-zero integer
+    :precondition: coords must be a tuple of positive non-zero integers
+    :precondition: boss_1_coords must be a tuple of positive non-zero integers
+    :precondition: boss_2_coords must be a tuple of positive non-zero integers
+    :postcondition: print a game board indicating the map border, uncleared rooms, sub-bosses and a final boss
     """
     x_pos, y_pos = coords
     boss_1_x, boss_1_y = boss_1_coords
@@ -161,10 +175,21 @@ def print_board(board: dict, rows: int, columns: int, coords: tuple, boss_1_coor
 
 
 def describe_current_location(board: dict, character: dict) -> None:
+    """
+    Print the description of the room that the player is currently in.
+
+    :param board: a dictionary in the form of our game board with at least the key "description"
+    :param character: a dictionary in the form of our game character with at least the key "position"
+    :precondition: board must be a dictionary in the form of our game with at least the key "description"
+    :precondition: character must be a dictionary in the form of our game character with at least the key "position"
+    :postcondition: prints the content of the key "description" from board dictionary
+    :postcondition: parameters passed through this function will remain unchanged
+    """
     current_position = character["position"]
     print_in_color(board[current_position]["description"], "cyan")
 
 
+# CAN I DOCTEST THIS?
 def is_valid_move(direction: str, board: dict, character: dict) -> bool:
     """
     Determine if the user input for player movement is valid.
@@ -173,10 +198,12 @@ def is_valid_move(direction: str, board: dict, character: dict) -> bool:
     :param board: a dictionary in the form of our game board with all proper keys
     :param character: a dictionary in the form of our game character with at least the key "position"
     :precondition: board must be a dictionary in the form of our game
-    :precondition:
-    :precondition:
-    :postcondition: return
-    :return:
+    :precondition: direction must be the following strings in lowercase: "north", "east", "south", "west"
+    :precondition: character must be a dictionary in the form of our game character with at least the key "position"
+    :postcondition: return True if an x or y coordinates of a next move exists; else False
+    :postcondition: parameters passed through this function will remain unchanged
+    :return: True if an x or y coordinates of a next move exists; else False if the next coordinate has
+             None value
     """
     current_position = character["position"]
     try:
