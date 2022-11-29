@@ -6,6 +6,13 @@ from actions import cell_description, opening_dialogue, game_completed
 
 
 def game() -> None:
+    """
+    Control the flow of the game.
+
+    Create necessary data structures and contain game loop.
+
+    :postcondition: executes the game loop until game is quit or completed
+    """
     rows = 10
     columns = 10
     achieved_goal = False
