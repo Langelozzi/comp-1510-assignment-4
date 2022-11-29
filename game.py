@@ -13,7 +13,26 @@ def game() -> None:
     board = make_board(rows, columns)
 
     character_name = get_character_name()
-    character = make_character(character_name)
+    # character = make_character(character_name)
+    character = {
+        "name": "Test Character",
+        "position": (1, 1),
+        "max_hp": 100,
+        "current_hp": 100,
+        "xp": 0,
+        "damage": 20,
+        "level": 3,
+        "abilities": ["Fireball"],
+        "staff": {
+            "type": "staff",
+            "name": "Spellsword's Corrupted Staff",
+            "rarity": 3
+        },
+        "armour": {
+            "name": "Draconic Armour",
+            "rarity": 4
+        }
+    }
 
     # opening_dialogue()
     # cell_description()
