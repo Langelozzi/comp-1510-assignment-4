@@ -33,7 +33,7 @@ def opening_dialogue() -> None:
     print_in_color(
         "Someone...please defeat the God King Thompson and rekindle the fire of humanity.\n", "cyan")
     time.sleep(3)
-    print_in_color(r"""\
+    print_in_color(r"""
                                                                                                     
                                                       %#&&%%#*                                      
                                                  #(#(&##&                                           
@@ -646,7 +646,55 @@ def get_generic_actions():
 
 def game_completed(character: dict) -> None:
     # replace with ascii art and message
-    print("You won the game")
+    # print_in_color("...\n", "cyan")
+    # time.sleep(1)
+    # print_in_color(
+    #     "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of  \n"
+    #     "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n", "cyan")
+    # time.sleep(1)
+    # print_in_color(
+    #     "However, power such as these often corrupts, and the God King of Aleyndelle were no different. His \n"
+    #     "arrogance lead him to enslaving an angel to extract their power to truly transcend the realm of \n"
+    #     "humanhood. His greed and transgression angered the Gods leading the world into the Age of Strife.\n"
+    #     "The gods eventually slayed the King and as punishment, snuff out the flame of humanity, casting \n"
+    #     " humanity into darkness...\n", "cyan")
+    # time.sleep(1)
+    # print_in_color(
+    #     "Gods proclaimed. 'The flame \n", "cyan")
+    # time.sleep(3)
+    print_in_color("""
+
+                                      _A_
+                                     / | \ 
+                                    |.-=-.|
+                                    )\_|_/(
+                                 .=='\   /`==.
+                               .'\   (`:')   /`.
+                             _/_ |_.-' : `-._|__\_
+                            <___>'\    :   / `<___>
+                            /  /   >=======<  /  /
+                          _/ .'   /  ,-:-.  \/=,'
+                         / _/    |__/v^v^v\__) \ 
+                         \(\)     |V^V^V^V^V|\_/
+                          (\ \    \`---|---'/
+                            \ \    \-._|_,-/
+                             \ \    |__|__|
+                              \ \  <___X___>
+                               \ \  \..|../
+                                \ \  \ | /
+                                 \ \ /V|V\ 
+                                  \|/  |  \ 
+                                   '--' `--`   by hjw
+                          ______               _   _                                                             
+                         |  ____|             | | | |                                                            
+                         | |__     _ __     __| | | |                                                            
+                         |  __|   | '_ \   / _` | | |                                                            
+                         | |____  | | | | | (_| | |_|                                                            
+                         |______| |_| |_|  \__,_| (_)                                                            
+                            \U0001F389 You won the game! \U0001F389 	                                                    
+                           \U0001F970 Thanks for playing! \U0001F970 	 	                                                    
+    """, "cyan")
+    print("")
 
 
 def main():
