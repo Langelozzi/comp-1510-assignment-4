@@ -19,11 +19,18 @@ from actions import get_generic_actions, get_generic_room_description, \
     royal_mage_angelozzi, lord_commander_ymir, god_king_thompson
 
 
-def test_challenge():
-    print("this is a test challenge")
+# def test_challenge():
+#     print("this is a test challenge")
 
 
 def make_board(rows, columns) -> dict:
+    """
+    Generate a 10 by 10 game board
+
+    :param rows:
+    :param columns:
+    :return:
+    """
     board = {
         (1, 1): {
             "description": "Looks like you have come back to the start, try the opposite direction of the cell",
@@ -106,6 +113,17 @@ def make_board(rows, columns) -> dict:
 
 
 def print_board(board: dict, rows: int, columns: int, coords: tuple, boss_1_coords: tuple, boss_2_coords: tuple):
+    """
+    Print a 10 by 10 game board with unicode markings for uncleared rooms, sub-bosses and a final boss.
+
+    :param board:
+    :param rows:
+    :param columns:
+    :param coords:
+    :param boss_1_coords:
+    :param boss_2_coords:
+    :return:
+    """
     x_pos, y_pos = coords
     boss_1_x, boss_1_y = boss_1_coords
     boss_2_x, boss_2_y = boss_2_coords
@@ -148,6 +166,18 @@ def describe_current_location(board: dict, character: dict) -> None:
 
 
 def is_valid_move(direction: str, board: dict, character: dict) -> bool:
+    """
+    Determine if the user input for player movement is valid.
+
+    :param direction: one of the following strings in lowercase: "north", "east", "south", "west"
+    :param board: a dictionary in the form of our game board with all proper keys
+    :param character: a dictionary in the form of our game character with at least the key "position"
+    :precondition: board must be a dictionary in the form of our game
+    :precondition:
+    :precondition:
+    :postcondition: return
+    :return:
+    """
     current_position = character["position"]
     try:
         if board[current_position]["directions"][direction] is not None:
@@ -159,10 +189,31 @@ def is_valid_move(direction: str, board: dict, character: dict) -> bool:
 
 
 def boss_defeated(board: dict) -> bool:
+    """
+    Determine if the final boss is defeated.
+
+    Read through a dictionary of a module to determine if the final boss is defeated.
+    Return True if it is; else False.
+
+    :param board: a dictionary in the form of our game board with all proper keys
+    :precondition: board must be a dictionary in the form of our game board with
+                   at least the key "solved"
+    :postcondition: return True if a value tied to the 'solved' key in board is
+                    True; else False
+    :postcondition: board is unchanged
+    :return: True if a value tied to the 'solved' key in board[(10,11)] is True; else False
+
+    >>> test_board = { (10, 11): {"description": "God-King Thompson, the God Slayer", "action": god_king_thompson(), "solved": False, "directions": {"north": None, "east": None, "south": (10, 10), "west": None} } }
+    >>> boss_defeated(test_board)
+    False
+    """
     return True if board[(10, 11)]['solved'] else False
 
 
 def main():
+    """
+    Drive the Program.
+    """
     rows = 10
     columns = 10
 
