@@ -174,58 +174,60 @@ def empty_room(character: dict) -> None:
     print_in_color(f"{character['name']}, keep walking if you know what's good for you!", "cyan")
     print_in_color("You hastily make your decision..", "cyan")
 
+
 # Default Battles ------------------------------------------------------------------------------------------------------
-def generate_enemy_battle(enemy: dict):
-    def fight(character: dict) -> bool:
-        print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
+def fight(character: dict, enemy: dict) -> bool:
+    print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
 
-        while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
-            print_abilities(character)
-            chosen_ability = select_ability(character)
+    while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
+        print_abilities(character)
+        chosen_ability = select_ability(character)
 
-            print_in_color(f"Your {chosen_ability} hits the {enemy['name']}", "cyan")
-            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
-            try:
-                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
-            except TypeError:
-                damage_given = character["damage"] * character["level"]
-            enemy["current_hp"] -= damage_given
+        print_in_color(f"Your {chosen_ability} hits the {enemy['name']}", "cyan")
+        # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
+        try:
+            damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
+        except TypeError:
+            damage_given = character["damage"] * character["level"]
+        enemy["current_hp"] -= damage_given
 
-            print_in_color(f"But the {enemy['name']}'s attack lands successfully as well", "cyan")
-            # character health with decrease by 10 * (1 + (0.2 * enemy level))
-            damage_taken = 10 * (1 + (0.2 * enemy["level"]))
-            character["current_hp"] -= damage_taken
+        print_in_color(f"But the {enemy['name']}'s attack lands successfully as well", "cyan")
+        # character health with decrease by 10 * (1 + (0.2 * enemy level))
+        damage_taken = 10 * (1 + (0.2 * enemy["level"]))
+        character["current_hp"] -= damage_taken
 
-            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
-            print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
+        print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
+        print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
 
-        if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
-            print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
+    if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
+        print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
 
-            earned_xp = 15 * ((enemy["level"] - character["level"]) + 1)
-            character["xp"] += earned_xp if character["level"] < 3 else 0
+        earned_xp = 15 * ((enemy["level"] - character["level"]) + 1)
+        character["xp"] += earned_xp if character["level"] < 3 else 0
 
-            enemy_item = enemy["item"]
-            try:
-                character_item_rarity = character[enemy_item["type"]]["rarity"]
-            except TypeError:
-                character_item_rarity = 0
+        enemy_item = enemy["item"]
+        try:
+            character_item_rarity = character[enemy_item["type"]]["rarity"]
+        except TypeError:
+            character_item_rarity = 0
 
-            # gain enemy item if they have one, and it's rarity is more than the one you have
-            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
-                character[enemy["item"]["type"]] = {
-                    key: value for key, value in enemy['item'].items() if key != 'type'
-                }
-                print_in_color(f"[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]", "yellow")
+        # gain enemy item if they have one, and it's rarity is more than the one you have
+        if enemy_item and (enemy_item["rarity"] > character_item_rarity):
+            character[enemy["item"]["type"]] = {
+                key: value for key, value in enemy['item'].items() if key != 'type'
+            }
+            print_in_color(f"[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]", "yellow")
 
-            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
-
-            enemy["current_hp"] = enemy["max_hp"]
-            return True
+        print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
         enemy["current_hp"] = enemy["max_hp"]
-        return False
+        return True
 
+    enemy["current_hp"] = enemy["max_hp"]
+    return False
+
+
+def generate_enemy_battle(enemy: dict):
     def enemy_battle(character: dict) -> bool:
         print_in_color(f"Out of the corner of your eye you see a {enemy['name']} appear!\n", "cyan")
 
@@ -248,7 +250,7 @@ def generate_enemy_battle(enemy: dict):
             decision = cleanse(input())
 
         if int(decision) == 1:
-            return fight(character)
+            return fight(character, enemy)
         else:
             print_in_color(f"\nAs you turn to flee the {enemy['name']} says:", "cyan")
             print("I should have guessed. You do seem like a cowardly creature. I will be here if you wish "
@@ -262,8 +264,8 @@ def generate_enemy_battle(enemy: dict):
 def lord_commander_ymir():
     ymir = {
                 "name": "Lord-Commander Ymir",
-                "max_hp": 500,
-                "current_hp": 500,
+                "max_hp": 400,
+                "current_hp": 400,
                 "level": 5,
                 "item": {
                     "type": "armour",
@@ -271,60 +273,6 @@ def lord_commander_ymir():
                     "rarity": 5
                     }
                 }
-
-    def fight(character: dict) -> bool:
-        print_in_color(f"The giant knight notices you, and he readies his greatsword: \n", "cyan")
-        print("I commend you for making this far, but, your luck ends here, mortal.\n"
-              "On my honour as the Right wing of Alyndelle, the guardian of this empire,\n"
-              "and as the Lord-Commander, I will stop you.\n")
-        print_in_color(f"Both you and the {ymir['name']} step forward, and prepare for a battle..\n", "cyan")
-
-        while (character["current_hp"] > 0) and (ymir["current_hp"] > 0):
-            print_abilities(character)
-            chosen_ability = select_ability(character)
-
-            print_in_color(f"Your {chosen_ability} hits the {ymir['name']}", "cyan")
-            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
-            try:
-                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
-            except TypeError:
-                damage_given = character["damage"] * character["level"]
-            ymir["current_hp"] -= damage_given
-
-            print_in_color(f"But the {ymir['name']}'s attack lands successfully as well", "cyan")
-            # character health with decrease by 10 * (1 + (0.2 * enemy level))
-            damage_taken = 10 * (1 + (0.2 * ymir["level"]))
-            character["current_hp"] -= damage_taken
-
-            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
-            print(f"[{ymir['name']} | hp: {ymir['current_hp']}/{ymir['max_hp']}]")
-
-        if (ymir["current_hp"] <= 0) and (character["current_hp"] > 0):
-            print_in_color(f"\nCongratulations! You have defeated the {ymir['name']}", "cyan")
-
-            earned_xp = 15 * ((ymir["level"] - character["level"]) + 1)
-            character["xp"] += earned_xp if character["level"] < 3 else 0
-
-            # gain enemy item if they have one, and it's rarity is more than the one you have
-            enemy_item = ymir["item"]
-            try:
-                character_item_rarity = character[enemy_item["type"]]["rarity"]
-            except TypeError:
-                character_item_rarity = 0
-
-            # gain enemy item if they have one, and it's rarity is more than the one you have
-            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
-                character[ymir["item"]["type"]] = {
-                    key: value for key, value in ymir['item'].items() if key != 'type'
-                }
-                print_in_color(f"[{character['name']} | {ymir['item']['type']}: +'{ymir['item']['name']}']",
-                               "yellow")
-
-            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
-
-            return True
-
-        return False
 
     def ymir_battle(character: dict) -> bool:
         print_in_color("As you reach closer to the throne room, you arrive at a grand hall of what seems to have a "
@@ -356,7 +304,12 @@ def lord_commander_ymir():
             decision = cleanse(input())
 
         if int(decision) == 1:
-            return fight(character)
+            print_in_color(f"The giant knight notices you, and he readies his greatsword: \n", "cyan")
+            print("I commend you for making this far, but, your luck ends here, mortal.\n"
+                  "On my honour as the Right wing of Alyndelle, the guardian of this empire,\n"
+                  "and as the Lord-Commander, I will stop you.\n")
+
+            return fight(character, ymir)
         else:
             print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
             return False
@@ -376,59 +329,6 @@ def royal_mage_angelozzi():
                     "rarity": 5
                     }
                 }
-
-    def fight(character: dict) -> bool:
-        print_in_color(f"The battle mage notices you, he readies his staff: \n", "cyan")
-        print("You wretched createre, how dare you stain this sacred haven with your miserable existence.\n"
-              "On my honour as the Left wing of Alyndelle, the guardian of this empire, I will eliminate you.\n")
-        print_in_color(f"Both you and the {angelozzi['name']} step forward, and prepare for a battle..\n", "cyan")
-
-        while (character["current_hp"] > 0) and (angelozzi["current_hp"] > 0):
-            print_abilities(character)
-            chosen_ability = select_ability(character)
-
-            print_in_color(f"Your {chosen_ability} hits the {angelozzi['name']}", "cyan")
-            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
-            try:
-                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
-            except TypeError:
-                damage_given = character["damage"] * character["level"]
-            angelozzi["current_hp"] -= damage_given
-
-            print_in_color(f"But the {angelozzi['name']}'s attack lands successfully as well", "cyan")
-            # character health with decrease by 10 * (1 + (0.2 * enemy level))
-            damage_taken = 10 * (1 + (0.2 * angelozzi["level"]))
-            character["current_hp"] -= damage_taken
-
-            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
-            print(f"[{angelozzi['name']} | hp: {angelozzi['current_hp']}/{angelozzi['max_hp']}]")
-
-        if (angelozzi["current_hp"] <= 0) and (character["current_hp"] > 0):
-            print_in_color(f"\nCongratulations! You have defeated the {angelozzi['name']}", "cyan")
-
-            earned_xp = 15 * ((angelozzi["level"] - character["level"]) + 1)
-            character["xp"] += earned_xp if character["level"] < 3 else 0
-
-            # gain enemy item if they have one, and it's rarity is more than the one you have
-            enemy_item = angelozzi["item"]
-            try:
-                character_item_rarity = character[enemy_item["type"]]["rarity"]
-            except TypeError:
-                character_item_rarity = 0
-
-            # gain enemy item if they have one, and it's rarity is more than the one you have
-            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
-                character[angelozzi["item"]["type"]] = {
-                    key: value for key, value in angelozzi['item'].items() if key != 'type'
-                }
-                print_in_color(f"[{character['name']} | {angelozzi['item']['type']}: +'{angelozzi['item']['name']}']",
-                               "yellow")
-
-            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
-
-            return True
-
-        return False
 
     def angelozzi_battle(character: dict) -> bool:
         print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like an giant "
@@ -457,7 +357,11 @@ def royal_mage_angelozzi():
             decision = cleanse(input())
 
         if int(decision) == 1:
-            return fight(character)
+            print_in_color(f"The battle mage notices you, he readies his staff: \n", "cyan")
+            print("You wretched createre, how dare you stain this sacred haven with your miserable existence.\n"
+                  "On my honour as the Left wing of Alyndelle, the guardian of this empire, I will eliminate you.\n")
+
+            return fight(character, angelozzi)
         else:
             print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
             return False
@@ -478,60 +382,6 @@ def god_king_thompson():
                     "rarity": 7
                     }
                 }
-
-    def fight(character: dict) -> bool:
-        print_in_color("The King acknowledge you, and readies his Warhammer: \n", "cyan")
-        print("You have done well, mortal. It is commendable.\n\n However, as the God King of Alyndelle,\n\n"
-              "I cannot allow your transgression no longer. Your treachery will end here, I will not "
-              "allow the Flame of Humanity to be returned.")
-        print_in_color(f"Both you and the {thompson['name']} step forward, and prepare for a battle..\n", "cyan")
-
-        while (character["current_hp"] > 0) and (thompson["current_hp"] > 0):
-            print_abilities(character)
-            chosen_ability = select_ability(character)
-
-            print_in_color(f"Your {chosen_ability} hits the {thompson['name']}", "cyan")
-            # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
-            try:
-                damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
-            except TypeError:
-                damage_given = character["damage"] * character["level"]
-            thompson["current_hp"] -= damage_given
-
-            print_in_color(f"But the {thompson['name']}'s attack lands successfully as well", "cyan")
-            # character health with decrease by 10 * (1 + (0.2 * enemy level))
-            damage_taken = 10 * (1 + (0.2 * thompson["level"]))
-            character["current_hp"] -= damage_taken
-
-            print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
-            print(f"[{thompson['name']} | hp: {thompson['current_hp']}/{thompson['max_hp']}]")
-
-        if (thompson["current_hp"] <= 0) and (character["current_hp"] > 0):
-            print_in_color(f"\nCongratulations! You have defeated the {thompson['name']}", "cyan")
-
-            earned_xp = 15 * ((thompson["level"] - character["level"]) + 1)
-            character["xp"] += earned_xp if character["level"] < 3 else 0
-
-            # gain enemy item if they have one, and it's rarity is more than the one you have
-            enemy_item = thompson["item"]
-            try:
-                character_item_rarity = character[enemy_item["type"]]["rarity"]
-            except TypeError:
-                character_item_rarity = 0
-
-            # gain enemy item if they have one, and it's rarity is more than the one you have
-            if enemy_item and (enemy_item["rarity"] > character_item_rarity):
-                character[thompson["item"]["type"]] = {
-                    key: value for key, value in thompson['item'].items() if key != 'type'
-                }
-                print_in_color(f"[{character['name']} | {thompson['item']['type']}: +'{thompson['item']['name']}']",
-                               "yellow")
-
-            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
-
-            return True
-
-        return False
 
     def thompson_battle(character: dict) -> bool:
         print_in_color("As you enter into throne room, you see a colossal of a man sitting on the Golden throne.\n\n"
@@ -558,7 +408,12 @@ def god_king_thompson():
             decision = cleanse(input())
 
         if int(decision) == 1:
-            return fight(character)
+            print_in_color("The King acknowledge you, and readies his Warhammer: \n", "cyan")
+            print("You have done well, mortal. It is commendable.\n\n However, as the God King of Alyndelle,\n\n"
+                  "I cannot allow your transgression no longer. Your treachery will end here, I will not "
+                  "allow the Flame of Humanity to be returned.")
+
+            return fight(character, thompson)
         else:
             print_in_color(f"\nYou fled. You should probably get stronger first.", "cyan")
             return False
