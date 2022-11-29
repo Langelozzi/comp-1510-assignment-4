@@ -1,6 +1,6 @@
 from board import make_board, describe_current_location, is_valid_move, print_board, boss_defeated
 from character import make_character, is_alive, move_character, get_character_name, show_stats, leveled_up, \
-    level_up_sequence, died
+    level_up_sequence, died, choose_direction
 from helpers import get_user_choice, print_in_color
 from actions import cell_description, opening_dialogue, game_completed
 
@@ -20,34 +20,14 @@ def game() -> None:
     board = make_board(rows, columns)
 
     character_name = get_character_name()
-    # character = make_character(character_name)
-    character = {
-        "name": "Test Character",
-        "position": (10, 10),
-        "max_hp": 100,
-        "current_hp": 100,
-        "xp": 0,
-        "damage": 20,
-        "level": 3,
-        "abilities": ["Fireball"],
-        "staff": {
-            "type": "staff",
-            "name": "Angelozzi's Ill-Omen",
-            "rarity": 5
-        },
-        "armour": {
-            "type": "armour",
-            "name": "Ymir's Armour",
-            "rarity": 5
-        }
-    }
+    character = make_character(character_name)
 
-    # opening_dialogue()
-    # cell_description()
+    opening_dialogue()
+    cell_description()
 
     while not achieved_goal:
         print_board(board, rows, columns, character["position"], (4, 4), (7, 7))
-        choice = get_user_choice(board, character)
+        choice = choose_direction(board, character)
 
         if choice == "quit":
             break
@@ -81,6 +61,8 @@ def game() -> None:
 
     if achieved_goal:
         game_completed(character)
+        print_in_color("<-------------------------------------Final Stats---------------------------------->", "green")
+        show_stats(character)
     else:
         print_in_color("\nThanks for playing, we hope you play again sometime :)", "cyan")
 

@@ -3,8 +3,8 @@
 # 1 final boss fights
 import itertools
 
-from helpers import cleanse, print_in_color
-from character import print_abilities, select_ability
+from character import show_stats
+from helpers import print_in_color, print_user_options, get_user_choice
 
 import random
 import time
@@ -172,12 +172,13 @@ def spider_web_blockade(character: dict) -> None:
                    "layers of spider webs. You need some way to clear the archways before you can proceed.", "cyan")
     print_in_color("You might be able to use one of your abilities to clear the webs!\n", "cyan")
 
-    print_abilities(character)
+    ability_options = list(enumerate(character["abilities"], start=1))
+    print_user_options(ability_options, "Ability")
 
-    ability_used = select_ability(character)
+    ability_used = get_user_choice(ability_options)
     while ability_used != "Fireball":
         print_in_color(f"I don't think {ability_used} will work here, try a different one.", "red")
-        ability_used = select_ability(character)
+        ability_used = get_user_choice(ability_options)
 
     print_in_color("Nice work! You were able to clear out all of those webs with your Fireball!", "cyan")
 
@@ -219,8 +220,10 @@ def fight(character: dict, enemy: dict) -> bool:
     print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
 
     while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
-        print_abilities(character)
-        chosen_ability = select_ability(character)
+        ability_options = list(enumerate(character["abilities"], start=1))
+        print_user_options(ability_options, "Ability")
+
+        chosen_ability = get_user_choice(ability_options)
 
         print_in_color(f"Your {chosen_ability} hits the {enemy['name']}", "cyan")
         # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
@@ -273,21 +276,11 @@ def fight_decision() -> str:
     :postcondition: displays battle choices for user and returns decision received from stdin as a string
     :return: user decision received from stdin as a string
     """
-    print_in_color("{:<15}Choice".format("Command"), "blue")
-
     options = list(enumerate(["Fight", "Flee"], start=1))
-    for number, option in options:
-        print(f"{number:<15}{option}")
 
-    print_in_color("\nWhat would you like to do?", "purple")
+    print_user_options(options, "Choice")
 
-    decision = cleanse(input())
-    while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
-        print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-        print_in_color("\nWhat would you like to do?", "purple")
-        decision = cleanse(input())
-
-    return decision
+    return get_user_choice(options, True)
 
 
 def generate_enemy_battle(enemy: dict):
@@ -536,18 +529,9 @@ def generate_riddle(riddle_data: dict):
 
         success_options = list(enumerate(["Try my luck at a new ability", "Refill HP to max"], start=1))
 
-        print_in_color("\n{:<15}Choice".format("Command"), "blue")
+        print_user_options(success_options, "Choice")
 
-        for number, option in success_options:
-            print(f"{number:<15}{option}")
-
-        print_in_color("\nPlease choose an option:", "purple")
-
-        user_choice = cleanse(input())
-        while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(1, len(success_options) + 1))):
-            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-            print_in_color("Please choose an option:", "purple")
-            user_choice = cleanse(input())
+        user_choice = get_user_choice(success_options, True)
 
         if int(user_choice) == 1:
             gets_new_ability = random.choice([True, False])
@@ -630,23 +614,16 @@ def generate_riddle(riddle_data: dict):
         time.sleep(1)
         print_in_color(riddle_data["question"], "purple")
 
-        print_in_color("\n{:<15}Response".format("Command"), "blue")
         options = list(enumerate(riddle_data["options"], start=1))
 
-        for number, option in options:
-            print(f"{number:<15}{option}")
+        print_user_options(options, "Response")
 
         print_in_color("\nYou have one chance to guess the answer or you will be punished.\nPlease choose the correct "
-                       "answer to this riddle:", "purple")
+                       "answer to this riddle..", "purple")
 
-        user_answer = cleanse(input())
-        while (not user_answer.isnumeric()) or (int(user_answer) not in list(range(1, len(options) + 1))):
-            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-            print_in_color("Please choose the correct answer to this riddle:", "purple")
-            user_answer = cleanse(input())
+        user_answer = get_user_choice(options)
 
-        user_answer_string = [option for number, option in options if number == int(user_answer)][0]
-        if user_answer_string == riddle_data["answer"]:
+        if user_answer == riddle_data["answer"]:
             riddle_success(character)
             return True
         else:
@@ -839,7 +816,6 @@ def game_completed(character: dict) -> None:
                             \U0001F389 You won the game! \U0001F389 	                                                    
                            \U0001F970 Thanks for playing! \U0001F970 	 	                                                    
     """, "cyan")
-    print("")
 
 
 def main():
