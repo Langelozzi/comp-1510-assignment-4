@@ -267,6 +267,12 @@ def fight(character: dict, enemy: dict) -> bool:
 
 
 def fight_decision() -> str:
+    """
+    Display battle choices for user and return decision received from stdin.
+
+    :postcondition: displays battle choices for user and returns decision received from stdin as a string
+    :return: user decision received from stdin as a string
+    """
     print_in_color("{:<15}Choice".format("Command"), "blue")
 
     options = list(enumerate(["Fight", "Flee"], start=1))
@@ -345,6 +351,17 @@ def lord_commander_ymir():
                 }
 
     def ymir_battle(character: dict) -> bool:
+        """
+        Print dialog and receive decisions for choosing whether to start the mini boss battle.
+
+        The character dictionary is modified during execution.
+
+        :param character: a character in dictionary form
+        :precondition: character must be a dictionary in the form of our game character with all proper keys
+        :postcondition: prints dialog and receive decisions for choosing whether to start the mini boss battle
+        :postcondition: returns True if character wins the mini boss battle, otherwise False
+        :return: True if character wins the mini boss battle, otherwise False
+        """
         print_in_color("As you reach closer to the throne room, you arrive at a grand hall of what seems to have a "
                        "religious significane.\n\n Arts painted on the ceiling depicting the Age of Strife.\n\n",
                        "cyan")
@@ -396,6 +413,17 @@ def royal_mage_angelozzi():
                 }
 
     def angelozzi_battle(character: dict) -> bool:
+        """
+        Print dialog and receive decisions for choosing whether to start the mini boss battle.
+
+        The character dictionary is modified during execution.
+
+        :param character: a character in dictionary form
+        :precondition: character must be a dictionary in the form of our game character with all proper keys
+        :postcondition: prints dialog and receive decisions for choosing whether to start the mini boss battle
+        :postcondition: returns True if character wins the mini boss battle, otherwise False
+        :return: True if character wins the mini boss battle, otherwise False
+        """
         print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like an giant "
                        "underground cave.\n\nYou notice a cathedral in the distance.\n\n"
                        "'How can someone build something so magnificent underground,' you thought.\n", "cyan")
@@ -424,6 +452,12 @@ def royal_mage_angelozzi():
 
 # Final Boss: God-King Thompson ----------------------------------------------------------------------------------------
 def god_king_thompson():
+    """
+    Generate and return the god king thompson final boss battle function.
+
+    :postcondition: generates and returns the god king thompson final boss battle function
+    :return: the god king thompson final boss battle function
+    """
     thompson = {
                 "name": "God-King Thompson",
                 "max_hp": 450,
@@ -437,6 +471,17 @@ def god_king_thompson():
                 }
 
     def thompson_battle(character: dict) -> bool:
+        """
+        Print dialog and receive decisions for choosing whether to start the final boss battle.
+
+        The character dictionary is modified during execution.
+
+        :param character: a character in dictionary form
+        :precondition: character must be a dictionary in the form of our game character with all proper keys
+        :postcondition: prints dialog and receive decisions for choosing whether to start the final boss battle
+        :postcondition: returns True if character wins the final boss battle, otherwise False
+        :return: True if character wins the final boss battle, otherwise False
+        """
         print_in_color("As you enter into throne room, you see a colossal of a man sitting on the Golden throne.\n\n"
                        "He must be the king, the man who stole the light and betrayed the very gods itself.\n\n",
                        "cyan")
@@ -464,7 +509,22 @@ def god_king_thompson():
 
 # Generate Riddles -----------------------------------------------------------------------------------------------------
 def generate_riddle(riddle_data: dict):
+    """
+    Generate and return a riddle function with the specific riddle_data.
+
+    :postcondition: generates and returns a riddle function with the specific riddle_data
+    :return: a riddle function with the specific riddle_data
+    """
     def riddle_success(character: dict) -> None:
+        """
+        Print dialog and accept input for decisions after correctly answering a riddle.
+
+        The character dictionary is modified during execution.
+
+        :param character: a character in dictionary form
+        :precondition: character must be a dictionary in the form of our game character with all proper keys
+        :postcondition: prints dialog and accepts input for decisions after correctly answering a riddle
+        """
         print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
                        f"as yourself.", "green")
 
@@ -508,7 +568,16 @@ def generate_riddle(riddle_data: dict):
             character["current_hp"] = character["max_hp"]
             print_in_color(f"[{character['name']} | hp: +{difference}]", "yellow")
 
-    def riddle(character: dict) -> True:
+    def riddle(character: dict) -> bool:
+        """
+        Print dialog and accept input for answering a riddle.
+
+        The character dictionary is modified during execution.
+
+        :param character: a character in dictionary form
+        :precondition: character must be a dictionary in the form of our game character with all proper keys
+        :postcondition: prints dialog and accepts input for answering a riddle
+        """
         print_in_color("As you enter a dark, candle-lit room; you notice a mysterious potion placed by your feet.\n"
                        "You picked it up out of curiosity, but it started to shake violently.", "cyan")
         print_in_color("***POOF***", "cyan")
@@ -592,6 +661,14 @@ def generate_riddle(riddle_data: dict):
 
 
 def create_batch_of_enemy_battles(amount: int) -> list:
+    """
+    Read a list of json data and generate a list of length amount, containing battle functions generated from json data.
+
+    :param amount: an integer greater than 0
+    :precondition: amount must be an integer greater than 0
+    :postcondition: generates a list of length amount, containing battle functions generated from json data
+    :return: a list of length amount, containing battle functions generated from json data
+    """
     battles = []
 
     with open("enemies.json") as file_object:
@@ -604,6 +681,14 @@ def create_batch_of_enemy_battles(amount: int) -> list:
 
 
 def create_batch_of_riddles(amount: int) -> list:
+    """
+    Read a list of json data and generate a list of length amount, containing riddle functions generated from json data.
+
+    :param amount: an integer greater than 0
+    :precondition: amount must be an integer greater than 0
+    :postcondition: generates a list of length amount, containing riddle functions generated from json data
+    :return: a list of length amount, containing riddle functions generated from json data
+    """
     riddles = []
 
     with open("riddles.json") as file_object:
@@ -615,7 +700,13 @@ def create_batch_of_riddles(amount: int) -> list:
     return riddles[:amount + 1]
 
 
-def get_generic_room_description():
+def get_generic_room_description() -> str:
+    """
+    Return a random room description selected from a list.
+
+    :postcondition: selects and returns a random room description as a string
+    :return: a random room description as a string
+    """
     descriptions = [
         "\nAs your foot passes the threshold into the next room, you feel something slither across your toes..",
         "\nYou are approaching the next room, and you see a dark mist fly past the archway..",
@@ -660,7 +751,13 @@ def get_generic_room_description():
     return random.choice(descriptions)
 
 
-def get_generic_actions():
+def get_generic_actions() -> list:
+    """
+    Return a list of 97 shuffled action functions.
+
+    :postcondition: returns a list of 97 shuffled action functions
+    :return: a list of 97 shuffled action functions
+    """
     actions = []
 
     # 36 battles
@@ -684,6 +781,15 @@ def get_generic_actions():
 
 
 def game_completed(character: dict) -> None:
+    """
+    Print final dialogs and ascii art indicating the game is completed.
+
+    The character dictionary is modified during execution.
+
+    :param character: a character in dictionary form
+    :precondition: character must be a dictionary in the form of our game character with all proper keys
+    :postcondition: prints final dialogs and ascii art indicating the game is completed
+    """
     # replace with ascii art and message
     # print_in_color("...\n", "cyan")
     # time.sleep(1)
@@ -737,6 +843,9 @@ def game_completed(character: dict) -> None:
 
 
 def main():
+    """
+    Drive the program.
+    """
     test_char = {
         "name": "Ymir",
         "position": (1, 1),
