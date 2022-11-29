@@ -1,4 +1,4 @@
-from helpers import print_in_color, cleanse
+from helpers import print_in_color, cleanse, print_user_options, get_user_choice
 
 
 def get_character_name() -> str:
@@ -40,6 +40,31 @@ def make_character(name: str) -> dict:
     }
 
 
+def choose_direction(board: dict, character: dict) -> str:
+    """
+    Print possible choices and return the user's selected choice.
+
+    The board and character dictionaries are not modified.
+
+    :param board: a dictionary in the form of our game board with all proper keys
+    :param character: a dictionary in the form of our game character with at least keys "position" and "name"
+    :precondition: board must be a dictionary in the form of our game board
+    :precondition: character must be a dictionary in the form of our game character with at least keys "position" and
+    "name"
+    :postcondition: prints the possible choices and returns the user selected choice as a string
+    :return: the user selected choice as a string
+    """
+    current_room = board[character["position"]]
+    possible_directions = [direction for direction, coord in current_room["directions"].items() if coord is not None]
+
+    options = [('q', "quit"), ('s', "show stats")]
+    options += list(enumerate(possible_directions, start=1))
+
+    print_user_options(options, "Option")
+
+    return get_user_choice(options)
+
+
 def move_character(direction: str, board: dict, character: dict) -> None:
     """
     Modify the character coordinates accordingly based on the direction. Original character is modified, board is not.
@@ -76,43 +101,6 @@ def is_alive(character: dict) -> bool:
         return False
     else:
         return True
-
-
-def print_abilities(character: dict) -> None:
-    """
-    Print the character's abilities formatted to stdout. Does not modify the character dictionary.
-
-    :param character: a character in dictionary form
-    :precondition: character must be a dictionary in the form of our game character with at least the key "abilities"
-    :postcondition: prints the character's abilities formatted to stdout
-    """
-    print_in_color("{:<15}Ability".format("Command"), "blue")
-    ability_options = list(enumerate(character["abilities"], start=1))
-
-    for number, ability in ability_options:
-        print(f"{number:<15}{ability}")
-
-
-def select_ability(character: dict) -> str:
-    """
-    Return the user's selection of character ability. Does not modify the character dictionary.
-
-    :param character: a character in dictionary form
-    :precondition: character must be a dictionary in the form of our game character with at least the key "abilities"
-    :postcondition: returns the user's selected ability as a string
-    :return: the user's selected ability as a string
-    """
-    ability_options = list(enumerate(character["abilities"], start=1))
-
-    print_in_color("\nWhich ability would you like to use?", "purple")
-
-    user_choice = cleanse(input())
-    while (not user_choice.isnumeric()) or (int(user_choice) not in list(range(1, len(ability_options) + 1))):
-        print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-        print_in_color("Which ability would you like to use?", "purple")
-        user_choice = cleanse(input())
-
-    return [ability for number, ability in ability_options if number == int(user_choice)][0]
 
 
 def leveled_up(character: dict) -> bool:

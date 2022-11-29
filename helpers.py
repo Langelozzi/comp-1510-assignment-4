@@ -70,40 +70,51 @@ def convert_first_index_to_str(iterable: tuple) -> tuple:
     return tuple(new_iterable)
 
 
-def get_user_choice(board: dict, character: dict) -> str:
+def print_user_options(options: list, option_title: str) -> None:
     """
-    Print possible choices and return the user's selected choice.
+    Print an enumerated and formatted list of options to stdout.
 
-    The board and character dictionaries are not modified.
+    The original options list does not get modified during execution.
 
-    :param board: a dictionary in the form of our game board with all proper keys
-    :param character: a dictionary in the form of our game character with at least keys "position" and "name"
-    :precondition: board must be a dictionary in the form of our game board
-    :precondition: character must be a dictionary in the form of our game character with at least keys "position" and
-    "name"
-    :postcondition: prints the possible choices and returns the user selected choice as a string
-    :return: the user selected choice as a string
+    :param options: a list of enumerated options
+    :param option_title: a string that will be the title of the printed options
+    :precondition: options must be an enumerated list of options
+    :precondition: option_title must be a string
+    :postcondition: prints an enumerated and formatted list of options to stdout
     """
-    current_room = board[character["position"]]
-    possible_directions = [direction for direction, coord in current_room["directions"].items() if coord is not None]
+    print_in_color("\n{:<15}{}".format("Command", option_title), "blue")
 
-    options = [('q', "quit"), ('s', "show stats")]
-    options += list(enumerate(possible_directions, start=1))
+    for number, option in options:
+        print(f"{number:<15}{option}")
 
+
+def get_user_choice(options: list, numeric: bool = False) -> str:
+    """
+    Return the user's selection of options.
+
+    The original options list does not get modified during execution.
+
+    :param options: a list of enumerated options
+    :param numeric: a boolean representing if the returned string should be the command or the option. Default is False.
+    :precondition: options must be an enumerated list of options
+    :precondition: numeric must be a boolean. Default is False.
+    :postcondition: returns the user's selected option or number as a string
+    :return: the user's selected option or number as a string
+    """
     options = list(map(convert_first_index_to_str, options))
+
     commands = [command for command, option in options]
 
-    print_in_color("\n{:<15}Option".format("Command"), "blue")
-
-    for number, direction in options:
-        print(f"{number:<15}{direction}")
-
-    print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
+    print_in_color(f"\nPlease choose an option:", "purple")
 
     user_choice = cleanse(input())
     while user_choice not in commands:
-        print_in_color("That is not a valid choice, try again.", "red")
-        print_in_color(f"\n{character['name']}, which direction would you like to advance in?", "purple")
+        print_in_color("That is not a valid choice. Take a closer look and try again.", "red")
+        print_in_color(f"\nPlease choose an option?", "purple")
         user_choice = cleanse(input())
 
-    return [direction for number, direction in options if number == user_choice][0]
+    # will return a string version of the numeric command
+    if numeric:
+        return user_choice
+
+    return [option for number, option in options if number == user_choice][0]

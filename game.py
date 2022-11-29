@@ -1,6 +1,6 @@
 from board import make_board, describe_current_location, is_valid_move, print_board, boss_defeated
 from character import make_character, is_alive, move_character, get_character_name, show_stats, leveled_up, \
-    level_up_sequence, died
+    level_up_sequence, died, choose_direction
 from helpers import get_user_choice, print_in_color
 from actions import cell_description, opening_dialogue, game_completed
 
@@ -47,7 +47,7 @@ def game() -> None:
 
     while not achieved_goal:
         print_board(board, rows, columns, character["position"], (4, 4), (7, 7))
-        choice = get_user_choice(board, character)
+        choice = choose_direction(board, character)
 
         if choice == "quit":
             break
