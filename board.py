@@ -32,7 +32,7 @@ def make_board(rows, columns) -> dict:
     :precondition: rows must be a positive non-zero integer
     :precondition: columns must be a positive non-zero integer
     :postcondition: return a dictionary called board that contain game relevant information
-                    for every tile in the game 
+                    for every tile in the game
     :return: a dictionary called board that contain game relevant information for every tile in the game
     """
     board = {
