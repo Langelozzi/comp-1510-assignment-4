@@ -169,10 +169,12 @@ def spider_web_blockade(character: dict) -> None:
     print_in_color(f"[{character['name']} | xp: +12]", "yellow")
 
 
-def empty_room(character: dict) -> None:
+def empty_room(character: dict) -> bool:
     print_in_color("You stop in the center of the room. It appears empty, but you hear a voice whispering..", "cyan")
     print_in_color(f"{character['name']}, keep walking if you know what's good for you!", "cyan")
     print_in_color("You hastily make your decision..", "cyan")
+
+    return True
 
 
 # Default Battles ------------------------------------------------------------------------------------------------------
@@ -373,9 +375,9 @@ def royal_mage_angelozzi():
 def god_king_thompson():
     thompson = {
                 "name": "God-King Thompson",
-                "max_hp": 600,
-                "current_hp": 600,
-                "level": 9,
+                "max_hp": 450,
+                "current_hp": 450,
+                "level": 6,
                 "item": {
                     "type": "staff",
                     "name": "Demonic Python Staff",

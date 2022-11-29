@@ -16,7 +16,7 @@ def game() -> None:
     # character = make_character(character_name)
     character = {
         "name": "Test Character",
-        "position": (1, 1),
+        "position": (10, 10),
         "max_hp": 100,
         "current_hp": 100,
         "xp": 0,
@@ -25,12 +25,13 @@ def game() -> None:
         "abilities": ["Fireball"],
         "staff": {
             "type": "staff",
-            "name": "Spellsword's Corrupted Staff",
-            "rarity": 3
+            "name": "Angelozzi's Ill-Omen",
+            "rarity": 5
         },
         "armour": {
-            "name": "Draconic Armour",
-            "rarity": 4
+            "type": "armour",
+            "name": "Ymir's Armour",
+            "rarity": 5
         }
     }
 
