@@ -17,3 +17,5 @@ This is written in markdown. Read about markdown here: [markdowncheatsheet](http
 * am-eskandari
 
 ## Any important comments you'd like to make about your work:
+* In some doctests, such as make_character in character.py, the tests fail unless it is all one line, therefore 
+  forcing use to disobey the pycharm syntax warning for line length
