@@ -62,8 +62,17 @@ def leveled_up(character: dict) -> bool:
 def level_up_sequence(character: dict) -> None:
     character["level"] += 1
     character["xp"] = 0
-    # replace with ascii art and message
-    print("Congrats you leveled up")
+    print_in_color("""
+                          _                              _     _    _           _                                                             
+                         | |                            | |   | |  | |         | |                                                            
+                         | |        ___  __   __   ___  | |   | |  | |  _ __   | |                                                            
+                         | |       / _ \ \ \ / /  / _ \ | |   | |  | | | '_ \  | |                                      
+                         | |____  |  __/  \ V /  |  __/ | |   | |__| | | |_) | |_|                                      
+                         |______|  \___|   \_/    \___| |_|    \____/  | .__/  (_)                                      
+                                                                       | |                                                                    
+                                                                       |_|                                                                    
+                                         \U0001F386 Congrats you leveled up \U0001F386 	                
+    """, "yellow")
 
 
 def died(character: dict) -> None:
@@ -72,7 +81,15 @@ def died(character: dict) -> None:
     character["level"] = 1
     character["current_hp"] = 100
 
-    print_in_color("Rip, you died. Skill issue.", "red")
+    print_in_color("""
+                         __     __                    _____    _              _                                     
+                         \ \   / /                   |  __ \  (_)            | |                                    
+                          \ \_/ /    ___    _   _    | |  | |  _    ___    __| |                                    
+                           \   /    / _ \  | | | |   | |  | | | |  / _ \  / _` |                                    
+                            | |    | (_) | | |_| |   | |__| | | | |  __/ | (_| |                                    
+                            |_|     \___/   \__,_|   |_____/  |_|  \___|  \__,_|                                    
+                                      \U00002620 Rip, you died. Skill issue. \U00002620                                                  
+    """, "red")
 
 
 def show_stats(character: dict) -> None:

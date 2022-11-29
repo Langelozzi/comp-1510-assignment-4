@@ -125,12 +125,12 @@ def print_board(board: dict, rows: int, columns: int, coords: tuple, boss_1_coor
 
             elif (y_coord == boss_1_y and x_coord == boss_1_x) or (y_coord == boss_2_y and x_coord == boss_2_x):
                 print_in_color('|', "green", end="")
-                print_in_color("%", "red", end="")
+                print_in_color("X", "red", end="")
                 print_in_color('|', "green", end="")
 
             elif (y_coord == final_boss_y) and (x_coord == final_boss_x):
                 print_in_color('|', "green", end="")
-                print_in_color("&", "red", end="")
+                print_in_color("\U0001F451", "red", end="")
                 print_in_color('|', "green", end="")
 
             elif (y_coord == 11 and x_coord != 10) or (y_coord == 0 and x_coord != 1):
