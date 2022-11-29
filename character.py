@@ -158,7 +158,7 @@ def level_up_sequence(character: dict) -> None:
                          |______|  \___|   \_/    \___| |_|    \____/  | .__/  (_)                                      
                                                                        | |                                                                    
                                                                        |_|                                                                    
-                                         \U0001F386 Congrats you leveled up \U0001F386 	                
+                                     \U0001F386 Congrats you leveled up \U0001F386 	                
     """, "yellow")
 
 
