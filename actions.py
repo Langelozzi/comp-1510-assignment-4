@@ -3,7 +3,8 @@
 # 1 final boss fights
 import itertools
 
-from helpers import cleanse, print_in_color, print_user_options, get_user_choice
+from character import show_stats
+from helpers import print_in_color, print_user_options, get_user_choice
 
 import random
 import time
@@ -815,7 +816,6 @@ def game_completed(character: dict) -> None:
                             \U0001F389 You won the game! \U0001F389 	                                                    
                            \U0001F970 Thanks for playing! \U0001F970 	 	                                                    
     """, "cyan")
-    print("")
 
 
 def main():

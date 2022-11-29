@@ -20,30 +20,10 @@ def game() -> None:
     board = make_board(rows, columns)
 
     character_name = get_character_name()
-    # character = make_character(character_name)
-    character = {
-        "name": "Test Character",
-        "position": (10, 10),
-        "max_hp": 100,
-        "current_hp": 100,
-        "xp": 0,
-        "damage": 20,
-        "level": 3,
-        "abilities": ["Fireball"],
-        "staff": {
-            "type": "staff",
-            "name": "Angelozzi's Ill-Omen",
-            "rarity": 5
-        },
-        "armour": {
-            "type": "armour",
-            "name": "Ymir's Armour",
-            "rarity": 5
-        }
-    }
+    character = make_character(character_name)
 
-    # opening_dialogue()
-    # cell_description()
+    opening_dialogue()
+    cell_description()
 
     while not achieved_goal:
         print_board(board, rows, columns, character["position"], (4, 4), (7, 7))
@@ -81,6 +61,8 @@ def game() -> None:
 
     if achieved_goal:
         game_completed(character)
+        print_in_color("<-------------------------------------Final Stats---------------------------------->", "green")
+        show_stats(character)
     else:
         print_in_color("\nThanks for playing, we hope you play again sometime :)", "cyan")
 
