@@ -4,7 +4,7 @@
 import itertools
 
 from helpers import cleanse, print_in_color
-from character import make_character, print_abilities, select_ability
+from character import print_abilities, select_ability
 
 import random
 import time
@@ -13,7 +13,11 @@ import json
 
 # Game Opening ---------------------------------------------------------------------------------------------------------
 def opening_dialogue() -> None:
+    """
+    Print the opening story and ascii art to stdout.
 
+    :postcondition: prints the opening story and ascii art to stdout
+    """
     print_in_color("...\n", "cyan")
     time.sleep(1)
     print_in_color(
@@ -102,8 +106,14 @@ def opening_dialogue() -> None:
         , "cyan")
     time.sleep(3)
 
+
 # Game Intro -----------------------------------------------------------------------------------------------------------
 def cell_description() -> None:
+    """
+    Print the cell description to stdout.
+
+    :postcondition: prints the cell description to stdout
+    """
     part_one = "You wake to the sound of metal against stone.\n" \
                "You lift you head from the floor and as your eyes adjust to the darkness you start to scan your " \
                "surroundings..\n"
@@ -151,6 +161,13 @@ def cell_description() -> None:
 
 # Spider Web -----------------------------------------------------------------------------------------------------------
 def spider_web_blockade(character: dict) -> None:
+    """
+    Print the spider web blockade room dialog and interactions.
+
+    :param character: a character in dictionary form
+    :precondition: character must be a dictionary in the form of our game character with all proper keys
+    :postcondition: prints the spider web blockage room description dialog and interactions
+    """
     print_in_color("You pause once in the room. You see that all of the archways are blocked off with layers upon \n"
                    "layers of spider webs. You need some way to clear the archways before you can proceed.", "cyan")
     print_in_color("You might be able to use one of your abilities to clear the webs!\n", "cyan")
@@ -170,6 +187,13 @@ def spider_web_blockade(character: dict) -> None:
 
 
 def empty_room(character: dict) -> bool:
+    """
+    Print the empty room dialog with the character name.
+
+    :param character: a character in dictionary form
+    :precondition: character must be a dictionary in the form of our game character with at least the "name" key
+    :postcondition: prints the empty room dialog with the character name
+    """
     print_in_color("You stop in the center of the room. It appears empty, but you hear a voice whispering..", "cyan")
     print_in_color(f"{character['name']}, keep walking if you know what's good for you!", "cyan")
     print_in_color("You hastily make your decision..", "cyan")
@@ -179,6 +203,19 @@ def empty_room(character: dict) -> bool:
 
 # Default Battles ------------------------------------------------------------------------------------------------------
 def fight(character: dict, enemy: dict) -> bool:
+    """
+    Print dialog and receive decisions for battle mechanics.
+
+    The character and enemy dictionaries do get modified during execution.
+
+    :param character: a character in dictionary form
+    :param enemy: an enemy in dictionary form
+    :precondition: character must be a dictionary in the form of our game character with all proper keys
+    :precondition: enemy must be a dictionary in the form of our game enemies with all proper keys
+    :postcondition: prints dialog and receives decisions for battle mechanics
+    :postcondition: returns True if character wins the fight, otherwise False
+    :return: True if character wins the fight, otherwise False
+    """
     print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
 
     while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
@@ -229,27 +266,52 @@ def fight(character: dict, enemy: dict) -> bool:
     return False
 
 
+def fight_decision() -> str:
+    print_in_color("{:<15}Choice".format("Command"), "blue")
+
+    options = list(enumerate(["Fight", "Flee"], start=1))
+    for number, option in options:
+        print(f"{number:<15}{option}")
+
+    print_in_color("\nWhat would you like to do?", "purple")
+
+    decision = cleanse(input())
+    while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
+        print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
+        print_in_color("\nWhat would you like to do?", "purple")
+        decision = cleanse(input())
+
+    return decision
+
+
 def generate_enemy_battle(enemy: dict):
+    """
+    Generate an enemy battle function with the enemy data.
+
+    :param enemy: an enemy in dictionary form
+    :precondition: enemy must be a dictionary in the form of our game enemies with all proper keys
+    :postcondition: generates a function with the specific enemy data
+    :return: an enemy battle function with the specific enemy data
+    """
     def enemy_battle(character: dict) -> bool:
+        """
+        Print dialog and receive decisions for choosing whether to start an enemy battle.
+
+        The character dictionary is modified during execution.
+
+        :param character: a character in dictionary form
+        :precondition: character must be a dictionary in the form of our game character with all proper keys
+        :postcondition: prints dialog and receive decisions for choosing whether to start an enemy battle
+        :postcondition: returns True if character wins the enemy battle, otherwise False
+        :return: True if character wins the enemy battle, otherwise False
+        """
         print_in_color(f"Out of the corner of your eye you see a {enemy['name']} appear!\n", "cyan")
 
         if character["level"] < enemy["level"]:
             print_in_color(f"This enemies level is greater than yours, you might want to weigh your options before "
                            f"you make your decision\n", "red")
 
-        print_in_color("{:<15}Choice".format("Command"), "blue")
-
-        options = list(enumerate(["Fight", "Flee"], start=1))
-        for number, option in options:
-            print(f"{number:<15}{option}")
-
-        print_in_color("\nWhat would you like to do?", "purple")
-
-        decision = cleanse(input())
-        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
-            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-            print_in_color("\nWhat would you like to do?", "purple")
-            decision = cleanse(input())
+        decision = fight_decision()
 
         if int(decision) == 1:
             return fight(character, enemy)
@@ -264,6 +326,12 @@ def generate_enemy_battle(enemy: dict):
 
 # Sub-Boss 1: Lord-Commander Ymir --------------------------------------------------------------------------------------
 def lord_commander_ymir():
+    """
+    Generate and return the ymir mini boss battle function.
+
+    :postcondition: generates and returns the ymir mini boss battle function
+    :return: the ymir mini boss battle function
+    """
     ymir = {
                 "name": "Lord-Commander Ymir",
                 "max_hp": 400,
@@ -287,23 +355,11 @@ def lord_commander_ymir():
         print_in_color("He is clad in ornate armor; those scratches and gouges on his armor proves the warrior's"
                        "skill.\n\n You admire his prowess but know that you must deaft him to advance.\n", "cyan")
 
-        if character["level"] <= 3:  # max level is three?
+        if character["level"] <= 3:
             print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
                            f"you make your decision\n", "red")
 
-        print_in_color("{:<15}Choice".format("Command"), "blue")
-
-        options = list(enumerate(["Fight", "Flee"], start=1))
-        for number, option in options:
-            print(f"{number:<15}{option}")
-
-        print_in_color("\nWhat would you like to do?", "purple")
-
-        decision = cleanse(input())
-        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
-            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-            print_in_color("\nWhat would you like to do?", "purple")
-            decision = cleanse(input())
+        decision = fight_decision()
 
         if int(decision) == 1:
             print_in_color(f"The giant knight notices you, and he readies his greatsword: \n", "cyan")
@@ -318,8 +374,15 @@ def lord_commander_ymir():
 
     return ymir_battle
 
+
 # Sub-Boss 2: Royal Knight ---------------------------------------------------------------------------------------------
 def royal_mage_angelozzi():
+    """
+    Generate and return the angelozzi mini boss battle function.
+
+    :postcondition: generates and returns the angelozzi mini boss battle function
+    :return: the angelozzi mini boss battle function
+    """
     angelozzi = {
                 "name": "Royal Mage Angelozzi",
                 "max_hp": 250,
@@ -340,23 +403,11 @@ def royal_mage_angelozzi():
                        "cathedral entrance.\n", "cyan")
         print_in_color(f"You approach the giant knight to observe them better.\n", "cyan")
 
-        if character["level"] <= 3:  # max level is three?
+        if character["level"] <= 3:
             print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
                            f"you make your decision\n", "red")
 
-        print_in_color("{:<15}Choice".format("Command"), "blue")
-
-        options = list(enumerate(["Fight", "Flee"], start=1))
-        for number, option in options:
-            print(f"{number:<15}{option}")
-
-        print_in_color("\nWhat would you like to do?", "purple")
-
-        decision = cleanse(input())
-        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
-            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-            print_in_color("\nWhat would you like to do?", "purple")
-            decision = cleanse(input())
+        decision = fight_decision()
 
         if int(decision) == 1:
             print_in_color(f"The battle mage notices you, he readies his staff: \n", "cyan")
@@ -395,19 +446,7 @@ def god_king_thompson():
             print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
                            f"you make your decision\n", "red")
 
-        print_in_color("{:<15}Choice".format("Command"), "blue")
-
-        options = list(enumerate(["Fight", "Flee"], start=1))
-        for number, option in options:
-            print(f"{number:<15}{option}")
-
-        print_in_color("\nWhat would you like to do?", "purple")
-
-        decision = cleanse(input())
-        while (not decision.isnumeric()) or (int(decision) not in list(range(1, len(options) + 1))):
-            print_in_color("\nThat wasn't one of the options! Take a closer look and try again.", "red")
-            print_in_color("\nWhat would you like to do?", "purple")
-            decision = cleanse(input())
+        decision = fight_decision()
 
         if int(decision) == 1:
             print_in_color("The King acknowledge you, and readies his Warhammer: \n", "cyan")
