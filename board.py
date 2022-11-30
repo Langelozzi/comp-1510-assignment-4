@@ -1,26 +1,11 @@
 """
----------------------------| |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| || || || || || || || || || |
-| |---------------------------
+Contains functions related to the creation and state of the game board.
 """
 import itertools
 
 from helpers import print_in_color
 from actions import get_generic_actions, get_generic_room_description, \
     royal_mage_angelozzi, lord_commander_ymir, god_king_thompson
-
-
-# def test_challenge():
-#     print("this is a test challenge")
 
 
 def make_board(rows, columns) -> dict:

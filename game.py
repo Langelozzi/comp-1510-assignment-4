@@ -1,7 +1,11 @@
+"""
+The primary game module. Contains the game loop.
+"""
+
 from board import make_board, describe_current_location, is_valid_move, print_board, boss_defeated
 from character import make_character, is_alive, move_character, get_character_name, show_stats, leveled_up, \
     level_up_sequence, died, choose_direction
-from helpers import get_user_choice, print_in_color
+from helpers import print_in_color
 from actions import cell_description, opening_dialogue, game_completed
 
 

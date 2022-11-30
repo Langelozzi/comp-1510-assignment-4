@@ -1,5 +1,6 @@
-import os
-
+"""
+Functions to assist in the creation of the game.
+"""
 
 def print_in_color(value, color: str, end: str = "\n") -> None:
     """

@@ -1,14 +1,12 @@
-# 10 basic challenges which can be mob fights or puzzles
-# 3 sub boss fights
-# 1 final boss fights
+"""
+Contains functions related to the actions and dialog of each room on the game board.
+"""
 import itertools
-
-from character import show_stats
-from helpers import print_in_color, print_user_options, get_user_choice
-
 import random
 import time
 import json
+
+from helpers import print_in_color, print_user_options, get_user_choice
 
 
 # Game Opening ---------------------------------------------------------------------------------------------------------

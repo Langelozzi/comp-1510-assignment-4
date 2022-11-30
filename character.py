@@ -1,3 +1,7 @@
+"""
+Contains functions related to the game characters attributes and state.
+"""
+
 from helpers import print_in_color, print_user_options, get_user_choice
 
 
