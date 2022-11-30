@@ -178,9 +178,9 @@ def describe_current_location(board: dict, character: dict) -> None:
     """
     Print the description of the room that the player is currently in.
 
-    :param board: a dictionary in the form of our game board with at least the key "description"
+    :param board: a dictionary in the form of our game board
     :param character: a dictionary in the form of our game character with at least the key "position"
-    :precondition: board must be a dictionary in the form of our game with at least the key "description"
+    :precondition: board must be a dictionary in the form of our game board
     :precondition: character must be a dictionary in the form of our game character with at least the key "position"
     :postcondition: prints the content of the key "description" from board dictionary
     :postcondition: parameters passed through this function will remain unchanged
