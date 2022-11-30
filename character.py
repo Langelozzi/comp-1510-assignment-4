@@ -1,4 +1,4 @@
-from helpers import print_in_color, cleanse, print_user_options, get_user_choice
+from helpers import print_in_color, print_user_options, get_user_choice
 
 
 def get_character_name() -> str:
