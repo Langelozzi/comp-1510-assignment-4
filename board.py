@@ -189,7 +189,6 @@ def describe_current_location(board: dict, character: dict) -> None:
     print_in_color(board[current_position]["description"], "cyan")
 
 
-# CAN I DOCTEST THIS?
 def is_valid_move(direction: str, board: dict, character: dict) -> bool:
     """
     Determine if the user input for player movement is valid.
