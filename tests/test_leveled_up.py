@@ -26,4 +26,3 @@ class TestLeveledUp(TestCase):
         actual = leveled_up(character_test)
         expected = True
         self.assertTrue(expected, actual)
-        
