@@ -113,7 +113,7 @@ def cell_description() -> None:
     :postcondition: prints the cell description to stdout
     """
     part_one = "You wake to the sound of metal against stone.\n" \
-               "You lift you head from the floor and as your eyes adjust to the darkness you start to scan your " \
+               "You lift your head from the floor and as your eyes adjust to the darkness you start to scan your " \
                "surroundings..\n"
 
     part_two = "You are in a small cell, metal bars straight ahead; cobblestone lines the rest of the room\n" \
