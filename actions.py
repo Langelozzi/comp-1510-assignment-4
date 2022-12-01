@@ -180,9 +180,9 @@ def spider_web_blockade(character: dict) -> None:
 
     print_in_color("Nice work! You were able to clear out all of those webs with your Fireball!", "cyan")
 
-    character["xp"] += 12
-
-    print_in_color(f"[{character['name']} | xp: +12]", "yellow")
+    if character["level"] < 3:
+        character["xp"] += 12
+        print_in_color(f"[{character['name']} | xp: +12]", "yellow")
 
 
 def empty_room(character: dict) -> bool:
@@ -260,9 +260,10 @@ def fight(character: dict, enemy: dict) -> bool:
             character[enemy["item"]["type"]] = {
                 key: value for key, value in enemy['item'].items() if key != 'type'
             }
-            print_in_color(f"[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]", "yellow")
+            print_in_color(f"\n[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]\n", "yellow")
 
-        print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+        if character["level"] < 3:
+            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
         enemy["current_hp"] = enemy["max_hp"]
         return True
@@ -523,8 +524,9 @@ def generate_riddle(riddle_data: dict):
         print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
                        f"as yourself.", "green")
 
-        character["xp"] += 15 if character["level"] < 3 else 0
-        print_in_color(f"[{character['name']} | xp: +15]", "yellow")
+        if character["level"] < 3:
+            character["xp"] += 15
+            print_in_color(f"[{character['name']} | xp: +15]", "yellow")
 
         print_in_color(f"To reward your success, I give you two options: try your luck at possibly earning a "
                        f"new ability, or accept the gift of maximum health", "green")
