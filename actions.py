@@ -229,12 +229,12 @@ def fight(character: dict, enemy: dict) -> bool:
             damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
         except TypeError:
             damage_given = character["damage"] * character["level"]
-        enemy["current_hp"] -= damage_given
+        enemy["current_hp"] -= round(damage_given)
 
         print_in_color(f"But the {enemy['name']}'s attack lands successfully as well", "cyan")
         # character health with decrease by 10 * (1 + (0.2 * enemy level))
         damage_taken = 10 * (1 + (0.2 * enemy["level"]))
-        character["current_hp"] -= damage_taken
+        character["current_hp"] -= round(damage_taken)
 
         print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
         print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
@@ -247,7 +247,9 @@ def fight(character: dict, enemy: dict) -> bool:
         else:
             earned_xp = 15
 
-        character["xp"] += earned_xp if character["level"] < 3 else 0
+        if character["level"] < 3:
+            character["xp"] += earned_xp
+            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
         enemy_item = enemy["item"]
         try:
@@ -261,9 +263,6 @@ def fight(character: dict, enemy: dict) -> bool:
                 key: value for key, value in enemy['item'].items() if key != 'type'
             }
             print_in_color(f"\n[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]\n", "yellow")
-
-        if character["level"] < 3:
-            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
 
         enemy["current_hp"] = enemy["max_hp"]
         return True
@@ -631,8 +630,8 @@ def generate_riddle(riddle_data: dict):
         else:
             print_in_color(f"\n{character['name']}, I knew a creature such as yourself was not intellectually gifted. "
                            f"That answer is far from correct and for that you must be punished!", "red")
-            lost_hp = round(character["current_hp"] * 0.25)
-            character["current_hp"] -= lost_hp
+            lost_hp = character["current_hp"] * 0.25
+            character["current_hp"] -= round(lost_hp)
             print_in_color(f"[{character['name']} | hp: -{lost_hp}]", "yellow")
             return False
 
