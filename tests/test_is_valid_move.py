@@ -5,7 +5,8 @@ from character import make_character
 
 
 class TestIsValidMove(TestCase):
-    board = {
+    def setUp(self) -> None:
+        self.board = {
             (1, 1): {
                 "description": "Looks like you have come back to the start, try the opposite direction of the cell",
                 "action": None,
@@ -25,7 +26,7 @@ class TestIsValidMove(TestCase):
 
         valid_move = 'north'
 
-        self.assertTrue(is_valid_move(valid_move, TestIsValidMove.board, character))
+        self.assertTrue(is_valid_move(valid_move, self.board, character))
 
     def test_invalid_move(self):
         character = make_character("Test Character")
@@ -33,4 +34,4 @@ class TestIsValidMove(TestCase):
 
         invalid_move = 'west'
 
-        self.assertFalse(is_valid_move(invalid_move, TestIsValidMove.board, character))
+        self.assertFalse(is_valid_move(invalid_move, self.board, character))
