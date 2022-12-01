@@ -532,10 +532,8 @@ def generate_riddle(riddle_data: dict):
         user_choice = get_user_choice(success_options, True)
 
         if int(user_choice) == 1:
-            gets_new_ability = random.choice([True, False])
             new_ability = riddle_data["ability"]
             if (
-                    gets_new_ability and
                     new_ability is not None and
                     new_ability not in character["abilities"]
             ):
