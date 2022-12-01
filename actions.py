@@ -242,7 +242,11 @@ def fight(character: dict, enemy: dict) -> bool:
     if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
         print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
 
-        earned_xp = 15 * ((enemy["level"] - character["level"]) + 1)
+        if enemy["level"] > character["level"]:
+            earned_xp = 15 * ((enemy["level"] - character["level"]) + 1)
+        else:
+            earned_xp = 15
+
         character["xp"] += earned_xp if character["level"] < 3 else 0
 
         enemy_item = enemy["item"]
