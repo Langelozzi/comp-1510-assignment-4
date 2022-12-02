@@ -225,10 +225,8 @@ def main():
     """
     Drive the Program.
     """
-    rows = 10
-    columns = 10
-
-    board = make_board(rows, columns)
+    print("You are attempting to execute the board.py module.")
+    print("Executing this module does not do anything.")
 
 
 if __name__ == '__main__':

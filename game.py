@@ -64,7 +64,7 @@ def game() -> None:
             print_in_color("There is no path in that direction, you can't walk through walls!!", "red")
 
     if achieved_goal:
-        game_completed(character)
+        game_completed()
         print_in_color("<-------------------------------------Final Stats---------------------------------->", "green")
         show_stats(character)
     else:

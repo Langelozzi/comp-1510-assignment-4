@@ -35,8 +35,6 @@ def opening_dialogue() -> None:
     print_in_color(opening_two, "cyan")
     time.sleep(1)
     print_in_color(opening_three, "cyan")
-    # time.sleep(1)
-    # print_in_color(opening_four, "cyan")
     time.sleep(3)
     print_in_color(r"""
                                                                                                     
@@ -774,14 +772,10 @@ def get_generic_actions() -> list:
     return actions
 
 
-def game_completed(character: dict) -> None:
+def game_completed() -> None:
     """
     Print final dialogs and ascii art indicating the game is completed.
 
-    The character dictionary is modified during execution.
-
-    :param character: a character in dictionary form
-    :precondition: character must be a dictionary in the form of our game character with all proper keys
     :postcondition: prints final dialogs and ascii art indicating the game is completed
     """
 
@@ -833,36 +827,8 @@ def main():
     """
     Drive the program.
     """
-    test_char = {
-        "name": "Ymir",
-        "position": (1, 1),
-        "max_hp": 100,
-        "current_hp": 100,
-        "xp": 0,
-        "damage": 20,
-        "level": 3,
-        "abilities": ["Fireball"],
-        "staff": {
-            "name": "Draconic Staff",
-            "rarity": 4
-        },
-        "armour": {
-            "name": "Draconic Armour",
-            "rarity": 4
-        }
-    }
-
-    # skeleton_soldier(test_char)
-    # print(get_generic_room_description())
-    # get_generic_challenges()(test_char)
-
-    # spider_web_blockade(test_char)
-
-    # riddles = create_batch_of_riddles(5)
-    # riddles[0](test_char)
-    # royal_mage_angelozzi()(test_char)
-    # battles = create_batch_of_enemy_battles(5)
-    # battles[0](test_char)
+    print("You are attempting to execute the actions.py module.")
+    print("Executing this module does not do anything.")
 
 
 if __name__ == '__main__':
