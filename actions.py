@@ -663,7 +663,7 @@ def create_batch_of_enemy_battles(amount: int) -> list:
     """
     battles = []
 
-    with open("enemies.json") as file_object:
+    with open("json/enemies.json") as file_object:
         enemy_data = json.load(file_object)
 
         for enemy in enemy_data:
@@ -683,7 +683,7 @@ def create_batch_of_riddles(amount: int) -> list:
     """
     riddles = []
 
-    with open("riddles.json") as file_object:
+    with open("json/riddles.json") as file_object:
         riddles_data = json.load(file_object)
 
         for riddle in riddles_data:
