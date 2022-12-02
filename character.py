@@ -152,6 +152,8 @@ def level_up_sequence(character: dict) -> None:
                                                                        |_|                                                                    
                                      \U0001F386 Congrats you leveled up \U0001F386 	                
     """, "yellow")
+    print_in_color("You feel stronger, your veins are coursing with denser magic and your mana shield has strengthened!"
+                   , "yellow")
 
 
 def died(character: dict) -> None:
