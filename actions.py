@@ -358,14 +358,14 @@ def lord_commander_ymir():
         :return: True if character wins the mini boss battle, otherwise False
         """
         print_in_color("As you reach closer to the throne room, you arrive at a grand hall of what seems to have a "
-                       "religious significane.\n\n Arts painted on the ceiling depicting the Age of Strife.\n\n",
+                       "religious significane.\n\nArts painted on the ceiling depicting the Age of Strife.\n\n",
                        "cyan")
         print_in_color("***CRASH***.\n\n"
                        "There's dust and smoke everywhere!\n\n"
                        "*cough cough*\n\n"
                        "You see a huge figure appear as the dust settles.", "cyan")
-        print_in_color("He is clad in ornate armor; those scratches and gouges on his armor proves the warrior's"
-                       "skill.\n\n You admire his prowess but know that you must deaft him to advance.\n", "cyan")
+        print_in_color("He is clad in ornate armor; those scratches and gouges on his armor proves the warrior's "
+                       "skill.\n\nYou admire his prowess but know that you must deaft him to advance.\n", "cyan")
 
         if character["level"] <= 3:
             print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
@@ -700,7 +700,7 @@ def get_generic_room_description() -> str:
         "small bones, rat droppings and dead insects..",
         "\nA warn banner hangs from archway, displaying the crest of our dear queen. It is battered and torn, "
         "covered in condensation and insects..",
-        "\nA fallen statue blocks the archway. You are able to slip thorough under arm, and enter into a room too "
+        "\nA fallen statue blocks the archway. You are able to slip through under arm, and enter into a room too "
         "clean for comfort..",
         "\nYou hear the drip of water to your east. There is a small fountain streaming out of the mouth of a stone "
         "gargoyle, mounted to the wall..",
