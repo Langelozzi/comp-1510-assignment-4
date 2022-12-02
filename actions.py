@@ -16,24 +16,27 @@ def opening_dialogue() -> None:
 
     :postcondition: prints the opening story and ascii art to stdout
     """
+
+    opening_one = "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of \n" \
+                  "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n"
+
+    opening_two = "However, power such as these often corrupts and the God King of Aleyndelle were no different. \n" \
+                  "His arrogance lead him to enslaving an angel to extract their power to truly transcend the " \
+                  "realm of humanhood.\n"
+
+    opening_three = "His greed and transgression angered the Gods leading the world into the Age of Fire.\n" \
+                    "God King Thompson finally slayed the Gods but to do so he took the flame of humanity, casting \n" \
+                    "the rest humanity into darkness...\n"
+
     print_in_color("...\n", "cyan")
     time.sleep(1)
-    print_in_color(
-        "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of  \n"
-        "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n", "cyan")
+    print_in_color(opening_one, "cyan")
     time.sleep(1)
-    print_in_color(
-        "However, power such as these often corrupts, and the God King of Aleyndelle were no different. His \n"
-        "arrogance lead him to enslaving an angel to extract their power to truly transcend the realm of \n"
-        "humanhood. His greed and transgression angered the Gods leading the world into the Age of Strife.\n"
-        "The gods eventually slayed the King and as punishment, snuff out the flame of humanity, casting \n"
-        " humanity into darkness...\n", "cyan")
+    print_in_color(opening_two, "cyan")
     time.sleep(1)
-    # print_in_color(
-    #     "Gods proclaimed. 'The flame \n", "cyan")
-    # time.sleep(3)
-    print_in_color(
-        "Someone...please defeat the God King Thompson and rekindle the fire of humanity.\n", "cyan")
+    print_in_color(opening_three, "cyan")
+    # time.sleep(1)
+    # print_in_color(opening_four, "cyan")
     time.sleep(3)
     print_in_color(r"""
                                                                                                     
@@ -92,16 +95,16 @@ def opening_dialogue() -> None:
                                                                      @%%###/                        
                                                                         /                          
     """, "cyan")
-    print_in_color(
-        " _______  _______ _________ _______  _          _______  _______    _______ _________ _______  _______ \n"
-        "(  ____ )(  ____ \\__   __/(  ____ \( (    /|  (  ___  )(  ____ \  (  ____ \\__   __/(  ____ )(  ____  \ \n"
-        "| (    )|| (    \/   ) (   | (    \/|  \  ( |  | (   ) || (    \/  | (    \/   ) (   | (    )|| (    \/ \n"
-        "| (____)|| (__       | |   | |      |   \ | |  | |   | || (__      | (__       | |   | (____)|| (__     \n"
-        "|     __)|  __)      | |   | | ____ | (\ \) |  | |   | ||  __)     |  __)      | |   |     __)|  __)    \n"
-        "| (\ (   | (         | |   | | \_  )| | \   |  | |   | || (        | (         | |   | (\ (   | (       \n"
-        "| ) \ \__| (____/\___) (___| (___) || )  \  |  | (___) || )        | )      ___) (___| ) \ \__| (____/\ \n"
-        "|/   \__/(_______/\_______/(_______)|/    )_)  (_______)|/         |/       \_______/|/   \__/(_______/ \n"
-        , "cyan")
+    print_in_color(r"""
+         _______  _______ _________ _______  _          _______  _______    _______ _________ _______  _______  
+        (  ____ )(  ____ \\__   __/(  ____ \( (    /|  (  ___  )(  ____ \  (  ____ \\__   __/(  ____ )(  ____  \
+        | (    )|| (    \/   ) (   | (    \/|  \  ( |  | (   ) || (    \/  | (    \/   ) (   | (    )|| (    \/ 
+        | (____)|| (__       | |   | |      |   \ | |  | |   | || (__      | (__       | |   | (____)|| (__     
+        |     __)|  __)      | |   | | ____ | (\ \) |  | |   | ||  __)     |  __)      | |   |     __)|  __)    
+        | (\ (   | (         | |   | | \_  )| | \   |  | |   | || (        | (         | |   | (\ (   | (       
+        | ) \ \__| (____/\___) (___| (___) || )  \  |  | (___) || )        | )      ___) (___| ) \ \__| (____/\ 
+        |/   \__/(_______/\_______/(_______)|/    )_)  (_______)|/         |/       \_______/|/   \__/(_______/ 
+        """, "cyan")
     time.sleep(3)
 
 
@@ -122,10 +125,10 @@ def cell_description() -> None:
                "From down the hall you see a shadow as it rounds the east corner, you catch a glimpse of a metal " \
                "foot..\n"
 
-    part_three = "The last thing you can remember is when gods descended on Alyndelle and took our flame of humanity\n" \
-                 "The whole town was there..\n" \
+    part_three = "The last thing you can remember is the moment the King Thompson took the flame of humanity\n" \
+                 "You and the rest of the royal knights were all there..\n" \
                  "There was lightning, darkness. It blanketed the sky; low and heavy causing a sense of confusion\n" \
-                 "You turn to your left to see the royal knights yelling and tearing at their heads..\n" \
+                 "You turn to your left to see your comrades yelling and tearing at their heads..\n" \
                  "As they glance up you see a glow of deep red, shining from the slits of their helmets\n" \
                  "You tried to scream but fear restrained your voice,\n" \
                  "And then nothing..\n"
@@ -141,7 +144,14 @@ def cell_description() -> None:
 
     part_five = "As you approach the end of the hall, you feel a stronger wind against your skin\n" \
                 "At the end of the hall, the room opens to a small room, arched doorways to your north and east\n" \
-                "Another chill propagates along your spine, as you make your choice..\n"
+                "Another chill propagates along your spine, as you make your choice...\n\n\n"
+
+    part_six = "Hints:\n" \
+               "- To fight the final boss, you need to beat both the sub-bosses first.\n" \
+               "- We recommend to be at least level 2 and equipped with items before attemping the sub-bosses.\n" \
+               "- Dying sets you back so be mind of your HP, there are ways to heal in this game.\n" \
+               "- Even though some monsters are higher level than you, there is a chance to beat them!\n"\
+               "- Have fun!\n\n"
 
     print_in_color("**CLANK**\n", "cyan")
     time.sleep(1)
@@ -154,6 +164,8 @@ def cell_description() -> None:
     print_in_color(part_four, "cyan")
     time.sleep(1)
     print_in_color(part_five, "cyan")
+    time.sleep(1)
+    print_in_color(part_six, "purple")
     time.sleep(1)
 
 
@@ -340,7 +352,7 @@ def lord_commander_ymir():
                 "level": 5,
                 "item": {
                     "type": "armour",
-                    "name": "Ymir's Armour",
+                    "name": "Ymir's Royal Armour",
                     "rarity": 5
                     }
                 }
@@ -357,15 +369,15 @@ def lord_commander_ymir():
         :postcondition: returns True if character wins the mini boss battle, otherwise False
         :return: True if character wins the mini boss battle, otherwise False
         """
-        print_in_color("As you reach closer to the throne room, you arrive at a grand hall of what seems to have a "
-                       "religious significane.\n\nArts painted on the ceiling depicting the Age of Strife.\n\n",
+        print_in_color("You reach closer to the throne room, and arrive at a grand hall supported by marble pillars \n"
+                       "and the statues depict the past heroes and kings of Alyndelle.\n",
                        "cyan")
-        print_in_color("***CRASH***.\n\n"
-                       "There's dust and smoke everywhere!\n\n"
-                       "*cough cough*\n\n"
+        print_in_color("***CRASH***.\n"
+                       "There's dust and smoke everywhere!\n"
+                       "*cough cough*\n"
                        "You see a huge figure appear as the dust settles.", "cyan")
-        print_in_color("He is clad in ornate armor; those scratches and gouges on his armor proves the warrior's "
-                       "skill.\n\nYou admire his prowess but know that you must deaft him to advance.\n", "cyan")
+        print_in_color("He is clad in ornate armor; those scratches and gouges on his armor proving the warrior's "
+                       "skill.\n", "cyan")
 
         if character["level"] <= 3:
             print_in_color(f"\nThis enemies level is greater than yours, you might want to weigh your options before "
@@ -377,7 +389,7 @@ def lord_commander_ymir():
             print_in_color(f"The giant knight notices you, and he readies his greatsword: \n", "cyan")
             print("I commend you for making this far, but, your luck ends here, mortal.\n"
                   "On my honour as the Right wing of Alyndelle, the guardian of this empire,\n"
-                  "and as the Lord-Commander, I will stop you.\n")
+                  "and as the Lord-Commander, I must stop you.\n")
 
             return fight(character, ymir)
         else:
@@ -396,7 +408,7 @@ def royal_mage_angelozzi():
     :return: the angelozzi mini boss battle function
     """
     angelozzi = {
-                "name": "Royal Mage Angelozzi",
+                "name": "Royal Battle-Mage Angelozzi",
                 "max_hp": 250,
                 "current_hp": 250,
                 "level": 7,
@@ -419,8 +431,8 @@ def royal_mage_angelozzi():
         :postcondition: returns True if character wins the mini boss battle, otherwise False
         :return: True if character wins the mini boss battle, otherwise False
         """
-        print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like an giant "
-                       "underground cave.\n\nYou notice a cathedral in the distance.\n\n"
+        print_in_color("As you exit the narrow collider, you arrive at a grand opening to what seems like a giant "
+                       "underground cave...You notice a cathedral in the distance.\n\n"
                        "'How can someone build something so magnificent underground,' you thought.\n", "cyan")
         print_in_color("As you stand there in awe, you notice a huge knight clad in royal armour towering over the "
                        "cathedral entrance.\n", "cyan")
@@ -435,7 +447,9 @@ def royal_mage_angelozzi():
         if int(decision) == 1:
             print_in_color(f"The battle mage notices you, he readies his staff: \n", "cyan")
             print("You wretched createre, how dare you stain this sacred haven with your miserable existence.\n"
-                  "On my honour as the Left wing of Alyndelle, the guardian of this empire, I will eliminate you.\n")
+                  "Instead of fulfilling your duty as one of the royal knights, you chose to betray our King.\n"
+                  "I do not know how you escaped your cell, but on my honour as the Left wing of Alyndelle, "
+                  "the guardian of this empire, I must stop you.\n")
 
             return fight(character, angelozzi)
         else:
@@ -477,8 +491,8 @@ def god_king_thompson():
         :postcondition: returns True if character wins the final boss battle, otherwise False
         :return: True if character wins the final boss battle, otherwise False
         """
-        print_in_color("As you enter into throne room, you see a colossal of a man sitting on the Golden throne.\n\n"
-                       "He must be the king, the man who stole the light and betrayed the very gods itself.\n\n",
+        print_in_color("As you enter into throne room, you see a colossal of a man sitting on the Golden throne.\n"
+                       "He must be the king, the man who stole the light and betrayed the very gods itself.\n",
                        "cyan")
         print_in_color("You approach the golden throne\n", "cyan")
 
@@ -490,9 +504,10 @@ def god_king_thompson():
 
         if int(decision) == 1:
             print_in_color("The King acknowledge you, and readies his Warhammer: \n", "cyan")
-            print("You have done well, mortal. It is commendable.\n\n However, as the God King of Alyndelle,\n\n"
-                  "I cannot allow your transgression no longer. Your treachery will end here, I will not "
-                  "allow the Flame of Humanity to be returned.")
+            print("You have done well, mortal. It is commendable. However, as the God King of Alyndelle,"
+                  "I cannot allow your transgression no longer.\nYour treachery will end here, I will not "
+                  "allow the Flame of Humanity to be restored. This is the sacrifice your kind must make "
+                  "for my victory.")
 
             return fight(character, thompson)
         else:
@@ -570,45 +585,46 @@ def generate_riddle(riddle_data: dict):
                        "and in a high-pitch crackle, speaks:", "cyan")
         time.sleep(3)
 
-        print_in_color(
-            "            _.----._     _.---.\n"
-            "         .-'        `-.-'      `.\n"
-            "       .'                 .:''':.`.\n"
-            "     .'        .:'''':. .' .----.  `.\n"
-            " .-./        .' .----.    /  .-. \   `.\n"
-            "/.-.           /  .-. \   \ ' O ' |    \ \n"
-            "||        `.   | ' O '/    \ `-' /     |\n"
-            "|| (        \   \ `-'/      `-.__     / `.\n"
-            " \`-'        )   .-'  --         )        `.\n"
-            "  `-'     _.'   (            _.-'    _/\    \ \n"
-            "     `.       /\_ `-.____..-'     .-' _/    / \n"
-            "       `.     \_ `-._         _.-'_.-'   .' \n"
-            "         `--.._ `-._ `-.__..-'_.-'     .' \n"
-            "       .-'     `-._ `--.__..-'  _.----'`. \n"
-            "      /            `---.......-' _     \ \ \n"
-            "     /                          ( `-._.-` ) \n"
-            "    /  /     _                  .-    _.-' \n"
-            "   (  `-._.-' )                (_   .'    \ \n"
-            "    `-._      -.               (_.-'       |\n"
-            "        `.     _)                   __..---'\n"
-            "       |  `-._) ''...__ .-. __...'''__..---'\n"
-            "        \      '''...__((=))__...'''      /\n"
-            "         |              `-'             .'\n"
-            "         \                             /\n"
-            "          |                           |\n"
-            "          \     \    \      /    /   /\n"
-            "           `. \               /     /\n"
-            "             `.    \   \   /   /   /\n"
-            "               `--.._   ` '  _.--'\n"
-            "                      [====]\n"
-            "                       )  (\n"
-            "                    .-'    '-.\n"
-            "                   |          |\n"
-            "                   | .------. |\n"
-            "                   | |  LGB | |\n"
-            "                   | '------' |\n"
-            "                   |          |\n"
-            "                   '----------'\n", "green")
+        print_in_color(r"""
+                        _.----._     _.---.
+                     .-'        `-.-'      `.
+                   .'                 .:''':.`.
+                 .'        .:'''':. .' .----.  `.
+             .-./        .' .----.    /  .-. \   `.
+            /.-.           /  .-. \   \ ' O ' |    \
+            ||        `.   | ' O '/    \ `-' /     |
+            || (        \   \ `-'/      `-.__     / `.
+             \`-'        )   .-'  --         )        `.
+              `-'     _.'   (            _.-'    _/\    \
+                 `.       /\_ `-.____..-'     .-' _/    /
+                   `.     \_ `-._         _.-'_.-'   .' 
+                     `--.._ `-._ `-.__..-'_.-'     .' 
+                   .-'     `-._ `--.__..-'  _.----'`. 
+                  /            `---.......-' _     \ \ 
+                 /                          ( `-._.-` )
+                /  /     _                  .-    _.-' 
+               (  `-._.-' )                (_   .'    \ 
+                `-._      -.               (_.-'       |
+                    `.     _)                   __..---'
+                   |  `-._) ''...__ .-. __...'''__..---'
+                    \      '''...__((=))__...'''      /
+                     |              `-'             .'
+                     \                             /
+                      |                           |
+                      \     \    \      /    /   /
+                       `. \               /     /
+                         `.    \   \   /   /   /
+                           `--.._   ` '  _.--'
+                                  [====]
+                                   )  (
+                                .-'    '-.
+                               |          |
+                               | .------. |
+                               | | LGBT | |
+                               | '------' |
+                               |          |
+                               '----------'
+                               """, "green")
 
         print(f"Oh {character['name']}, you foolish creature, how dare you interrupt my slumber. For your transgression"
               f" you must prove your intellect to me with a riddle if you want me to spare your life..\n")
@@ -768,23 +784,17 @@ def game_completed(character: dict) -> None:
     :precondition: character must be a dictionary in the form of our game character with all proper keys
     :postcondition: prints final dialogs and ascii art indicating the game is completed
     """
-    # replace with ascii art and message
-    # print_in_color("...\n", "cyan")
-    # time.sleep(1)
-    # print_in_color(
-    #     "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of  \n"
-    #     "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n", "cyan")
-    # time.sleep(1)
-    # print_in_color(
-    #     "However, power such as these often corrupts, and the God King of Aleyndelle were no different. His \n"
-    #     "arrogance lead him to enslaving an angel to extract their power to truly transcend the realm of \n"
-    #     "humanhood. His greed and transgression angered the Gods leading the world into the Age of Strife.\n"
-    #     "The gods eventually slayed the King and as punishment, snuff out the flame of humanity, casting \n"
-    #     " humanity into darkness...\n", "cyan")
-    # time.sleep(1)
-    # print_in_color(
-    #     "Gods proclaimed. 'The flame \n", "cyan")
-    # time.sleep(3)
+
+    print_in_color("...\n", "cyan")
+    time.sleep(1)
+    print("H-How is this possible...how can a mortal like you defeat me,")
+    print_in_color("the King collapsed to the ground. You did it, You finally defeated him!\n"
+                   "His body turns into a golden dust as the flame of humanity returned to the golden alter"
+                   "sitting behind the throne.\n", "cyan")
+    time.sleep(1)
+    print_in_color("It's finally over, the flame is finally back to where it should be...\n"
+                   "You collapsed to the ground in exhaustion...this is the start of a new era...\n", "cyan")
+    time.sleep(3)
     print_in_color("""
 
                                       _A_
