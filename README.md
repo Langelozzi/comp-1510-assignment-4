@@ -74,14 +74,14 @@ humanity. We wish you the best of luck on your quest!
 
 | Required Element                  | Location (Line Number)                                |
 |:----------------------------------|:------------------------------------------------------|
-| Tuple                             | character.py -- lines 199-200                         |
-| List                              | character.py -- line 194                              |
-| List/Dict comprehension           | helpers.py -- line 120 <br/> character.py -- line 58  |
-| Selection using if                | actions.py -- line 554 <br/> character.py -- line 126 |
-| Repetition with for or while loop | character.py -- line 232 <br/> helpers.py -- line 111 |
-| The membership operator (in)      | helpers.py -- line 111                                |
-| The range function                | board.py -- line 83                                   |
-| One or more itertools functions   | board.py -- line 81 <br/> actions.py -- line 767      |
-| The enumerate function            | actions.py -- line 634                                |
-| The filter or map function        | helpers.py -- line 104                                |
-| The random module                 | actions.py -- line 745 <br/> actions.py -- line 772   |
+| Tuple                             | character.py -- lines 203-204                         |
+| List                              | character.py -- line 198                              |
+| List/Dict comprehension           | helpers.py -- line 122 <br/> character.py -- line 62  |
+| Selection using if                | actions.py -- line 554 <br/> character.py -- line 130 |
+| Repetition with for or while loop | character.py -- line 236 <br/> helpers.py -- line 113 |
+| The membership operator (in)      | helpers.py -- line 113                                |
+| The range function                | board.py -- line 72                                   |
+| One or more itertools functions   | board.py -- line 70 <br/> actions.py -- line 765      |
+| The enumerate function            | actions.py -- line 632                                |
+| The filter or map function        | helpers.py -- line 106                                |
+| The random module                 | actions.py -- line 743 <br/> actions.py -- line 770   |
