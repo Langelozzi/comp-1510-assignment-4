@@ -77,11 +77,11 @@ humanity. We wish you the best of luck on your quest!
 | Tuple                             | character.py -- lines 199-200                         |
 | List                              | character.py -- line 194                              |
 | List/Dict comprehension           | helpers.py -- line 120 <br/> character.py -- line 58  |
-| Selection using if                | actions.py -- line 531 <br/> character.py -- line 126 |
+| Selection using if                | actions.py -- line 554 <br/> character.py -- line 126 |
 | Repetition with for or while loop | character.py -- line 232 <br/> helpers.py -- line 111 |
 | The membership operator (in)      | helpers.py -- line 111                                |
 | The range function                | board.py -- line 83                                   |
-| One or more itertools functions   | board.py -- line 81 <br/> actions.py -- line 749      |
-| The enumerate function            | actions.py -- line 616                                |
+| One or more itertools functions   | board.py -- line 81 <br/> actions.py -- line 767      |
+| The enumerate function            | actions.py -- line 634                                |
 | The filter or map function        | helpers.py -- line 104                                |
-| The random module                 | actions.py -- line 727 <br/> actions.py -- line 754   |
+| The random module                 | actions.py -- line 745 <br/> actions.py -- line 772   |
