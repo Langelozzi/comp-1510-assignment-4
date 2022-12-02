@@ -147,7 +147,7 @@ def cell_description() -> None:
     part_six = "Hints:\n" \
                "- To fight the final boss, you need to beat both the sub-bosses first.\n" \
                "- We recommend to be at least level 2 and equipped with items before attemping the sub-bosses.\n" \
-               "- Dying sets you back so be mind of your HP, there are ways to heal in this game.\n" \
+               "- Dying sets you back so be mindful of your HP, there are ways to heal in this game.\n" \
                "- Even though some monsters are higher level than you, there is a chance to beat them!\n"\
                "- Have fun!\n\n"
 
