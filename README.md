@@ -74,11 +74,11 @@ humanity. We wish you the best of luck on your quest!
 
 | Required Element                  | Location (Line Number)                                |
 |:----------------------------------|:------------------------------------------------------|
-| Tuple                             | character.py -- lines 203-204                         |
-| List                              | character.py -- line 198                              |
+| Tuple                             | character.py -- lines 205-206                         |
+| List                              | character.py -- line 200                              |
 | List/Dict comprehension           | helpers.py -- line 122 <br/> character.py -- line 62  |
 | Selection using if                | actions.py -- line 554 <br/> character.py -- line 130 |
-| Repetition with for or while loop | character.py -- line 236 <br/> helpers.py -- line 113 |
+| Repetition with for or while loop | character.py -- line 238 <br/> helpers.py -- line 113 |
 | The membership operator (in)      | helpers.py -- line 113                                |
 | The range function                | board.py -- line 72                                   |
 | One or more itertools functions   | board.py -- line 70 <br/> actions.py -- line 765      |
