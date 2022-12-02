@@ -17,10 +17,10 @@ def opening_dialogue() -> None:
     :postcondition: prints the opening story and ascii art to stdout
     """
 
-    opening_one = "During the Reign of Gold, the continent of Aleyndell were prosperous. The Golden Capital of \n" \
+    opening_one = "During the Reign of Gold, the continent of Alyndelle were prosperous. The Golden Capital of \n" \
                   "Astera were at the pinnacle of its reign, their prowess told to match the power of gods. \n"
 
-    opening_two = "However, power such as these often corrupts and the God King of Aleyndelle were no different. \n" \
+    opening_two = "However, power such as these often corrupts and the God King of Alyndelle were no different. \n" \
                   "His arrogance lead him to enslaving an angel to extract their power to truly transcend the " \
                   "realm of humanhood.\n"
 
