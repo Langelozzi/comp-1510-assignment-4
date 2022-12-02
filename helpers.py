@@ -2,6 +2,7 @@
 Functions to assist in the creation of the game.
 """
 
+
 def print_in_color(value, color: str, end: str = "\n") -> None:
     """
     Print value to stdout in a specific color with a specific ending.
@@ -119,3 +120,15 @@ def get_user_choice(options: list, numeric: bool = False) -> str:
         return user_choice
 
     return [option for number, option in options if number == user_choice][0]
+
+
+def main() -> None:
+    """
+    Drive the program.
+    """
+    print("You are attempting to execute the helpers.py module.")
+    print("Executing this module does not do anything.")
+
+
+if __name__ == "__main__":
+    main()

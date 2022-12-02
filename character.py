@@ -245,10 +245,8 @@ def main() -> None:
     """
     Drive the program.
     """
-    test_character = make_character("Sir charles")
-    # print_abilities(test_character)
-    # print(select_ability(test_character))
-    show_stats(test_character)
+    print("You are attempting to execute the character.py module.")
+    print("Executing this module does not do anything.")
 
 
 if __name__ == "__main__":

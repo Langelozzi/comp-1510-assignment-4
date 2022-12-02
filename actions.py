@@ -35,8 +35,6 @@ def opening_dialogue() -> None:
     print_in_color(opening_two, "cyan")
     time.sleep(1)
     print_in_color(opening_three, "cyan")
-    # time.sleep(1)
-    # print_in_color(opening_four, "cyan")
     time.sleep(3)
     print_in_color(r"""
                                                                                                     
@@ -774,14 +772,10 @@ def get_generic_actions() -> list:
     return actions
 
 
-def game_completed(character: dict) -> None:
+def game_completed() -> None:
     """
     Print final dialogs and ascii art indicating the game is completed.
 
-    The character dictionary is modified during execution.
-
-    :param character: a character in dictionary form
-    :precondition: character must be a dictionary in the form of our game character with all proper keys
     :postcondition: prints final dialogs and ascii art indicating the game is completed
     """
 
@@ -833,6 +827,8 @@ def main():
     """
     Drive the program.
     """
+    print("You are attempting to execute the actions.py module.")
+    print("Executing this module does not do anything.")
 
 
 if __name__ == '__main__':
