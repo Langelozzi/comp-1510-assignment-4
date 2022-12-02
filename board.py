@@ -22,7 +22,7 @@ def make_board(rows, columns) -> dict:
     """
     board = {
         (1, 1): {
-            "description": "Looks like you have come back to the start, try the opposite direction of the cell",
+            "description": "\nLooks like you have come back to the start, try the opposite direction of the cell",
             "action": None,
             "solved": True,
             "directions": {
@@ -33,7 +33,7 @@ def make_board(rows, columns) -> dict:
             }
         },
         (4, 4): {
-            "description": "Royal Mage Angelozzi, Left Wing of Alyndelle",
+            "description": "\nRoyal Mage Angelozzi, Left Wing of Alyndelle",
             "action": royal_mage_angelozzi(),
             "solved": False,
             "directions": {
@@ -44,7 +44,7 @@ def make_board(rows, columns) -> dict:
             }
         },
         (7, 7): {
-            "description": "Lord-Commander Ymir, Right Wing of Alyndelle",
+            "description": "\nLord-Commander Ymir, Right Wing of Alyndelle",
             "action": lord_commander_ymir(),
             "solved": False,
             "directions": {
@@ -55,7 +55,7 @@ def make_board(rows, columns) -> dict:
             }
         },
         (10, 11): {
-            "description": "God-King Thompson, the God Slayer",
+            "description": "\nGod-King Thompson, the God Slayer",
             "action": god_king_thompson(),
             "solved": False,
             "directions": {

@@ -185,14 +185,14 @@ def spider_web_blockade(character: dict) -> None:
 
     ability_used = get_user_choice(ability_options)
     while ability_used != "Fireball":
-        print_in_color(f"I don't think {ability_used} will work here, try a different one.", "red")
+        print_in_color(f"\nI don't think {ability_used} will work here, try a different one.", "red")
         ability_used = get_user_choice(ability_options)
 
-    print_in_color("Nice work! You were able to clear out all of those webs with your Fireball!", "cyan")
+    print_in_color("\n\nNice work! You were able to clear out all of those webs with your Fireball!", "cyan")
 
     if character["level"] < 3:
         character["xp"] += 12
-        print_in_color(f"[{character['name']} | xp: +12]", "yellow")
+        print_in_color(f"\n[{character['name']} | xp: +12]", "yellow")
 
 
 def empty_room(character: dict) -> bool:
@@ -225,7 +225,7 @@ def fight(character: dict, enemy: dict) -> bool:
     :postcondition: returns True if character wins the fight, otherwise False
     :return: True if character wins the fight, otherwise False
     """
-    print_in_color(f"Both you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
+    print_in_color(f"\nBoth you and the {enemy['name']} step forward, and prepare for a battle..\n", "cyan")
 
     while (character["current_hp"] > 0) and (enemy["current_hp"] > 0):
         ability_options = list(enumerate(character["abilities"], start=1))
@@ -233,7 +233,7 @@ def fight(character: dict, enemy: dict) -> bool:
 
         chosen_ability = get_user_choice(ability_options)
 
-        print_in_color(f"Your {chosen_ability} hits the {enemy['name']}", "cyan")
+        print_in_color(f"\nYour {chosen_ability} hits the {enemy['name']}", "cyan")
         # enemy health will decrease by character damage * character level * (1 + (0.1 * staff rarity))
         try:
             damage_given = character["damage"] * character["level"] * (1 + (0.2 * character["staff"]["rarity"]))
@@ -246,11 +246,11 @@ def fight(character: dict, enemy: dict) -> bool:
         damage_taken = 10 * (1 + (0.2 * enemy["level"]))
         character["current_hp"] -= round(damage_taken)
 
-        print_in_color(f"[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
+        print_in_color(f"\n[{character['name']} | hp: {character['current_hp']}/{character['max_hp']}]", "yellow")
         print(f"[{enemy['name']} | hp: {enemy['current_hp']}/{enemy['max_hp']}]")
 
     if (enemy["current_hp"] <= 0) and (character["current_hp"] > 0):
-        print_in_color(f"\nCongratulations! You have defeated the {enemy['name']}", "cyan")
+        print_in_color(f"\n\nCongratulations! You have defeated the {enemy['name']}", "cyan")
 
         if enemy["level"] > character["level"]:
             earned_xp = 15 * ((enemy["level"] - character["level"]) + 1)
@@ -259,7 +259,7 @@ def fight(character: dict, enemy: dict) -> bool:
 
         if character["level"] < 3:
             character["xp"] += earned_xp
-            print_in_color(f"[{character['name']} | xp: +{earned_xp}]", "yellow")
+            print_in_color(f"\n[{character['name']} | xp: +{earned_xp}]", "yellow")
 
         enemy_item = enemy["item"]
         try:
@@ -272,7 +272,7 @@ def fight(character: dict, enemy: dict) -> bool:
             character[enemy["item"]["type"]] = {
                 key: value for key, value in enemy['item'].items() if key != 'type'
             }
-            print_in_color(f"\n[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]\n", "yellow")
+            print_in_color(f"[{character['name']} | {enemy['item']['type']}: +{enemy['item']['name']}]\n", "yellow")
 
         enemy["current_hp"] = enemy["max_hp"]
         return True
@@ -533,14 +533,14 @@ def generate_riddle(riddle_data: dict):
         :precondition: character must be a dictionary in the form of our game character with all proper keys
         :postcondition: prints dialog and accepts input for decisions after correctly answering a riddle
         """
-        print_in_color(f"\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
+        print_in_color(f"\n\nCongratulations {character['name']}, you are not as dumb as I thought for a creature such "
                        f"as yourself.", "green")
 
         if character["level"] < 3:
             character["xp"] += 15
-            print_in_color(f"[{character['name']} | xp: +15]", "yellow")
+            print_in_color(f"\n[{character['name']} | xp: +15]", "yellow")
 
-        print_in_color(f"To reward your success, I give you two options: try your luck at possibly earning a "
+        print_in_color(f"\n\nTo reward your success, I give you two options: try your luck at possibly earning a "
                        f"new ability, or accept the gift of maximum health", "green")
 
         success_options = list(enumerate(["Try my luck at a new ability", "Refill HP to max"], start=1))
@@ -558,13 +558,13 @@ def generate_riddle(riddle_data: dict):
                 character["abilities"].append(new_ability)
                 print(f"\nYou got lucky! I am feeling generous and will grant you a new ability. You can now use "
                       f"{new_ability}")
-                print_in_color(f"[{character['name']} | abilities: +'{new_ability}']", "yellow")
+                print_in_color(f"\n[{character['name']} | abilities: +'{new_ability}']", "yellow")
             else:
                 print("\nOh no, looks like you lost the coin flip, you will not be getting a new ability.")
         else:
             difference = character["max_hp"] - character["current_hp"]
             character["current_hp"] = character["max_hp"]
-            print_in_color(f"[{character['name']} | hp: +{difference}]", "yellow")
+            print_in_color(f"\n[{character['name']} | hp: +{difference}]", "yellow")
 
     def riddle(character: dict) -> bool:
         """
@@ -646,7 +646,7 @@ def generate_riddle(riddle_data: dict):
                            f"That answer is far from correct and for that you must be punished!", "red")
             lost_hp = character["current_hp"] * 0.25
             character["current_hp"] -= round(lost_hp)
-            print_in_color(f"[{character['name']} | hp: -{lost_hp}]", "yellow")
+            print_in_color(f"\n[{character['name']} | hp: -{lost_hp}]", "yellow")
             return False
 
     return riddle
@@ -782,8 +782,8 @@ def game_completed() -> None:
     print_in_color("...\n", "cyan")
     time.sleep(1)
     print("H-How is this possible...how can a mortal like you defeat me,")
-    print_in_color("the King collapsed to the ground. You did it, You finally defeated him!\n"
-                   "His body turns into a golden dust as the flame of humanity returned to the golden alter"
+    print_in_color("\nThe King collapsed to the ground. You did it, You finally defeated him!\n"
+                   "His body turns into a golden dust as the flame of humanity returned to the golden alter "
                    "sitting behind the throne.\n", "cyan")
     time.sleep(1)
     print_in_color("It's finally over, the flame is finally back to where it should be...\n"
