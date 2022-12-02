@@ -833,36 +833,6 @@ def main():
     """
     Drive the program.
     """
-    test_char = {
-        "name": "Ymir",
-        "position": (1, 1),
-        "max_hp": 100,
-        "current_hp": 100,
-        "xp": 0,
-        "damage": 20,
-        "level": 3,
-        "abilities": ["Fireball"],
-        "staff": {
-            "name": "Draconic Staff",
-            "rarity": 4
-        },
-        "armour": {
-            "name": "Draconic Armour",
-            "rarity": 4
-        }
-    }
-
-    # skeleton_soldier(test_char)
-    # print(get_generic_room_description())
-    # get_generic_challenges()(test_char)
-
-    # spider_web_blockade(test_char)
-
-    # riddles = create_batch_of_riddles(5)
-    # riddles[0](test_char)
-    # royal_mage_angelozzi()(test_char)
-    # battles = create_batch_of_enemy_battles(5)
-    # battles[0](test_char)
 
 
 if __name__ == '__main__':
