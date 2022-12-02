@@ -119,7 +119,7 @@ def cell_description() -> None:
     part_two = "You are in a small cell, metal bars straight ahead; cobblestone lines the rest of the room\n" \
                "You can feel the damp air in your breath, and hear the slow drop of water against the stone floor\n" \
                "You sense a darkness weighing in your chest and a cold breeze stroke down your spine\n" \
-               "From down the hall you see a shadow as it rounds the corner east, you catch a glimpse of a metal " \
+               "From down the hall you see a shadow as it rounds the east corner, you catch a glimpse of a metal " \
                "foot..\n"
 
     part_three = "The last thing you can remember is when gods descended on Alyndelle and took our flame of humanity\n" \
@@ -136,10 +136,10 @@ def cell_description() -> None:
                 "The metal door of the cell creaks open, revealing a clear stone path to the hall where the shadow " \
                 "walked\n" \
                 "You lift yourself to your feet from the cobblestone floor and contemplate your options\n" \
-                "The curiosity twists in your cut and pulls you north..\n" \
+                "The curiosity twists in your gut and pulls you north..\n" \
                 "You are now following the shadowy figure north down the dungeon hall...\n"
 
-    part_five = "As you approach the end of the hall, you feel a stronger wind against you skin\n" \
+    part_five = "As you approach the end of the hall, you feel a stronger wind against your skin\n" \
                 "At the end of the hall, the room opens to a small room, arched doorways to your north and east\n" \
                 "Another chill propagates along your spine, as you make your choice..\n"
 
