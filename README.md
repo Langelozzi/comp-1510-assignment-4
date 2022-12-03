@@ -69,6 +69,8 @@ humanity. We wish you the best of luck on your quest!
 
 * In some doctests, such as make_character in character.py, the tests fail unless it is all one line, therefore
   forcing us to disobey the pycharm syntax warning for line length
+* The functions that were not unit tested either contained large amounts of print and input, or required more 
+  knowledge than we covered in our course, such as reading json
 
 ## Code Requirements
 
